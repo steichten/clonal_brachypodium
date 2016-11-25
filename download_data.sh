@@ -1,31 +1,21 @@
 
 
 
-mkdir rawdata_lowcoverage
-mkdir rawdata_highcoverage
+mkdir rawdata
+printf "rawdata\n" >> .gitignore
+cd rawdata
 
-printf "rawdata_lowcoverage\n" >> .gitignore
-printf "rawdata_highcoverage\n" >> .gitignore
+#start pulling SRA files for skim data
+SRALIST=$(tail -n +2 ../sequencing_record.txt | grep -v "S[pP]1"  | cut -f 14)
 
-cd rawdata_highcoverage
-
-wget ftp://ftp-trace.ncbi.nih.gov/sra/sra-instant/reads/ByRun/sra/SRR/SRR503/SRR5032059/SRR5032059.sra #Bd21
-
+for SRAFILE in $SRALIST
+do
+    wget -N ftp://ftp-trace.ncbi.nih.gov/sra/sra-instant/reads/ByRun/sra/SRR/${SRAFILE::-4}/${SRAFILE}/${SRAFILE}.sra
+done
 #confirm data files are as expected
 shasum -c rawdata_shasums.sha
 
 
-#make directory structure
-#download all of the sequence data for SP1 HiSeq2000
-#download all of the sequence data for SP1 HiSeq2500 (first pass of library check)
-#make fastq files
-#merge fastq files from 2000 and 2500 run (as they are same library and sample)
-#rename fastq files to sampleID
-
-#download all sequence data for skim 2500 runs
-#make fastq files
-#rename fastq files
-
-#download annotation data
 
 
+wget ftp://ftp.ddbj.nig.ac.jp/ddbj_database/dra/sralite/ByExp/litesra/SRX/SRX235/SRX2357078/SRR5032082/SRR5032082.sra
