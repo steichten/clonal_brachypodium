@@ -1,5 +1,5 @@
 #Extended Genotype analysis of 'clonal' _Brachypodium distachyon_ populations
-<img src="http://borevitzlab.anu.edu.au/wordpress/wp-content/uploads/2016/05/IMG_20151216_103903.jpg" alt="Headimage" style="width:300px;height:400px; align="right">
+
 ---
 
 Analysis steps for clonal Brachypodium methylation project (BVZ0049)
@@ -13,6 +13,23 @@ insert abstract here
 
 ---
 
-# Outline
+#Outline
 
-1. Pull the sequencing files all together
+1. Download all sequence data from Short Read Archive (600+ samples)
+2. Prepare annotation files and construct SNP-corrected reference genome sequences for alignment
+3. Perform bisulfite alignments
+4. Create master datafiles of methylation for analysis
+5. etc etc
+
+#Software Requirements
+
+- Bismark version X
+- samtools version X
+- R
+
+
+
+
+
+---
+
