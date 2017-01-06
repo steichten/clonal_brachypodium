@@ -12,10 +12,22 @@ for SRAFILE in $SRALIST
 do
     wget -N ftp://ftp-trace.ncbi.nih.gov/sra/sra-instant/reads/ByRun/sra/SRR/${SRAFILE::-4}/${SRAFILE}/${SRAFILE}.sra
 done
+
 #confirm data files are as expected
-shasum -c rawdata_shasums.sha
+#must make this shasum file
+shasum -c ../rawdata_shasums.sha
 
+#convert sra files back into gzipped fastq files for analysis
+for FILE in *.sra
+do
+    fastq-dump --gzip ./$FILE
+    rm $FILE
+done
 
-
-
-wget ftp://ftp.ddbj.nig.ac.jp/ddbj_database/dra/sralite/ByExp/litesra/SRX/SRX235/SRX2357078/SRR5032082/SRR5032082.sra
+#rename all SRA files to their sampleID
+for SRANAME in *.sra
+do
+    sra=${SRANAME::-4}
+    line=$(grep ${sra} ../sequencing_record.txt | cut -f 1)
+    echo $line
+done
