@@ -25,9 +25,10 @@ do
 done
 
 #rename all SRA files to their sampleID
-for SRANAME in *.sra
+for SRANAME in *.fastq.gz
 do
-    sra=${SRANAME::-4}
+    sra=${SRANAME::-9}
     line=$(grep ${sra} ../sequencing_record.txt | cut -f 1)
-    echo $line
+    mv $SRANAME ${line}.fastq.gz
+    echo "$SRANAME moved to ${line}.fastq.gz" >> renaming_sra_files.log
 done
