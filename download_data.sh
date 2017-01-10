@@ -1,5 +1,5 @@
 
-
+#low coverage 2500 runs
 
 mkdir rawdata_lowcoverage
 printf "rawdata_lowcoverage\n" >> .gitignore
