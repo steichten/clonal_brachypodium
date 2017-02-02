@@ -6,7 +6,7 @@ printf "rawdata_lowcoverage\n" >> .gitignore
 cd rawdata_lowcoverage
 
 #start pulling SRA files for skim data
-SRALIST=$(tail -n +2 ../sequencing_record.txt | grep -v "S[pP]1"  | cut -f 14)
+SRALIST=$(tail -n +2 ../sequencing_record.txt | grep "L2"  | cut -f 14)
 
 for SRAFILE in $SRALIST
 do

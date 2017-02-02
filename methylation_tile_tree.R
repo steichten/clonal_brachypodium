@@ -1,8 +1,12 @@
 
 options(echo=T)
 argo=commandArgs(trailingOnly=T)
-print(argo)
-
+argo=unlist(strsplit(argo,' '))
+context=argo[1]
+files=argo[2:length(argo)]
+print(files)
+print(context)
+current=Sys.time()
 #functions
 ##############
 merge_wigs <- function(filelist){
@@ -30,19 +34,18 @@ calculate_dist <- function(data,column){
 }
 
 plot_dendro <- function(hc,title){
-  pdf(paste(title,'methylation_dendrogram.pdf',sep='_'),height=5,width=30)
+  pdf(paste(title,'methylation_dendrogram.',current,'.pdf',sep='_'),height=5,width=30)
   print(plot(hc,main=paste(title,sep=' ')))
   dev.off()
 }
 ##############
 
 
-filelist=dir(pattern=paste('*',argo[1],'_100bp.wig',sep=''))
 
-all=merge_wigs(filelist)
+all=merge_wigs(files)
 
 
-write.table(all,paste(argo[1],'_alltiles_merged.txt',sep=''),sep='\t',row.names=F,quote=F)
+write.table(all,paste(context,'_alltiles_merged.',current,'.txt',sep=''),sep='\t',row.names=F,quote=F)
 
 
 tile.dist=calculate_dist(all,6)
