@@ -7,6 +7,10 @@ files=argo[2:length(argo)]
 print(files)
 print(context)
 current=Sys.time()
+
+install.packages('data.table')
+library(data.table)
+
 #functions
 ##############
 merge_wigs <- function(filelist){
@@ -23,11 +27,13 @@ merge_wigs <- function(filelist){
 }
 
 calculate_dist <- function(data,column){
-  meta=read.delim('/Users/eichten/scripts/metadata.txt',head=F)
+  meta=read.delim('../metadata.txt',head=F)
   current=names(data[,4:ncol(data)])
-  c2=matrix(unlist(strsplit(current,'_')),ncol=3,byrow=T)
+  c2=matrix(unlist(strsplit(current,'_')),ncol=7,byrow=T)
   c2=c2[,1]
+  c2=gsub('^..','',c2)
   meta82=meta[meta$V1 %in% c2,]
+  meta82=meta82[match(c2,meta82$V1),]
   colnames(data)[4:ncol(data)]=as.character(meta82[,column])
   hc=hclust(as.dist(1-cor(data[,4:ncol(data)],use='pairwise.complete.obs')))
   return(hc)

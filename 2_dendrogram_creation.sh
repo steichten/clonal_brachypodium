@@ -20,9 +20,9 @@ cd rawdata_lowcoverage
 #mkdir -p ./100bp_wigs/{cg,chg,chh}
 
 #grab all 100bp wig files from the aligned data outputs as variable for R
-cgfiles=$(find -name "S601*CpG*.wig")
-chgfiles=$(find -name "S601*CHG*.wig")
-chhfiles=$(find -name "S601*CHH*.wig")
+cgfiles=$(find -name "S*CpG*.wig")
+chgfiles=$(find -name "S*CHG*.wig")
+chhfiles=$(find -name "S*CHH*.wig")
 
 #find -name "*CpG*.wig" | xargs cp -t 100bp_wigs/cg/
 #find -name "*CHG*.wig" | xargs cp -t 100bp_wigs/chg/
