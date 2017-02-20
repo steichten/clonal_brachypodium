@@ -3,13 +3,15 @@ options(echo=T)
 argo=commandArgs(trailingOnly=T)
 argo=unlist(strsplit(argo,' '))
 context=argo[1]
-files=argo[2:length(argo)]
+metapath=argo[2]
+files=argo[3:length(argo)]
 print(files)
+print(metapath)
 print(context)
 current=Sys.time()
 
-install.packages('data.table')
-library(data.table)
+#install.packages('data.table')
+#library(data.table)
 
 #functions
 ##############
@@ -27,7 +29,7 @@ merge_wigs <- function(filelist){
 }
 
 calculate_dist <- function(data,column){
-  meta=read.delim('../metadata.txt',head=F)
+  meta=read.delim(metapath,head=F)
   current=names(data[,4:ncol(data)])
   c2=matrix(unlist(strsplit(current,'_')),ncol=7,byrow=T)
   c2=c2[,1]
