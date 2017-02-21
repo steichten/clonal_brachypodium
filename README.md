@@ -23,7 +23,7 @@ insert abstract here
 
 #Software Requirements
 
-- Bismark version X
+- Bismark version 0.13.0
 - samtools version X
 - R
 

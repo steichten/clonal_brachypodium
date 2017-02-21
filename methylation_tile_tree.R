@@ -46,6 +46,26 @@ plot_dendro <- function(hc,title){
   print(plot(hc,main=paste(title,sep=' ')))
   dev.off()
 }
+
+calculate_cor <- function(data,column){
+  meta=read.delim(metapath,head=F)
+  current=names(data[,4:ncol(data)])
+  c2=matrix(unlist(strsplit(current,'_')),ncol=7,byrow=T)
+  c2=c2[,1]
+  c2=gsub('^..','',c2)
+  meta82=meta[meta$V1 %in% c2,]
+  meta82=meta82[match(c2,meta82$V1),]
+  colnames(data)[4:ncol(data)]=as.character(meta82[,column])
+  cor_matrix=as.matrix(cor(data[,4:ncol(data)],use='pairwise.complete.obs'))
+  return(cor_matrix)
+}
+
+plot_heatmap <- function(cor_matrix,title){
+  pdf(paste(title,'methylation_heatmap.',current,'.pdf',sep='_'),height=15,width=15)
+  print(heatmap(cor_matrix,main=paste(title,sep=' ')))
+  dev.off()
+  return(NULL)
+}
 ##############
 
 
@@ -58,7 +78,11 @@ write.table(all,paste(context,'_alltiles_merged.',current,'.txt',sep=''),sep='\t
 
 tile.dist=calculate_dist(all,6)
 plot_dendro(tile.dist,paste(argo[1],'_sample',sep=''))
+tile.cor=calculate_cor(all,6)
+plot_heatmap(tile.cor,paste(argo[1],'_sample',sep=''))
+
 tile.dist=calculate_dist(all,8)
 plot_dendro(tile.dist,paste(argo[1],'_clonal',sep=''))
-
+tile.cor=calculate_cor(all,8)
+plot_heatmap(tile.cor,paste(argo[1],'_sample',sep=''))
 
