@@ -11,7 +11,7 @@ The scripts provided in this repository are tied to the published manuscript:
 ###Insert fantastic paper here as a link
 
 ###Abstract:
-insert abstract here
+Insert abstract here
 
 ---
 
@@ -21,14 +21,20 @@ insert abstract here
 2. Prepare annotation files and construct SNP-corrected reference genome sequences for alignment
 3. Perform bisulfite alignments
 4. Create master datafiles of methylation for analysis
-5. etc etc
+5. Format and create datafiles for phenotypes
+6. 
 
 #Software Requirements
 
-- Bismark version 0.13.0
-- samtools version X
-- R
-
+- [Bismark](https://github.com/FelixKrueger/Bismark) (0.13.0)
+- [samtools](https://github.com/samtools/samtools) (1.2)
+- [R](https://www.r-project.org/) (3.3.2)
+- [trimgalore](https://github.com/FelixKrueger/TrimGalore) (0.4.2)
+- [cutadapt](https://github.com/marcelm/cutadapt) (1.9.1)
+- [bedtools](https://github.com/arq5x/bedtools2) (2.25.0)
+- [sratools](https://github.com/ncbi/sra-tools) (2.8.0)
+- [fastqc](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/) (0.11.5)
+- [bowtie1](https://github.com/BenLangmead/bowtie) (1.1.2)
 
 
 
