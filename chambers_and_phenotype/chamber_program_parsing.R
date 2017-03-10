@@ -12,7 +12,7 @@ library(xts)
 library(grid)
 library(knitr)
 library(animation)
-
+library(scales)
 setconditions.spring=read.csv('BVZ0049_SPRING_CH02_program.csv',head=T)
 
 setconditions.spring = setconditions.spring %>% 
@@ -99,8 +99,12 @@ ggplot(setconditions.dayavg,aes(x=sim.date, y=mean_temp)) +
   geom_rect(aes(xmin=as.POSIXct('2012-04-26'),xmax=as.POSIXct('2012-09-06'),ymin=0,ymax=1),fill='green',alpha=0.5) +
   geom_rect(aes(xmin=as.POSIXct('2012-10-16'),xmax=as.POSIXct('2012-12-31'),ymin=2,ymax=3),fill='orange',alpha=0.5) +
   geom_rect(aes(xmin=as.POSIXct('2012-01-01'),xmax=as.POSIXct('2012-06-28'),ymin=2,ymax=3),fill='orange',alpha=0.5) +
-  geom_point(data=subset(merged.dates,merged.dates$ch2_water=='x'),inherit.aes=F,aes(x=sim.date.x,y=0.5),col='blue') +
-  geom_point(data=subset(merged.dates,merged.dates$ch5_water=='x'),inherit.aes=F,aes(x=sim.date.y,y=2.5),col='blue') +
+  geom_point(data=subset(merged.dates,merged.dates$ch2_water=='x'),inherit.aes=F,aes(x=sim.date.x,y=0.8),col='blue') +
+  geom_point(data=subset(merged.dates,merged.dates$ch5_water=='x'),inherit.aes=F,aes(x=sim.date.y,y=2.8),col='blue') +
+  geom_point(data=subset(merged.dates,merged.dates$ch2_spring_growth_stage=='x'),inherit.aes=F,aes(x=sim.date.x,y=0.5),col='black') +
+  geom_point(data=subset(merged.dates,merged.dates$ch5_fall_growth_stage=='x'),inherit.aes=F,aes(x=sim.date.y,y=2.5),col='black') +
+  geom_point(data=subset(merged.dates,merged.dates$ch2_height=='x'),inherit.aes=F,aes(x=sim.date.x,y=0.3),col='red') +
+  geom_point(data=subset(merged.dates,merged.dates$ch5_height=='x'),inherit.aes=F,aes(x=sim.date.y,y=2.3),col='red') +
   geom_line(data=logs.spring.date,inherit.aes = F, aes(sim.date.x,mean_temp),col='green') +
   geom_ribbon(data=logs.spring.date,inherit.aes = F,aes(sim.date.x,ymax=max_temp,ymin=min_temp),alpha=0.4,fill='green')+
   geom_line(data=logs.fall.date.start,inherit.aes = F, aes(sim.date.y,mean_temp),col='orange') +
@@ -113,7 +117,7 @@ ggplot(setconditions.dayavg,aes(x=sim.date, y=mean_temp)) +
   ggtitle('BVZ0049 - Simulated year for CH02 and CH05') +
   xlab('Simulated chamber date') +
   ylab('Mean Temp (C)') +
-  theme_bw()
+  theme_bw() + scale_x_datetime(labels = date_format("%b"))
 dev.off()
 
 #plot it all in polar coords
@@ -145,7 +149,30 @@ dev.off()
 
 
 #cumulative sum of temp over the year
-ggplot(setconditions.dayavg,aes(sim.date,cumsum(mean_temp))) + 
-  geom_line(size=1) + 
-  geom_ribbon(aes(ymax=cumsum(max_temp),ymin=cumsum(min_temp)),fill='red',alpha=0.2) + 
-  geom_line()
+spring.cumsum= setconditions.dayavg %>% filter(sim.date > '2012-04-26' & sim.date < '2012-09-06')
+spring.cumsum$day.from.planting = seq(0:(nrow(spring.cumsum)-1))
+fall.cumsum1 = setconditions.dayavg %>% filter(sim.date > '2012-10-16')
+fall.cumsum2 = setconditions.dayavg %>% filter(sim.date < '2012-06-28')
+fall.cumsum=rbind(fall.cumsum1,fall.cumsum2)
+fall.cumsum$day.from.planting = seq(0:(nrow(fall.cumsum)-1))
+
+pdf('BVZ0049_cumulative_plots.pdf',height=8,width=10)
+ggplot(spring.cumsum,aes(day.from.planting,cumsum(mean_temp))) + 
+  geom_line(size=1,col='green') + 
+  geom_ribbon(aes(ymax=cumsum(max_temp),ymin=cumsum(min_temp)),fill='green',alpha=0.2) + 
+  geom_line(data=fall.cumsum,col='orange') +
+  geom_ribbon(data=fall.cumsum,aes(ymax=cumsum(max_temp),ymin=cumsum(min_temp)),fill='orange',alpha=0.2) +
+  ggtitle('BVZ0049 - Cumulative mean temp from initial planting') +
+  xlab('Days from initial planting') +
+  ylab('Cumulative avg daily temp')
+
+ggplot(spring.cumsum,aes(day.from.planting,cumsum(mean_solar))) + 
+  geom_line(size=1,col='green') + 
+  #geom_ribbon(aes(ymax=cumsum(max_solar),ymin=cumsum(min_solar)),fill='green',alpha=0.2) + 
+  geom_line(data=fall.cumsum,col='orange') +
+  #geom_ribbon(data=fall.cumsum,aes(ymax=cumsum(max_solar),ymin=cumsum(min_solar)),fill='orange',alpha=0.2) +
+  ggtitle('BVZ0049 - Cumulative mean PAR from initial planting') +
+  xlab('Days from initial planting') +
+  ylab('Cumulative avg daily PAR')
+dev.off()
+
