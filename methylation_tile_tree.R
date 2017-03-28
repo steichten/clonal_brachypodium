@@ -12,7 +12,8 @@ current=Sys.time()
 
 #install.packages('data.table')
 #library(data.table)
-
+install.packages('dendextend')
+library(dendextend)
 #functions
 ##############
 merge_wigs <- function(filelist){
@@ -43,6 +44,11 @@ calculate_dist <- function(data,column){
 
 plot_dendro <- function(hc,title){
   pdf(paste(title,'methylation_dendrogram.',current,'.pdf',sep='_'),height=5,width=30)
+  dendro_labels=gsub('_.*','',gsub('\\.[0-9]*','',hc$labels))
+  dendro_colors=as.numeric(as.factor(dendro_labels))
+  hc=as.dendrogram(hc)
+  #labels(hc)=dendro_labels[order.dendrogram(hc)]
+  labels_colors(hc) = dendro_colors[order.dendrogram(hc)]
   print(plot(hc,main=paste(title,sep=' ')))
   dev.off()
 }
@@ -77,12 +83,11 @@ write.table(all,paste(context,'_alltiles_merged.',current,'.txt',sep=''),sep='\t
 
 
 tile.dist=calculate_dist(all,6)
-plot_dendro(tile.dist,paste(argo[1],'_sample',sep=''))
+plot_dendro(tile.dist,paste(context,'_sample',sep=''))
 tile.cor=calculate_cor(all,6)
-plot_heatmap(tile.cor,paste(argo[1],'_sample',sep=''))
+plot_heatmap(tile.cor,paste(context,'_sample',sep=''))
 
 tile.dist=calculate_dist(all,8)
-plot_dendro(tile.dist,paste(argo[1],'_clonal',sep=''))
+plot_dendro(tile.dist,paste(context,'_clonal',sep=''))
 tile.cor=calculate_cor(all,8)
-plot_heatmap(tile.cor,paste(argo[1],'_sample',sep=''))
-
+plot_heatmap(tile.cor,paste(context,'_sample',sep=''))
