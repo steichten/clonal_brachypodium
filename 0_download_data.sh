@@ -29,21 +29,25 @@ do
 done
 
 #renaming files to SAMPLEID.fastq.gz
-SAMPLEID=$(tail -n +2 ../sequencing_record.txt | grep -v "S[pP]1" | cut -f 1)
+SAMPLEID=$(tail -n +2 ../sequencing_record.txt | grep -v "S[pP]1" | cut -f 1 | sort | uniq)
 
+printf "input1\tinput2\toutput_file\n" > renaming_sra_files.log
 for SAMPLE in $SAMPLEID
 do
     expectedfiles=$(tail -n +2 ../sequencing_record.txt | grep -v "S[Pp]1" | grep $SAMPLE | cut -f 14 )
     if [ "$(echo ${expectedfiles} | wc -w)" -eq 1 ]; then
       mv ${expectedfiles}.fastq.gz ${SAMPLE}.fastq.gz
-      echo "${expectedfiles}.fastq.gz renamed to ${SAMPLE}.fastq.gz" >> renaming_sra_files.log
+      printf "${expectedfiles}.fastq.gz\t\t${SAMPLE}.fastq.gz\n" >> renaming_sra_files.log
     else
-      cat $(echo ${expectedfiles} | cut -d ' ' -f1).fastq.gz $(echo ${expectedfiles} | cut -d ' ' -f2).fastq.gz > ${SAMPLE}.fastq.gz
-      rm $(echo ${expectedfiles} | cut -d ' ' -f1).fastq.gz
-      rm $(echo ${expectedfiles} | cut -d ' ' -f2).fastq.gz
-      echo "$expectedfiles fastq files combined into ${SAMPLE}.fastq.gz. Initial files $expectedfiles deleted" >> renaming_sra_files.log
+      for FILE in $expectedfiles;
+      do
+        cat ${FILE}.fastq.gz >> ${SAMPLE}.fastq.gz
+        rm ${FILE}.fastq.gz
+      done
+    printf "$(echo $expectedfiles | cut -d ' ' -f1).fastq.gz\t$(echo $expectedfiles | cut -d ' ' -f2).fastq.gz\t${SAMPLE}.fastq.gz\n" >> renaming_sra_files.log
     fi
 done
+
 
 ###### SP1 high-coverage data
 
