@@ -1,16 +1,19 @@
 
-#low coverage 2500 runs
+#!bin/bash
+
+########################low coverage 2500 runs
 
 mkdir rawdata_lowcoverage
-printf "rawdata_lowcoverage\n" >> .gitignore
+printf "rawdata_lowcoverage\n" >> .gitignore #make sure git doesn't pull big files
 cd rawdata_lowcoverage
 
-#start pulling SRA files for skim data
-SRALIST=$(tail -n +2 ../sequencing_record.txt | grep "L4R"  | cut -f 14)
+#start pulling SRA file SRR identifiers for skim sequencing, skip the data used for high-coverage
+SRALIST=$(tail -n +2 ../sequencing_record.txt | grep -v "S[Pp]1"  | cut -f 14)
 
 for SRAFILE in $SRALIST
 do
-    wget -N http://sra-download.ncbi.nlm.nih.gov/srapub/${SRAFILE}
+    #download SRA files from NCBI,
+    wget -nc http://sra-download.ncbi.nlm.nih.gov/srapub/${SRAFILE}
     mv ${SRAFILE} ${SRAFILE}.sra
 done
 
@@ -31,11 +34,13 @@ SAMPLEID=$(tail -n +2 ../sequencing_record.txt | grep -v "S[pP]1" | cut -f 1)
 for SAMPLE in $SAMPLEID
 do
     expectedfiles=$(tail -n +2 ../sequencing_record.txt | grep -v "S[Pp]1" | grep $SAMPLE | cut -f 14 )
-    if [$(echo $expectedfiles | wc -w) == 1]; then
+    if [ "$(echo ${expectedfiles} | wc -w)" -eq 1 ]; then
       mv ${expectedfiles}.fastq.gz ${SAMPLE}.fastq.gz
       echo "${expectedfiles}.fastq.gz renamed to ${SAMPLE}.fastq.gz" >> renaming_sra_files.log
     else
       cat $(echo ${expectedfiles} | cut -d ' ' -f1).fastq.gz $(echo ${expectedfiles} | cut -d ' ' -f2).fastq.gz > ${SAMPLE}.fastq.gz
+      rm $(echo ${expectedfiles} | cut -d ' ' -f1).fastq.gz
+      rm $(echo ${expectedfiles} | cut -d ' ' -f2).fastq.gz
       echo "$expectedfiles fastq files combined into ${SAMPLE}.fastq.gz. Initial files $expectedfiles deleted" >> renaming_sra_files.log
     fi
 done
