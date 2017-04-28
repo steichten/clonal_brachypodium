@@ -1,6 +1,9 @@
 
 #!bin/bash
 
+#SRE 28/4/2017
+#depends on sratools 'fastq-dump' for SRA to fastq conversion
+
 ########################low coverage 2500 runs
 
 mkdir rawdata_lowcoverage
@@ -28,9 +31,10 @@ do
     rm $FILE
 done
 
-#renaming files to SAMPLEID.fastq.gz
+#renaming and combining SRR files to their respective SAMPLEID.fastq.gz. This is based off the metadata sequence_record.txt file
 SAMPLEID=$(tail -n +2 ../sequencing_record.txt | grep -v "S[pP]1" | cut -f 1 | sort | uniq)
 
+#create log file of renaming for records
 printf "input1\tinput2\toutput_file\n" > renaming_sra_files.log
 for SAMPLE in $SAMPLEID
 do
@@ -61,7 +65,9 @@ SRALIST=$(tail -n +2 ../sequencing_record.txt | grep "S[pP]1"  | cut -f 14)
 
 for SRAFILE in $SRALIST
 do
-    wget -N ftp://ftp-trace.ncbi.nih.gov/sra/sra-instant/reads/ByRun/sra/SRR/${SRAFILE::-4}/${SRAFILE}/${SRAFILE}.sra
+    #download SRA files from NCBI,
+    wget -nc http://sra-download.ncbi.nlm.nih.gov/srapub/${SRAFILE}
+    mv ${SRAFILE} ${SRAFILE}.sra
 done
 
 #confirm data files are as expected
