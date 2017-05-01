@@ -1,0 +1,53 @@
+#!/bin/bash
+#PBS -P xe2
+#PBS -q copyq
+#PBS -l walltime=00:10:00
+#PBS -l mem=8GB
+#PBS -l jobfs=5GB
+#PBS -l ncpus=8
+#PBS -l software=mv
+#PBS -l wd
+
+export PATH=\$PATH:\$HOME/bin:\$HOME/.local/bin/
+
+cd rawdata_lowcoverage
+
+#renaming and combining SRR files to their respective SAMPLEID.fastq.gz. This is based off the metadata sequence_record.txt file
+SAMPLEID=$(tail -n +2 ../sequencing_record.txt | grep -v "S[pP]1" | cut -f 1 | sort | uniq)
+
+#create log file of renaming for records
+printf "input1\tinput2\toutput_file\n" > renaming_sra_files.log
+for SAMPLE in $SAMPLEID
+do
+    expectedfiles=$(tail -n +2 ../sequencing_record.txt | grep -v "S[Pp]1" | grep $SAMPLE | cut -f 14 )
+    if [ "$(echo ${expectedfiles} | wc -w)" -eq 1 ]; then
+      mv ${expectedfiles}.fastq.gz ${SAMPLE}.fastq.gz
+      printf "${expectedfiles}.fastq.gz\t\t${SAMPLE}.fastq.gz\n" >> renaming_sra_files.log
+    else
+      for FILE in $expectedfiles;
+      do
+        cat ${FILE}.fastq.gz >> ${SAMPLE}.fastq.gz
+        rm ${FILE}.fastq.gz
+      done
+    printf "$(echo $expectedfiles | cut -d ' ' -f1).fastq.gz\t$(echo $expectedfiles | cut -d ' ' -f2).fastq.gz\t${SAMPLE}.fastq.gz\n" >> renaming_sra_files.log
+    fi
+done
+
+#highcoverage data rename and merge
+cd ../rawdata_highcoverage
+
+#rename all SRA files to their sampleID
+for sampleid in $(grep "S[pP]1" ../sequencing_record.txt | cut -f 1 | sort | uniq)
+do
+
+    sra_files=$(grep ${sampleid} ../sequencing_record.txt | grep "S[pP]1" | cut -f 14)
+
+    if [[ -f $(echo ${sra_files} | cut -d ' ' -f1).fastq.gz && $(echo ${sra_files} | cut -d ' ' -f2).fastq.gz ]]; then
+     echo "${sra_files} both exist. Combining..."
+     cat $(echo ${sra_files} | cut -d ' ' -f1).fastq.gz $(echo ${sra_files} | cut -d ' ' -f2).fastq.gz > ${sampleid}_combined.fastq.gz
+     echo "${sra_files} combined and moved to ${sampleid}_combined.fastq.gz" >> renaming_sra_files.log
+    else
+     echo "Both files ${sra_files} are not present. Skipping!"
+    fi
+
+done

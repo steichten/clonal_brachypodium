@@ -1,0 +1,45 @@
+#!/bin/bash
+#PBS -P xe2
+#PBS -q copyq
+#PBS -l walltime=10:00:00
+#PBS -l mem=8GB
+#PBS -l jobfs=200GB
+#PBS -l ncpus=8
+#PBS -l software=wget
+#PBS -l wd
+
+export PATH=\$PATH:\$HOME/bin:\$HOME/.local/bin/
+
+##########################
+#download lowcoverage data
+mkdir rawdata_lowcoverage
+printf "rawdata_lowcoverage\n" >> .gitignore #make sure git doesn't pull big files
+cd rawdata_lowcoverage
+
+SRALIST=$(tail -n +2 ../sequencing_record.txt | grep -v "S[Pp]1"  | cut -f 14)
+
+for SRAFILE in $SRALIST
+do
+    #download SRA files from NCBI,
+    wget -nc http://sra-download.ncbi.nlm.nih.gov/srapub/${SRAFILE}
+    mv ${SRAFILE} ${SRAFILE}.sra
+done
+
+#########################
+#download hicoverage data
+cd ../
+mkdir rawdata_highcoverage
+printf "rawdata_highcoverage\n" >> .gitignore
+cd rawdata_highcoverage
+
+#start pulling SRA files for skim data
+SRALIST=$(tail -n +2 ../sequencing_record.txt | grep "S[pP]1"  | cut -f 14)
+
+for SRAFILE in $SRALIST
+do
+    #download SRA files from NCBI,
+    wget -nc http://sra-download.ncbi.nlm.nih.gov/srapub/${SRAFILE}
+    mv ${SRAFILE} ${SRAFILE}.sra
+done
+
+#done
