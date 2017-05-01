@@ -8,7 +8,7 @@
 #PBS -l software=wget
 #PBS -l wd
 
-export PATH=\$PATH:\$HOME/bin:\$HOME/.local/bin/
+export PATH=$PATH:$HOME/bin:$HOME/.local/bin/
 
 ##########################
 #download lowcoverage data
