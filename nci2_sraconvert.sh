@@ -36,8 +36,8 @@ printf "module load perl/5.22.1\n" >> ${ID}_fq.convert.qsub.script
 printf "\n" >> ${ID}_fq.convert.qsub.script
 printf "export PATH=\$PATH:\$HOME/bin:\$HOME/.local/bin/\n" >> ${ID}_fq.convert.qsub.script
 printf "\n" >> ${ID}_fq.convert.qsub.script
-printf "fastq-dump --gzip ./${ID}" >> ${ID}_fq.convert.qsub.script
-printf "rm ${ID}" >> ${ID}_fq.convert.qsub.script
+printf "fastq-dump --gzip ./${ID}\n" >> ${ID}_fq.convert.qsub.script
+printf "rm ./${ID}" >> ${ID}_fq.convert.qsub.script
 done
 
 #for each of these submissions, submit to the queue system
