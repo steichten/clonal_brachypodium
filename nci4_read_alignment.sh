@@ -43,8 +43,4 @@ do
 qsub $SUB
 done
 
-mkdir alignment_logs
-mv *alignment.qsub.script alignment_logs
-mv *.e* alignment_logs
-mv *.o* alignment_logs
 #done

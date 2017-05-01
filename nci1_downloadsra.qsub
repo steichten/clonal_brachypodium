@@ -25,6 +25,8 @@ do
     mv ${SRAFILE} ${SRAFILE}.sra
 done
 
+#should create 627 sra files
+
 #########################
 #download hicoverage data
 cd ../
@@ -41,5 +43,7 @@ do
     wget -nc http://sra-download.ncbi.nlm.nih.gov/srapub/${SRAFILE}
     mv ${SRAFILE} ${SRAFILE}.sra
 done
+
+#should create XXX high coverage sra files
 
 #done
