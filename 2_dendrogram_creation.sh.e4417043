@@ -1,0 +1,8 @@
+Error in merge_wigs(files) : could not find function "%>%"
+Execution halted
+Error in merge_wigs(files) : could not find function "%>%"
+Execution halted
+Error in read.table(file = file, header = header, sep = sep, quote = quote,  : 
+  no lines available in input
+Calls: merge_wigs -> read.delim -> read.table
+Execution halted

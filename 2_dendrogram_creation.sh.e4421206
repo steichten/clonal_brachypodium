@@ -1,0 +1,84 @@
+
+---------------------
+Welcome to dendextend version 1.5.2
+Type citation('dendextend') for how to cite the package.
+
+Type browseVignettes(package = 'dendextend') for the package vignette.
+The github page is: https://github.com/talgalili/dendextend/
+
+Suggestions and bug-reports can be submitted at: https://github.com/talgalili/dendextend/issues
+Or contact: <tal.galili@gmail.com>
+
+	To suppress this message use:  suppressPackageStartupMessages(library(dendextend))
+---------------------
+
+
+Attaching package: 'dendextend'
+
+The following object is masked from 'package:stats':
+
+    cutree
+
+Error in f(init, x[[i]]) : could not find function "full_join"
+Calls: merge_wigs ... freduce -> withVisible -> <Anonymous> -> Reduce -> f
+Execution halted
+
+---------------------
+Welcome to dendextend version 1.5.2
+Type citation('dendextend') for how to cite the package.
+
+Type browseVignettes(package = 'dendextend') for the package vignette.
+The github page is: https://github.com/talgalili/dendextend/
+
+Suggestions and bug-reports can be submitted at: https://github.com/talgalili/dendextend/issues
+Or contact: <tal.galili@gmail.com>
+
+	To suppress this message use:  suppressPackageStartupMessages(library(dendextend))
+---------------------
+
+
+Attaching package: 'dendextend'
+
+The following object is masked from 'package:stats':
+
+    cutree
+
+Error in f(init, x[[i]]) : could not find function "full_join"
+Calls: merge_wigs ... freduce -> withVisible -> <Anonymous> -> Reduce -> f
+Execution halted
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+
+---------------------
+Welcome to dendextend version 1.5.2
+Type citation('dendextend') for how to cite the package.
+
+Type browseVignettes(package = 'dendextend') for the package vignette.
+The github page is: https://github.com/talgalili/dendextend/
+
+Suggestions and bug-reports can be submitted at: https://github.com/talgalili/dendextend/issues
+Or contact: <tal.galili@gmail.com>
+
+	To suppress this message use:  suppressPackageStartupMessages(library(dendextend))
+---------------------
+
+
+Attaching package: 'dendextend'
+
+The following object is masked from 'package:stats':
+
+    cutree
+
+Error in read.table(file = file, header = header, sep = sep, quote = quote,  : 
+  no lines available in input
+Calls: merge_wigs -> read.delim -> read.table
+Execution halted
