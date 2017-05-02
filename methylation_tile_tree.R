@@ -13,7 +13,7 @@ current=Sys.time()
 #install.packages('data.table')
 #library(data.table)
 #install.packages('dendextend')
-library(tidyr)
+#library(tidyr)
 library(dplyr)
 library(dendextend)
 #functions
@@ -21,7 +21,7 @@ library(dendextend)
 merge_wigs <- function(filelist){
   all=list()
   for (i in 1:length(filelist)){
-    tmp = read.delim(filelist[i],nrow=20000,head=F,skip=1)
+    tmp = read.delim(filelist[i],head=F,skip=1)
     tmp=tmp[,1:4]
     colnames(tmp)[4]=filelist[i]
     filename=files[i]
