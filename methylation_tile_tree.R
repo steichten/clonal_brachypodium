@@ -10,12 +10,12 @@ print(metapath)
 print(context)
 current=Sys.time()
 
-#install.packages('data.table')
-#library(data.table)
-#install.packages('dendextend')
-#library(tidyr)
+
+#install.packages('dendextend',dependencies=T)
 library(dplyr)
 library(dendextend)
+
+##############
 #functions
 ##############
 merge_wigs <- function(filelist){
@@ -30,7 +30,7 @@ merge_wigs <- function(filelist){
   goob = all %>% Reduce(function(dtf1,dtf2) full_join(dtf1,dtf2,by=c('V1','V2','V3')), .)
   return(goob)
 }
-
+#############
 calculate_dist <- function(data,column){
   meta=read.delim(metapath,head=T)
   current=names(data[,4:ncol(data)])
@@ -45,7 +45,7 @@ calculate_dist <- function(data,column){
   hc=hclust(as.dist(1-cor(as.matrix(data[,4:ncol(data)]),use='pairwise.complete.obs')))
   return(hc)
 }
-
+############
 plot_dendro <- function(hc,column,title){
   pdf(paste(title,'methylation_dendrogram.',current,'.pdf',sep='_'),height=9,width=60)
   dendro_labels=gsub('_.*','',gsub('\\.[0-9]*','',as.character(meta82[,column])))
@@ -56,7 +56,7 @@ plot_dendro <- function(hc,column,title){
   print(plot(hc,main=paste(title,sep=' ')))
   dev.off()
 }
-
+###########
 calculate_cor <- function(data,column){
   meta=read.delim(metapath,head=T)
   current=names(data[,4:ncol(data)])
@@ -71,7 +71,7 @@ calculate_cor <- function(data,column){
   cor_matrix=as.matrix(cor(data[,4:ncol(data)],use='pairwise.complete.obs'))
   return(cor_matrix)
 }
-
+###########
 plot_heatmap <- function(cor_matrix,title){
   pdf(paste(title,'methylation_heatmap.',current,'.pdf',sep='_'),height=15,width=15)
   print(heatmap(cor_matrix,main=paste(title,sep=' ')))
@@ -84,9 +84,7 @@ plot_heatmap <- function(cor_matrix,title){
 
 all=merge_wigs(files)
 
-
 write.table(all,paste(context,'_alltiles_merged.',current,'.txt',sep=''),sep='\t',row.names=F,quote=F)
-
 
 tile.dist=calculate_dist(all,6)
 saveRDS(tile.dist,paste(context,'_tile.dist.rds',sep=''))
@@ -101,3 +99,5 @@ plot_dendro(tile.dist,6,paste(context,'_clonal',sep=''))
 tile.cor=calculate_cor(all,8)
 saveRDS(tile.cor,paste(context,'_tile.cor.sample.rds',sep=''))
 plot_heatmap(tile.cor,paste(context,'_sample',sep=''))
+
+#done
