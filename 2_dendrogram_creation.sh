@@ -1,7 +1,7 @@
 #PBS -P xe2
 #PBS -q normal
 #PBS -l walltime=12:00:00
-#PBS -l mem=32GB
+#PBS -l mem=48GB
 #PBS -l jobfs=150GB
 #PBS -l ncpus=8
 #PBS -l software=R_dendrograms
@@ -10,7 +10,7 @@
 module load R
 #SRE
 #Feb2, 2017
-#this script will take the aligned low coverage data and create 
+#this script will take the aligned low coverage data and create
 #dendrograms in R to show the general relationship of samples
 
 #go into lowcoverage folder
@@ -30,8 +30,8 @@ chhfiles=$(find -name "S*CHH*.wig")
 
 #make dendrogrames for each context. First argument is file prefix (CG/CHG/CHH), second is vector of all wigfiles for said context
 
-Rscript ../methylation_tile_tree.R CG $cgfiles
+Rscript ../methylation_tile_tree.R CG ../metadata.txt $cgfiles
 
-Rscript ../methylation_tile_tree.R CHG $chgfiles
+Rscript ../methylation_tile_tree.R CHG ../metadata.txt $chgfiles
 
-Rscript ../methylation_tile_tree.R CHH $chhfiles
+Rscript ../methylation_tile_tree.R CHH ../metadata.txt $chhfiles

@@ -30,15 +30,15 @@ merge_wigs <- function(filelist){
 }
 
 calculate_dist <- function(data,column){
-  meta=read.delim(metapath,head=F)
+  meta=read.delim(metapath,head=T)
   current=names(data[,4:ncol(data)])
-  c2=matrix(unlist(strsplit(current,'_')),ncol=3,byrow=T)
+  c2=matrix(unlist(strsplit(current,'_')),ncol=7,byrow=T)
   c2=c2[,1]
   #split by period for the SRA downloaded files
-  c2=matrix(unlist(strsplit(c2,'\\.')),ncol=3,byrow=T)
-  c2=c2[,1]
-  meta82=meta[meta$V1 %in% c2,]
-  meta82=meta82[match(c2,meta82$V1),]
+  c2=matrix(unlist(strsplit(c2,'\\.')),ncol=5,byrow=T)
+  c2=c2[,3]
+  meta82=meta[meta[,1] %in% c2,]
+  meta82=meta82[match(c2,meta82[,1]),]
   colnames(data)[4:ncol(data)]=as.character(meta82[,column])
   hc=hclust(as.dist(1-cor(as.matrix(data[,4:ncol(data)]),use='pairwise.complete.obs')))
   return(hc)
@@ -56,13 +56,15 @@ plot_dendro <- function(hc,column,title){
 }
 
 calculate_cor <- function(data,column){
-  meta=read.delim(metapath,head=F)
+  meta=read.delim(metapath,head=T)
   current=names(data[,4:ncol(data)])
   c2=matrix(unlist(strsplit(current,'_')),ncol=7,byrow=T)
   c2=c2[,1]
-  c2=gsub('^..','',c2)
-  meta82=meta[meta$V1 %in% c2,]
-  meta82=meta82[match(c2,meta82$V1),]
+  #split by period for the SRA downloaded files
+  c2=matrix(unlist(strsplit(c2,'\\.')),ncol=5,byrow=T)
+  c2=c2[,3]
+  meta82=meta[meta[,1] %in% c2,]
+  meta82=meta82[match(c2,meta82[,1]),]
   colnames(data)[4:ncol(data)]=as.character(meta82[,column])
   cor_matrix=as.matrix(cor(data[,4:ncol(data)],use='pairwise.complete.obs'))
   return(cor_matrix)
