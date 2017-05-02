@@ -13,6 +13,8 @@ current=Sys.time()
 #install.packages('data.table')
 #library(data.table)
 #install.packages('dendextend')
+#library(tidyr)
+library(dplyr)
 library(dendextend)
 #functions
 ##############
