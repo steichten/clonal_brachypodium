@@ -25,6 +25,7 @@ do
     mv ${SRAFILE} ${SRAFILE}.sra
 done
 
+md5sum -c ../srrfiles.md5 > md5_check.out
 #should create 627 sra files
 
 #########################
@@ -44,6 +45,7 @@ do
     mv ${SRAFILE} ${SRAFILE}.sra
 done
 
-#should create XXX high coverage sra files
+md5sum -c ../srrfiles_high.md5 > md5_check.out
+#should create 190 high coverage sra files
 
 #done
