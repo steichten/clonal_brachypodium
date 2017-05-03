@@ -32,15 +32,6 @@ merge_wigs <- function(filelist){
 }
 #############
 calculate_dist <- function(data,column){
-  meta=read.delim(metapath,head=T)
-  current=names(data[,4:ncol(data)])
-  c2=matrix(unlist(strsplit(current,'_')),ncol=7,byrow=T)
-  c2=c2[,1]
-  #split by period for the SRA downloaded files
-  c2=matrix(unlist(strsplit(c2,'\\.')),ncol=5,byrow=T)
-  c2=c2[,3]
-  meta82=meta[meta[,1] %in% c2,]
-  meta82=meta82[match(c2,meta82[,1]),]
   colnames(data)[4:ncol(data)]=as.character(meta82[,column])
   hc=hclust(as.dist(1-cor(as.matrix(data[,4:ncol(data)]),use='pairwise.complete.obs')))
   return(hc)
@@ -58,22 +49,13 @@ plot_dendro <- function(hc,column,title){
 }
 ###########
 calculate_cor <- function(data,column){
-  meta=read.delim(metapath,head=T)
-  current=names(data[,4:ncol(data)])
-  c2=matrix(unlist(strsplit(current,'_')),ncol=7,byrow=T)
-  c2=c2[,1]
-  #split by period for the SRA downloaded files
-  c2=matrix(unlist(strsplit(c2,'\\.')),ncol=5,byrow=T)
-  c2=c2[,3]
-  meta82=meta[meta[,1] %in% c2,]
-  meta82=meta82[match(c2,meta82[,1]),]
   colnames(data)[4:ncol(data)]=as.character(meta82[,column])
   cor_matrix=as.matrix(cor(data[,4:ncol(data)],use='pairwise.complete.obs'))
   return(cor_matrix)
 }
 ###########
 plot_heatmap <- function(cor_matrix,title){
-  pdf(paste(title,'methylation_heatmap.',current,'.pdf',sep='_'),height=15,width=15)
+  pdf(paste(title,'methylation_heatmap.',current,'.pdf',sep='_'),height=30,width=30)
   print(heatmap(cor_matrix,main=paste(title,sep=' ')))
   dev.off()
   return(NULL)
@@ -85,6 +67,18 @@ plot_heatmap <- function(cor_matrix,title){
 all=merge_wigs(files)
 
 write.table(all,paste(context,'_alltiles_merged.',current,'.txt',sep=''),sep='\t',row.names=F,quote=F)
+
+#gather metadata info for samples used for all sample comparisons
+meta=read.delim(metapath,head=T)
+current=names(all[,4:ncol(all)])
+c2=matrix(unlist(strsplit(current,'_')),ncol=7,byrow=T)
+c2=c2[,1]
+#split by period for the SRA downloaded files
+c2=matrix(unlist(strsplit(c2,'\\.')),ncol=5,byrow=T)
+c2=c2[,3]
+meta82=meta[meta[,1] %in% c2,]
+meta82=meta82[match(c2,meta82[,1]),]
+
 
 tile.dist=calculate_dist(all,6)
 saveRDS(tile.dist,paste(context,'_tile.dist.rds',sep=''))
