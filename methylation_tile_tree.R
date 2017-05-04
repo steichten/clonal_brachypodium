@@ -73,11 +73,6 @@ write.table(all,paste(context,'_alltiles_merged.',current,'.txt',sep=''),sep='\t
 #gather metadata info for samples used for all sample comparisons
 meta=read.delim(metapath,head=T)
 current=names(all[,4:ncol(all)])
-c2=matrix(unlist(strsplit(current,'_')),ncol=7,byrow=T)
-c2=c2[,1]
-#split by period for the SRA downloaded files
-c2=matrix(unlist(strsplit(c2,'\\.')),ncol=5,byrow=T)
-c2=c2[,3]
 meta82=meta[meta[,1] %in% c2,]
 meta82=meta82[match(c2,meta82[,1]),]
 
