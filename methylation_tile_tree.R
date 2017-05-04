@@ -21,11 +21,13 @@ library(dendextend)
 merge_wigs <- function(filelist){
   all=list()
   for (i in 1:length(filelist)){
-    tmp = read.delim(filelist[i],head=F,skip=1)
+    tmp = read.delim(filelist[i],head=F,skip=1,nrow=100)
     tmp=tmp[,1:4]
-    colnames(tmp)[4]=filelist[i]
-    filename=files[i]
-    all[[filename]]=tmp
+    namechomp=gsub('.fastq.gz.*','',filelist[i]) #getting down to just the S60XXX sampleID
+    namechomp=gsub('\\./','',namechomp) #get rid of leading './'
+    colnames(tmp)[4]=namechomp
+    #filename=files[i]
+    all[[namechomp]]=tmp
   }
   goob = all %>% Reduce(function(dtf1,dtf2) full_join(dtf1,dtf2,by=c('V1','V2','V3')), .)
   return(goob)
