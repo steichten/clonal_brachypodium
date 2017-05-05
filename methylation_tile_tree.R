@@ -21,7 +21,7 @@ library(dendextend)
 merge_wigs <- function(filelist){
   all=list()
   for (i in 1:length(filelist)){
-    tmp = read.delim(filelist[i],head=F,skip=1,nrow=100)
+    tmp = read.delim(filelist[i],head=F,skip=1)
     tmp=tmp[,1:4]
     namechomp=gsub('.fastq.gz.*','',filelist[i]) #getting down to just the S60XXX sampleID
     namechomp=gsub('\\./','',namechomp) #get rid of leading './'
