@@ -34,15 +34,15 @@ merge_wigs <- function(filelist){
 }
 #############
 calculate_dist <- function(data,column){
-  colnames(data)[4:ncol(data)]=as.character(meta82[,column])
+  colnames(data)[4:ncol(data)]=as.character(meta_used[,column])
   hc=hclust(as.dist(1-cor(as.matrix(data[,4:ncol(data)]),use='pairwise.complete.obs')))
   return(hc)
 }
 ############
 plot_dendro <- function(hc,column,title){
   pdf(paste(title,'methylation_dendrogram.',current,'.pdf',sep='_'),height=9,width=60)
-  dendro_labels=gsub('_.*','',gsub('\\.[0-9]*','',as.character(meta82[,column])))
-  dendro_colors=as.numeric(as.factor(gsub('_.*','',gsub('\\.[0-9]*','',as.character(meta82[,8])))))
+  dendro_labels=gsub('_.*','',gsub('\\.[0-9]*','',as.character(meta_used[,column])))
+  dendro_colors=as.numeric(as.factor(gsub('_.*','',gsub('\\.[0-9]*','',as.character(meta_used[,8])))))
   hc=as.dendrogram(hc)
   #labels(hc)=dendro_labels[order.dendrogram(hc)]
   labels_colors(hc) = dendro_colors[order.dendrogram(hc)]
@@ -51,7 +51,7 @@ plot_dendro <- function(hc,column,title){
 }
 ###########
 calculate_cor <- function(data,column){
-  colnames(data)[4:ncol(data)]=as.character(meta82[,column])
+  colnames(data)[4:ncol(data)]=as.character(meta_used[,column])
   cor_matrix=as.matrix(cor(data[,4:ncol(data)],use='pairwise.complete.obs'))
   return(cor_matrix)
 }
@@ -73,8 +73,8 @@ write.table(all,paste(context,'_alltiles_merged.',current,'.txt',sep=''),sep='\t
 #gather metadata info for samples used for all sample comparisons
 meta=read.delim(metapath,head=T)
 current=names(all[,4:ncol(all)])
-meta82=meta[meta[,1] %in% c2,]
-meta82=meta82[match(c2,meta82[,1]),]
+meta_used=meta[meta[,1] %in% current,]
+meta_used=meta_used[match(current,meta_used[,1]),]
 
 
 tile.dist=calculate_dist(all,6)
