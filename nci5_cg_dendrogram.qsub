@@ -1,7 +1,7 @@
 #PBS -P xe2
 #PBS -q normal
-#PBS -l walltime=03:00:00
-#PBS -l mem=48GB
+#PBS -l walltime=10:00:00
+#PBS -l mem=63GB
 #PBS -l jobfs=150GB
 #PBS -l ncpus=8
 #PBS -l software=R_dendrograms

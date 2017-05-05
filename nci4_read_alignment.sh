@@ -15,7 +15,7 @@ DATE=$(date)
 printf "#!/bin/bash\n" >> ${ID[0]}_alignment.qsub.script
 printf "#PBS -P xe2\n" >> ${ID[0]}_alignment.qsub.script
 printf "#PBS -q normal\n" >> ${ID[0]}_alignment.qsub.script
-printf "#PBS -l walltime=10:00:00\n" >> ${ID[0]}_alignment.qsub.script
+printf "#PBS -l walltime=12:00:00\n" >> ${ID[0]}_alignment.qsub.script
 printf "#PBS -l mem=32GB\n" >> ${ID[0]}_alignment.qsub.script
 printf "#PBS -l jobfs=150GB\n" >> ${ID[0]}_alignment.qsub.script
 printf "#PBS -l ncpus=8\n" >> ${ID[0]}_alignment.qsub.script
@@ -32,7 +32,7 @@ printf "module load perl/5.22.1\n" >> ${ID[0]}_alignment.qsub.script
 printf "\n" >> ${ID[0]}_alignment.qsub.script
 printf "export PATH=\$PATH:\$HOME/bin:\$HOME/.local/bin/\n" >> ${ID[0]}_alignment.qsub.script
 printf "\n" >> ${ID[0]}_alignment.qsub.script
-printf "\$HOME/scripts/wgbs_pipelinev0.4.sh -se_epi $FILE ../genomes/ ${ID[0]}\n" >> ${ID[0]}_alignment.qsub.script
+printf "../alignment.sh -se_epi $FILE ../genomes/ ${ID[0]}\n" >> ${ID[0]}_alignment.qsub.script
 
 done
 
