@@ -40,7 +40,7 @@ calculate_dist <- function(data,column){
 }
 ############
 plot_dendro <- function(hc,column,title){
-  pdf(paste(title,'methylation_dendrogram.',current,'.pdf',sep='_'),height=9,width=60)
+  pdf(paste(title,'methylation_dendrogram.',current,'.pdf',sep='_'),height=9,width=70)
   dendro_labels=gsub('_.*','',gsub('\\.[0-9]*','',as.character(meta_used[,column])))
   dendro_colors=as.numeric(as.factor(gsub('_.*','',gsub('\\.[0-9]*','',as.character(meta_used[,8])))))
   hc=as.dendrogram(hc)
