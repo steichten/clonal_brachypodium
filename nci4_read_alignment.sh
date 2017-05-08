@@ -16,7 +16,7 @@ printf "#!/bin/bash\n" >> ${ID[0]}_alignment.qsub.script
 printf "#PBS -P xe2\n" >> ${ID[0]}_alignment.qsub.script
 printf "#PBS -q normal\n" >> ${ID[0]}_alignment.qsub.script
 printf "#PBS -l walltime=12:00:00\n" >> ${ID[0]}_alignment.qsub.script
-printf "#PBS -l mem=32GB\n" >> ${ID[0]}_alignment.qsub.script
+printf "#PBS -l mem=31GB\n" >> ${ID[0]}_alignment.qsub.script
 printf "#PBS -l jobfs=150GB\n" >> ${ID[0]}_alignment.qsub.script
 printf "#PBS -l ncpus=8\n" >> ${ID[0]}_alignment.qsub.script
 printf "#PBS -l software=bismark_aligner\n" >> ${ID[0]}_alignment.qsub.script
