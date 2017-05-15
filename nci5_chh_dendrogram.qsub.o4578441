@@ -1,0 +1,876 @@
+> argo=commandArgs(trailingOnly=T)
+> argo=unlist(strsplit(argo,' '))
+> context=argo[1]
+> metapath=argo[2]
+> files=argo[3:length(argo)]
+> print(files)
+  [1] "./S60385.fastq.gz_wgbspipeline_2017-05-01-11-05-42/5_output_files/S60385.fastq.gz_CHH_100bp.wig"
+  [2] "./S60441.fastq.gz_wgbspipeline_2017-05-01-12-05-04/5_output_files/S60441.fastq.gz_CHH_100bp.wig"
+  [3] "./S60407.fastq.gz_wgbspipeline_2017-05-01-12-05-35/5_output_files/S60407.fastq.gz_CHH_100bp.wig"
+  [4] "./S60483.fastq.gz_wgbspipeline_2017-05-01-12-05-08/5_output_files/S60483.fastq.gz_CHH_100bp.wig"
+  [5] "./S60336.fastq.gz_wgbspipeline_2017-05-01-12-05-53/5_output_files/S60336.fastq.gz_CHH_100bp.wig"
+  [6] "./S60582.fastq.gz_wgbspipeline_2017-05-01-12-05-50/5_output_files/S60582.fastq.gz_CHH_100bp.wig"
+  [7] "./S60171.fastq.gz_wgbspipeline_2017-05-01-11-05-20/5_output_files/S60171.fastq.gz_CHH_100bp.wig"
+  [8] "./S60488.fastq.gz_wgbspipeline_2017-05-01-12-05-38/5_output_files/S60488.fastq.gz_CHH_100bp.wig"
+  [9] "./S60129.fastq.gz_wgbspipeline_2017-05-01-10-05-20/5_output_files/S60129.fastq.gz_CHH_100bp.wig"
+ [10] "./S60478.fastq.gz_wgbspipeline_2017-05-01-12-05-46/5_output_files/S60478.fastq.gz_CHH_100bp.wig"
+ [11] "./S60182.fastq.gz_wgbspipeline_2017-05-01-11-05-30/5_output_files/S60182.fastq.gz_CHH_100bp.wig"
+ [12] "./S60496.fastq.gz_wgbspipeline_2017-05-01-11-05-24/5_output_files/S60496.fastq.gz_CHH_100bp.wig"
+ [13] "./S60433.fastq.gz_wgbspipeline_2017-05-01-11-05-07/5_output_files/S60433.fastq.gz_CHH_100bp.wig"
+ [14] "./S60460.fastq.gz_wgbspipeline_2017-05-01-12-05-51/5_output_files/S60460.fastq.gz_CHH_100bp.wig"
+ [15] "./S60080.fastq.gz_wgbspipeline_2017-05-01-11-05-14/5_output_files/S60080.fastq.gz_CHH_100bp.wig"
+ [16] "./S60411.fastq.gz_wgbspipeline_2017-05-01-12-05-38/5_output_files/S60411.fastq.gz_CHH_100bp.wig"
+ [17] "./S60484.fastq.gz_wgbspipeline_2017-05-01-12-05-09/5_output_files/S60484.fastq.gz_CHH_100bp.wig"
+ [18] "./S60427.fastq.gz_wgbspipeline_2017-05-01-11-05-00/5_output_files/S60427.fastq.gz_CHH_100bp.wig"
+ [19] "./S60320.fastq.gz_wgbspipeline_2017-05-01-11-05-30/5_output_files/S60320.fastq.gz_CHH_100bp.wig"
+ [20] "./S60370.fastq.gz_wgbspipeline_2017-05-01-11-05-33/5_output_files/S60370.fastq.gz_CHH_100bp.wig"
+ [21] "./S60599.fastq.gz_wgbspipeline_2017-05-01-12-05-15/5_output_files/S60599.fastq.gz_CHH_100bp.wig"
+ [22] "./S60247.fastq.gz_wgbspipeline_2017-05-01-11-05-28/5_output_files/S60247.fastq.gz_CHH_100bp.wig"
+ [23] "./S60415.fastq.gz_wgbspipeline_2017-05-01-11-05-09/5_output_files/S60415.fastq.gz_CHH_100bp.wig"
+ [24] "./S60002.fastq.gz_wgbspipeline_2017-05-01-10-05-15/5_output_files/S60002.fastq.gz_CHH_100bp.wig"
+ [25] "./S60244.fastq.gz_wgbspipeline_2017-05-01-11-05-25/5_output_files/S60244.fastq.gz_CHH_100bp.wig"
+ [26] "./S60293.fastq.gz_wgbspipeline_2017-05-01-11-05-10/5_output_files/S60293.fastq.gz_CHH_100bp.wig"
+ [27] "./S60344.fastq.gz_wgbspipeline_2017-05-01-11-05-37/5_output_files/S60344.fastq.gz_CHH_100bp.wig"
+ [28] "./S60063.fastq.gz_wgbspipeline_2017-05-01-11-05-02/5_output_files/S60063.fastq.gz_CHH_100bp.wig"
+ [29] "./S60310.fastq.gz_wgbspipeline_2017-05-01-11-05-51/5_output_files/S60310.fastq.gz_CHH_100bp.wig"
+ [30] "./S60367.fastq.gz_wgbspipeline_2017-05-01-11-05-32/5_output_files/S60367.fastq.gz_CHH_100bp.wig"
+ [31] "./S60150.fastq.gz_wgbspipeline_2017-05-01-10-05-36/5_output_files/S60150.fastq.gz_CHH_100bp.wig"
+ [32] "./S60565.fastq.gz_wgbspipeline_2017-05-01-12-05-30/5_output_files/S60565.fastq.gz_CHH_100bp.wig"
+ [33] "./S60503.fastq.gz_wgbspipeline_2017-05-01-12-05-42/5_output_files/S60503.fastq.gz_CHH_100bp.wig"
+ [34] "./S60308.fastq.gz_wgbspipeline_2017-05-01-11-05-21/5_output_files/S60308.fastq.gz_CHH_100bp.wig"
+ [35] "./S60068.fastq.gz_wgbspipeline_2017-05-01-11-05-06/5_output_files/S60068.fastq.gz_CHH_100bp.wig"
+ [36] "./S60125.fastq.gz_wgbspipeline_2017-05-01-10-05-18/5_output_files/S60125.fastq.gz_CHH_100bp.wig"
+ [37] "./S60486.fastq.gz_wgbspipeline_2017-05-01-12-05-55/5_output_files/S60486.fastq.gz_CHH_100bp.wig"
+ [38] "./S60187.fastq.gz_wgbspipeline_2017-05-01-11-05-36/5_output_files/S60187.fastq.gz_CHH_100bp.wig"
+ [39] "./S60472.fastq.gz_wgbspipeline_2017-05-01-12-05-40/5_output_files/S60472.fastq.gz_CHH_100bp.wig"
+ [40] "./S60193.fastq.gz_wgbspipeline_2017-05-01-11-05-41/5_output_files/S60193.fastq.gz_CHH_100bp.wig"
+ [41] "./S60222.fastq.gz_wgbspipeline_2017-05-01-11-05-05/5_output_files/S60222.fastq.gz_CHH_100bp.wig"
+ [42] "./S60197.fastq.gz_wgbspipeline_2017-05-01-11-05-45/5_output_files/S60197.fastq.gz_CHH_100bp.wig"
+ [43] "./S60052.fastq.gz_wgbspipeline_2017-05-01-11-05-50/5_output_files/S60052.fastq.gz_CHH_100bp.wig"
+ [44] "./S60453.fastq.gz_wgbspipeline_2017-05-01-12-05-44/5_output_files/S60453.fastq.gz_CHH_100bp.wig"
+ [45] "./S60126.fastq.gz_wgbspipeline_2017-05-01-10-05-18/5_output_files/S60126.fastq.gz_CHH_100bp.wig"
+ [46] "./S60457.fastq.gz_wgbspipeline_2017-05-01-12-05-49/5_output_files/S60457.fastq.gz_CHH_100bp.wig"
+ [47] "./S60177.fastq.gz_wgbspipeline_2017-05-01-11-05-26/5_output_files/S60177.fastq.gz_CHH_100bp.wig"
+ [48] "./S60378.fastq.gz_wgbspipeline_2017-05-01-11-05-37/5_output_files/S60378.fastq.gz_CHH_100bp.wig"
+ [49] "./S60153.fastq.gz_wgbspipeline_2017-05-01-11-05-03/5_output_files/S60153.fastq.gz_CHH_100bp.wig"
+ [50] "./S60590.fastq.gz_wgbspipeline_2017-05-01-12-05-57/5_output_files/S60590.fastq.gz_CHH_100bp.wig"
+ [51] "./S60323.fastq.gz_wgbspipeline_2017-05-01-11-05-08/5_output_files/S60323.fastq.gz_CHH_100bp.wig"
+ [52] "./S60421.fastq.gz_wgbspipeline_2017-05-01-12-05-56/5_output_files/S60421.fastq.gz_CHH_100bp.wig"
+ [53] "./S60026.fastq.gz_wgbspipeline_2017-05-01-11-05-35/5_output_files/S60026.fastq.gz_CHH_100bp.wig"
+ [54] "./S60324.fastq.gz_wgbspipeline_2017-05-01-11-05-21/5_output_files/S60324.fastq.gz_CHH_100bp.wig"
+ [55] "./S60072.fastq.gz_wgbspipeline_2017-05-01-11-05-09/5_output_files/S60072.fastq.gz_CHH_100bp.wig"
+ [56] "./S60105.fastq.gz_wgbspipeline_2017-05-01-11-05-54/5_output_files/S60105.fastq.gz_CHH_100bp.wig"
+ [57] "./S60334.fastq.gz_wgbspipeline_2017-05-01-11-05-54/5_output_files/S60334.fastq.gz_CHH_100bp.wig"
+ [58] "./S60511.fastq.gz_wgbspipeline_2017-05-01-11-05-27/5_output_files/S60511.fastq.gz_CHH_100bp.wig"
+ [59] "./S60567.fastq.gz_wgbspipeline_2017-05-01-12-05-32/5_output_files/S60567.fastq.gz_CHH_100bp.wig"
+ [60] "./S60470.fastq.gz_wgbspipeline_2017-05-01-10-05-09/5_output_files/S60470.fastq.gz_CHH_100bp.wig"
+ [61] "./S60587.fastq.gz_wgbspipeline_2017-05-01-12-05-55/5_output_files/S60587.fastq.gz_CHH_100bp.wig"
+ [62] "./S60172.fastq.gz_wgbspipeline_2017-05-01-11-05-22/5_output_files/S60172.fastq.gz_CHH_100bp.wig"
+ [63] "./S60451.fastq.gz_wgbspipeline_2017-05-01-12-05-21/5_output_files/S60451.fastq.gz_CHH_100bp.wig"
+ [64] "./S60111.fastq.gz_wgbspipeline_2017-05-01-10-05-05/5_output_files/S60111.fastq.gz_CHH_100bp.wig"
+ [65] "./S60004.fastq.gz_wgbspipeline_2017-05-01-10-05-17/5_output_files/S60004.fastq.gz_CHH_100bp.wig"
+ [66] "./S60455.fastq.gz_wgbspipeline_2017-05-01-12-05-46/5_output_files/S60455.fastq.gz_CHH_100bp.wig"
+ [67] "./S60156.fastq.gz_wgbspipeline_2017-05-01-11-05-06/5_output_files/S60156.fastq.gz_CHH_100bp.wig"
+ [68] "./S60161.fastq.gz_wgbspipeline_2017-05-01-11-05-11/5_output_files/S60161.fastq.gz_CHH_100bp.wig"
+ [69] "./S60555.fastq.gz_wgbspipeline_2017-05-01-11-05-45/5_output_files/S60555.fastq.gz_CHH_100bp.wig"
+ [70] "./S60266.fastq.gz_wgbspipeline_2017-05-01-11-05-08/5_output_files/S60266.fastq.gz_CHH_100bp.wig"
+ [71] "./S60382.fastq.gz_wgbspipeline_2017-05-01-11-05-39/5_output_files/S60382.fastq.gz_CHH_100bp.wig"
+ [72] "./S60494.fastq.gz_wgbspipeline_2017-05-01-12-05-21/5_output_files/S60494.fastq.gz_CHH_100bp.wig"
+ [73] "./S60192.fastq.gz_wgbspipeline_2017-05-01-11-05-40/5_output_files/S60192.fastq.gz_CHH_100bp.wig"
+ [74] "./S60280.fastq.gz_wgbspipeline_2017-05-01-11-05-22/5_output_files/S60280.fastq.gz_CHH_100bp.wig"
+ [75] "./S60572.fastq.gz_wgbspipeline_2017-05-01-12-05-43/5_output_files/S60572.fastq.gz_CHH_100bp.wig"
+ [76] "./S60112.fastq.gz_wgbspipeline_2017-05-01-10-05-07/5_output_files/S60112.fastq.gz_CHH_100bp.wig"
+ [77] "./S60309.fastq.gz_wgbspipeline_2017-05-01-11-05-28/5_output_files/S60309.fastq.gz_CHH_100bp.wig"
+ [78] "./S60064.fastq.gz_wgbspipeline_2017-05-01-11-05-02/5_output_files/S60064.fastq.gz_CHH_100bp.wig"
+ [79] "./S60110.fastq.gz_wgbspipeline_2017-05-01-11-05-00/5_output_files/S60110.fastq.gz_CHH_100bp.wig"
+ [80] "./S60316.fastq.gz_wgbspipeline_2017-05-01-11-05-20/5_output_files/S60316.fastq.gz_CHH_100bp.wig"
+ [81] "./S60508.fastq.gz_wgbspipeline_2017-05-01-12-05-41/5_output_files/S60508.fastq.gz_CHH_100bp.wig"
+ [82] "./S60557.fastq.gz_wgbspipeline_2017-05-01-12-05-34/5_output_files/S60557.fastq.gz_CHH_100bp.wig"
+ [83] "./S60297.fastq.gz_wgbspipeline_2017-05-01-11-05-12/5_output_files/S60297.fastq.gz_CHH_100bp.wig"
+ [84] "./S60140.fastq.gz_wgbspipeline_2017-05-01-10-05-29/5_output_files/S60140.fastq.gz_CHH_100bp.wig"
+ [85] "./S60306.fastq.gz_wgbspipeline_2017-05-01-11-05-19/5_output_files/S60306.fastq.gz_CHH_100bp.wig"
+ [86] "./S60551.fastq.gz_wgbspipeline_2017-05-01-11-05-42/5_output_files/S60551.fastq.gz_CHH_100bp.wig"
+ [87] "./S60294.fastq.gz_wgbspipeline_2017-05-01-11-05-11/5_output_files/S60294.fastq.gz_CHH_100bp.wig"
+ [88] "./S60092.fastq.gz_wgbspipeline_2017-05-01-11-05-26/5_output_files/S60092.fastq.gz_CHH_100bp.wig"
+ [89] "./S60263.fastq.gz_wgbspipeline_2017-05-01-11-05-04/5_output_files/S60263.fastq.gz_CHH_100bp.wig"
+ [90] "./S60376.fastq.gz_wgbspipeline_2017-05-01-11-05-21/5_output_files/S60376.fastq.gz_CHH_100bp.wig"
+ [91] "./S60199.fastq.gz_wgbspipeline_2017-05-01-11-05-46/5_output_files/S60199.fastq.gz_CHH_100bp.wig"
+ [92] "./S60275.fastq.gz_wgbspipeline_2017-05-01-11-05-16/5_output_files/S60275.fastq.gz_CHH_100bp.wig"
+ [93] "./S60070.fastq.gz_wgbspipeline_2017-05-01-11-05-08/5_output_files/S60070.fastq.gz_CHH_100bp.wig"
+ [94] "./S60379.fastq.gz_wgbspipeline_2017-05-01-11-05-22/5_output_files/S60379.fastq.gz_CHH_100bp.wig"
+ [95] "./S60288.fastq.gz_wgbspipeline_2017-05-01-11-05-07/5_output_files/S60288.fastq.gz_CHH_100bp.wig"
+ [96] "./S60447.fastq.gz_wgbspipeline_2017-05-01-12-05-19/5_output_files/S60447.fastq.gz_CHH_100bp.wig"
+ [97] "./S60318.fastq.gz_wgbspipeline_2017-05-01-11-05-29/5_output_files/S60318.fastq.gz_CHH_100bp.wig"
+ [98] "./S60295.fastq.gz_wgbspipeline_2017-05-01-11-05-11/5_output_files/S60295.fastq.gz_CHH_100bp.wig"
+ [99] "./S60165.fastq.gz_wgbspipeline_2017-05-01-11-05-16/5_output_files/S60165.fastq.gz_CHH_100bp.wig"
+[100] "./S60198.fastq.gz_wgbspipeline_2017-05-01-11-05-45/5_output_files/S60198.fastq.gz_CHH_100bp.wig"
+[101] "./S60386.fastq.gz_wgbspipeline_2017-05-01-11-05-24/5_output_files/S60386.fastq.gz_CHH_100bp.wig"
+[102] "./S60043.fastq.gz_wgbspipeline_2017-05-01-11-05-37/5_output_files/S60043.fastq.gz_CHH_100bp.wig"
+[103] "./S60322.fastq.gz_wgbspipeline_2017-05-01-11-05-07/5_output_files/S60322.fastq.gz_CHH_100bp.wig"
+[104] "./S60429.fastq.gz_wgbspipeline_2017-05-01-11-05-04/5_output_files/S60429.fastq.gz_CHH_100bp.wig"
+[105] "./S60394.fastq.gz_wgbspipeline_2017-05-01-12-05-59/5_output_files/S60394.fastq.gz_CHH_100bp.wig"
+[106] "./S60383.fastq.gz_wgbspipeline_2017-05-01-11-05-39/5_output_files/S60383.fastq.gz_CHH_100bp.wig"
+[107] "./S60538.fastq.gz_wgbspipeline_2017-05-01-12-05-12/5_output_files/S60538.fastq.gz_CHH_100bp.wig"
+[108] "./S60021.fastq.gz_wgbspipeline_2017-05-01-11-05-30/5_output_files/S60021.fastq.gz_CHH_100bp.wig"
+[109] "./S60431.fastq.gz_wgbspipeline_2017-05-01-11-05-02/5_output_files/S60431.fastq.gz_CHH_100bp.wig"
+[110] "./S60268.fastq.gz_wgbspipeline_2017-05-01-11-05-10/5_output_files/S60268.fastq.gz_CHH_100bp.wig"
+[111] "./S60333.fastq.gz_wgbspipeline_2017-05-01-11-05-32/5_output_files/S60333.fastq.gz_CHH_100bp.wig"
+[112] "./S60050.fastq.gz_wgbspipeline_2017-05-01-11-05-48/5_output_files/S60050.fastq.gz_CHH_100bp.wig"
+[113] "./S60143.fastq.gz_wgbspipeline_2017-05-01-10-05-31/5_output_files/S60143.fastq.gz_CHH_100bp.wig"
+[114] "./S60195.fastq.gz_wgbspipeline_2017-05-01-11-05-42/5_output_files/S60195.fastq.gz_CHH_100bp.wig"
+[115] "./S60137.fastq.gz_wgbspipeline_2017-05-01-10-05-27/5_output_files/S60137.fastq.gz_CHH_100bp.wig"
+[116] "./S60237.fastq.gz_wgbspipeline_2017-05-01-11-05-17/5_output_files/S60237.fastq.gz_CHH_100bp.wig"
+[117] "./S60076.fastq.gz_wgbspipeline_2017-05-01-11-05-13/5_output_files/S60076.fastq.gz_CHH_100bp.wig"
+[118] "./S60459.fastq.gz_wgbspipeline_2017-05-01-12-05-50/5_output_files/S60459.fastq.gz_CHH_100bp.wig"
+[119] "./S60234.fastq.gz_wgbspipeline_2017-05-01-11-05-14/5_output_files/S60234.fastq.gz_CHH_100bp.wig"
+[120] "./S60444.fastq.gz_wgbspipeline_2017-05-01-12-05-16/5_output_files/S60444.fastq.gz_CHH_100bp.wig"
+[121] "./S60561.fastq.gz_wgbspipeline_2017-05-01-12-05-35/5_output_files/S60561.fastq.gz_CHH_100bp.wig"
+[122] "./S60138.fastq.gz_wgbspipeline_2017-05-01-10-05-28/5_output_files/S60138.fastq.gz_CHH_100bp.wig"
+[123] "./S60239.fastq.gz_wgbspipeline_2017-05-01-11-05-19/5_output_files/S60239.fastq.gz_CHH_100bp.wig"
+[124] "./S60339.fastq.gz_wgbspipeline_2017-05-01-11-05-35/5_output_files/S60339.fastq.gz_CHH_100bp.wig"
+[125] "./S60134.fastq.gz_wgbspipeline_2017-05-01-10-05-25/5_output_files/S60134.fastq.gz_CHH_100bp.wig"
+[126] "./S60096.fastq.gz_wgbspipeline_2017-05-01-11-05-29/5_output_files/S60096.fastq.gz_CHH_100bp.wig"
+[127] "./S60430.fastq.gz_wgbspipeline_2017-05-01-11-05-28/5_output_files/S60430.fastq.gz_CHH_100bp.wig"
+[128] "./S60490.fastq.gz_wgbspipeline_2017-05-01-12-05-05/5_output_files/S60490.fastq.gz_CHH_100bp.wig"
+[129] "./S60051.fastq.gz_wgbspipeline_2017-05-01-11-05-49/5_output_files/S60051.fastq.gz_CHH_100bp.wig"
+[130] "./S60254.fastq.gz_wgbspipeline_2017-05-01-11-05-34/5_output_files/S60254.fastq.gz_CHH_100bp.wig"
+[131] "./S60545.fastq.gz_wgbspipeline_2017-05-01-12-05-42/5_output_files/S60545.fastq.gz_CHH_100bp.wig"
+[132] "./S60347.fastq.gz_wgbspipeline_2017-05-01-11-05-38/5_output_files/S60347.fastq.gz_CHH_100bp.wig"
+[133] "./S60428.fastq.gz_wgbspipeline_2017-05-01-12-05-30/5_output_files/S60428.fastq.gz_CHH_100bp.wig"
+[134] "./S60536.fastq.gz_wgbspipeline_2017-05-01-12-05-10/5_output_files/S60536.fastq.gz_CHH_100bp.wig"
+[135] "./S60482.fastq.gz_wgbspipeline_2017-05-01-12-05-07/5_output_files/S60482.fastq.gz_CHH_100bp.wig"
+[136] "./S60465.fastq.gz_wgbspipeline_2017-05-01-12-05-32/5_output_files/S60465.fastq.gz_CHH_100bp.wig"
+[137] "./S60261.fastq.gz_wgbspipeline_2017-05-01-11-05-02/5_output_files/S60261.fastq.gz_CHH_100bp.wig"
+[138] "./S60151.fastq.gz_wgbspipeline_2017-05-01-11-05-01/5_output_files/S60151.fastq.gz_CHH_100bp.wig"
+[139] "./S60144.fastq.gz_wgbspipeline_2017-05-01-10-05-32/5_output_files/S60144.fastq.gz_CHH_100bp.wig"
+[140] "./S60217.fastq.gz_wgbspipeline_2017-05-01-11-05-05/5_output_files/S60217.fastq.gz_CHH_100bp.wig"
+[141] "./S60061.fastq.gz_wgbspipeline_2017-05-01-11-05-00/5_output_files/S60061.fastq.gz_CHH_100bp.wig"
+[142] "./S60598.fastq.gz_wgbspipeline_2017-05-01-12-05-14/5_output_files/S60598.fastq.gz_CHH_100bp.wig"
+[143] "./S60539.fastq.gz_wgbspipeline_2017-05-01-11-05-33/5_output_files/S60539.fastq.gz_CHH_100bp.wig"
+[144] "./S60501.fastq.gz_wgbspipeline_2017-05-01-12-05-59/5_output_files/S60501.fastq.gz_CHH_100bp.wig"
+[145] "./S60034.fastq.gz_wgbspipeline_2017-05-01-11-05-04/5_output_files/S60034.fastq.gz_CHH_100bp.wig"
+[146] "./S60094.fastq.gz_wgbspipeline_2017-05-01-11-05-27/5_output_files/S60094.fastq.gz_CHH_100bp.wig"
+[147] "./S60404.fastq.gz_wgbspipeline_2017-05-01-12-05-53/5_output_files/S60404.fastq.gz_CHH_100bp.wig"
+[148] "./S60162.fastq.gz_wgbspipeline_2017-05-01-11-05-12/5_output_files/S60162.fastq.gz_CHH_100bp.wig"
+[149] "./S60106.fastq.gz_wgbspipeline_2017-05-01-11-05-57/5_output_files/S60106.fastq.gz_CHH_100bp.wig"
+[150] "./S60532.fastq.gz_wgbspipeline_2017-05-01-12-05-47/5_output_files/S60532.fastq.gz_CHH_100bp.wig"
+[151] "./S60576.fastq.gz_wgbspipeline_2017-05-01-12-05-46/5_output_files/S60576.fastq.gz_CHH_100bp.wig"
+[152] "./S60166.fastq.gz_wgbspipeline_2017-05-01-11-05-16/5_output_files/S60166.fastq.gz_CHH_100bp.wig"
+[153] "./S60570.fastq.gz_wgbspipeline_2017-05-01-12-05-34/5_output_files/S60570.fastq.gz_CHH_100bp.wig"
+[154] "./S60365.fastq.gz_wgbspipeline_2017-05-01-11-05-31/5_output_files/S60365.fastq.gz_CHH_100bp.wig"
+[155] "./S60355.fastq.gz_wgbspipeline_2017-05-01-11-05-59/5_output_files/S60355.fastq.gz_CHH_100bp.wig"
+[156] "./S60212.fastq.gz_wgbspipeline_2017-05-01-11-05-57/5_output_files/S60212.fastq.gz_CHH_100bp.wig"
+[157] "./S60353.fastq.gz_wgbspipeline_2017-05-01-11-05-40/5_output_files/S60353.fastq.gz_CHH_100bp.wig"
+[158] "./S60186.fastq.gz_wgbspipeline_2017-05-01-11-05-34/5_output_files/S60186.fastq.gz_CHH_100bp.wig"
+[159] "./S60088.fastq.gz_wgbspipeline_2017-05-01-11-05-22/5_output_files/S60088.fastq.gz_CHH_100bp.wig"
+[160] "./S60241.fastq.gz_wgbspipeline_2017-05-01-11-05-22/5_output_files/S60241.fastq.gz_CHH_100bp.wig"
+[161] "./S60056.fastq.gz_wgbspipeline_2017-05-01-11-05-54/5_output_files/S60056.fastq.gz_CHH_100bp.wig"
+[162] "./S60184.fastq.gz_wgbspipeline_2017-05-01-11-05-32/5_output_files/S60184.fastq.gz_CHH_100bp.wig"
+[163] "./S60556.fastq.gz_wgbspipeline_2017-05-01-11-05-45/5_output_files/S60556.fastq.gz_CHH_100bp.wig"
+[164] "./S60194.fastq.gz_wgbspipeline_2017-05-01-11-05-41/5_output_files/S60194.fastq.gz_CHH_100bp.wig"
+[165] "./S60191.fastq.gz_wgbspipeline_2017-05-01-11-05-40/5_output_files/S60191.fastq.gz_CHH_100bp.wig"
+[166] "./S60113.fastq.gz_wgbspipeline_2017-05-01-10-05-07/5_output_files/S60113.fastq.gz_CHH_100bp.wig"
+[167] "./S60569.fastq.gz_wgbspipeline_2017-05-01-12-05-33/5_output_files/S60569.fastq.gz_CHH_100bp.wig"
+[168] "./S60358.fastq.gz_wgbspipeline_2017-05-01-11-05-42/5_output_files/S60358.fastq.gz_CHH_100bp.wig"
+[169] "./S60468.fastq.gz_wgbspipeline_2017-05-01-12-05-38/5_output_files/S60468.fastq.gz_CHH_100bp.wig"
+[170] "./S60410.fastq.gz_wgbspipeline_2017-05-01-12-05-37/5_output_files/S60410.fastq.gz_CHH_100bp.wig"
+[171] "./S60474.fastq.gz_wgbspipeline_2017-05-01-12-05-43/5_output_files/S60474.fastq.gz_CHH_100bp.wig"
+[172] "./S60154.fastq.gz_wgbspipeline_2017-05-01-11-05-04/5_output_files/S60154.fastq.gz_CHH_100bp.wig"
+[173] "./S60082.fastq.gz_wgbspipeline_2017-05-01-11-05-17/5_output_files/S60082.fastq.gz_CHH_100bp.wig"
+[174] "./S60139.fastq.gz_wgbspipeline_2017-05-01-10-05-28/5_output_files/S60139.fastq.gz_CHH_100bp.wig"
+[175] "./S60601.fastq.gz_wgbspipeline_2017-05-01-12-05-16/5_output_files/S60601.fastq.gz_CHH_100bp.wig"
+[176] "./S60163.fastq.gz_wgbspipeline_2017-05-01-11-05-13/5_output_files/S60163.fastq.gz_CHH_100bp.wig"
+[177] "./S60348.fastq.gz_wgbspipeline_2017-05-01-12-05-52/5_output_files/S60348.fastq.gz_CHH_100bp.wig"
+[178] "./S60130.fastq.gz_wgbspipeline_2017-05-01-10-05-21/5_output_files/S60130.fastq.gz_CHH_100bp.wig"
+[179] "./S60299.fastq.gz_wgbspipeline_2017-05-01-11-05-14/5_output_files/S60299.fastq.gz_CHH_100bp.wig"
+[180] "./S60390.fastq.gz_wgbspipeline_2017-05-01-11-05-14/5_output_files/S60390.fastq.gz_CHH_100bp.wig"
+[181] "./S60399.fastq.gz_wgbspipeline_2017-05-01-12-05-55/5_output_files/S60399.fastq.gz_CHH_100bp.wig"
+[182] "./S60471.fastq.gz_wgbspipeline_2017-05-01-12-05-40/5_output_files/S60471.fastq.gz_CHH_100bp.wig"
+[183] "./S60504.fastq.gz_wgbspipeline_2017-05-01-12-05-50/5_output_files/S60504.fastq.gz_CHH_100bp.wig"
+[184] "./S60541.fastq.gz_wgbspipeline_2017-05-01-12-05-22/5_output_files/S60541.fastq.gz_CHH_100bp.wig"
+[185] "./S60499.fastq.gz_wgbspipeline_2017-05-01-12-05-57/5_output_files/S60499.fastq.gz_CHH_100bp.wig"
+[186] "./S60546.fastq.gz_wgbspipeline_2017-05-01-12-05-43/5_output_files/S60546.fastq.gz_CHH_100bp.wig"
+[187] "./S60090.fastq.gz_wgbspipeline_2017-05-01-11-05-23/5_output_files/S60090.fastq.gz_CHH_100bp.wig"
+[188] "./S60350.fastq.gz_wgbspipeline_2017-05-01-12-05-58/5_output_files/S60350.fastq.gz_CHH_100bp.wig"
+[189] "./S60319.fastq.gz_wgbspipeline_2017-05-01-11-05-30/5_output_files/S60319.fastq.gz_CHH_100bp.wig"
+[190] "./S60477.fastq.gz_wgbspipeline_2017-05-01-12-05-45/5_output_files/S60477.fastq.gz_CHH_100bp.wig"
+[191] "./S60575.fastq.gz_wgbspipeline_2017-05-01-12-05-46/5_output_files/S60575.fastq.gz_CHH_100bp.wig"
+[192] "./S60414.fastq.gz_wgbspipeline_2017-05-01-12-05-03/5_output_files/S60414.fastq.gz_CHH_100bp.wig"
+[193] "./S60083.fastq.gz_wgbspipeline_2017-05-01-11-05-17/5_output_files/S60083.fastq.gz_CHH_100bp.wig"
+[194] "./S60531.fastq.gz_wgbspipeline_2017-05-01-11-05-26/5_output_files/S60531.fastq.gz_CHH_100bp.wig"
+[195] "./S60233.fastq.gz_wgbspipeline_2017-05-01-11-05-14/5_output_files/S60233.fastq.gz_CHH_100bp.wig"
+[196] "./S60059.fastq.gz_wgbspipeline_2017-05-01-11-05-58/5_output_files/S60059.fastq.gz_CHH_100bp.wig"
+[197] "./S60564.fastq.gz_wgbspipeline_2017-05-01-12-05-37/5_output_files/S60564.fastq.gz_CHH_100bp.wig"
+[198] "./S60553.fastq.gz_wgbspipeline_2017-05-01-11-05-18/5_output_files/S60553.fastq.gz_CHH_100bp.wig"
+[199] "./S60305.fastq.gz_wgbspipeline_2017-05-01-11-05-18/5_output_files/S60305.fastq.gz_CHH_100bp.wig"
+[200] "./S60180.fastq.gz_wgbspipeline_2017-05-01-11-05-28/5_output_files/S60180.fastq.gz_CHH_100bp.wig"
+[201] "./S60362.fastq.gz_wgbspipeline_2017-05-01-11-05-50/5_output_files/S60362.fastq.gz_CHH_100bp.wig"
+[202] "./S60242.fastq.gz_wgbspipeline_2017-05-01-11-05-22/5_output_files/S60242.fastq.gz_CHH_100bp.wig"
+[203] "./S60169.fastq.gz_wgbspipeline_2017-05-01-11-05-19/5_output_files/S60169.fastq.gz_CHH_100bp.wig"
+[204] "./S60462.fastq.gz_wgbspipeline_2017-05-08-09-05-07/5_output_files/S60462.fastq.gz_CHH_100bp.wig"
+[205] "./S60085.fastq.gz_wgbspipeline_2017-05-01-11-05-19/5_output_files/S60085.fastq.gz_CHH_100bp.wig"
+[206] "./S60375.fastq.gz_wgbspipeline_2017-05-01-11-05-36/5_output_files/S60375.fastq.gz_CHH_100bp.wig"
+[207] "./S60351.fastq.gz_wgbspipeline_2017-05-01-12-05-59/5_output_files/S60351.fastq.gz_CHH_100bp.wig"
+[208] "./S60022.fastq.gz_wgbspipeline_2017-05-01-11-05-34/5_output_files/S60022.fastq.gz_CHH_100bp.wig"
+[209] "./S60439.fastq.gz_wgbspipeline_2017-05-01-11-05-13/5_output_files/S60439.fastq.gz_CHH_100bp.wig"
+[210] "./S60423.fastq.gz_wgbspipeline_2017-05-01-11-05-49/5_output_files/S60423.fastq.gz_CHH_100bp.wig"
+[211] "./S60097.fastq.gz_wgbspipeline_2017-05-01-11-05-29/5_output_files/S60097.fastq.gz_CHH_100bp.wig"
+[212] "./S60518.fastq.gz_wgbspipeline_2017-05-01-12-05-47/5_output_files/S60518.fastq.gz_CHH_100bp.wig"
+[213] "./S60132.fastq.gz_wgbspipeline_2017-05-01-10-05-23/5_output_files/S60132.fastq.gz_CHH_100bp.wig"
+[214] "./S60023.fastq.gz_wgbspipeline_2017-05-01-11-05-38/5_output_files/S60023.fastq.gz_CHH_100bp.wig"
+[215] "./S60057.fastq.gz_wgbspipeline_2017-05-01-11-05-57/5_output_files/S60057.fastq.gz_CHH_100bp.wig"
+[216] "./S60574.fastq.gz_wgbspipeline_2017-05-01-12-05-45/5_output_files/S60574.fastq.gz_CHH_100bp.wig"
+[217] "./S60408.fastq.gz_wgbspipeline_2017-05-01-11-05-57/5_output_files/S60408.fastq.gz_CHH_100bp.wig"
+[218] "./S60479.fastq.gz_wgbspipeline_2017-05-01-12-05-04/5_output_files/S60479.fastq.gz_CHH_100bp.wig"
+[219] "./S60405.fastq.gz_wgbspipeline_2017-05-01-12-05-54/5_output_files/S60405.fastq.gz_CHH_100bp.wig"
+[220] "./S60535.fastq.gz_wgbspipeline_2017-05-01-11-05-29/5_output_files/S60535.fastq.gz_CHH_100bp.wig"
+[221] "./S60603.fastq.gz_wgbspipeline_2017-05-01-12-05-18/5_output_files/S60603.fastq.gz_CHH_100bp.wig"
+[222] "./S60517.fastq.gz_wgbspipeline_2017-05-01-11-05-16/5_output_files/S60517.fastq.gz_CHH_100bp.wig"
+[223] "./S60315.fastq.gz_wgbspipeline_2017-05-01-11-05-20/5_output_files/S60315.fastq.gz_CHH_100bp.wig"
+[224] "./S60252.fastq.gz_wgbspipeline_2017-05-01-11-05-32/5_output_files/S60252.fastq.gz_CHH_100bp.wig"
+[225] "./S60146.fastq.gz_wgbspipeline_2017-05-01-10-05-34/5_output_files/S60146.fastq.gz_CHH_100bp.wig"
+[226] "./S60467.fastq.gz_wgbspipeline_2017-05-01-12-05-38/5_output_files/S60467.fastq.gz_CHH_100bp.wig"
+[227] "./S60210.fastq.gz_wgbspipeline_2017-05-01-11-05-59/5_output_files/S60210.fastq.gz_CHH_100bp.wig"
+[228] "./S60087.fastq.gz_wgbspipeline_2017-05-01-11-05-21/5_output_files/S60087.fastq.gz_CHH_100bp.wig"
+[229] "./S60258.fastq.gz_wgbspipeline_2017-05-01-11-05-59/5_output_files/S60258.fastq.gz_CHH_100bp.wig"
+[230] "./S60534.fastq.gz_wgbspipeline_2017-05-01-12-05-48/5_output_files/S60534.fastq.gz_CHH_100bp.wig"
+[231] "./S60290.fastq.gz_wgbspipeline_2017-05-01-11-05-08/5_output_files/S60290.fastq.gz_CHH_100bp.wig"
+[232] "./S60475.fastq.gz_wgbspipeline_2017-05-01-12-05-44/5_output_files/S60475.fastq.gz_CHH_100bp.wig"
+[233] "./S60492.fastq.gz_wgbspipeline_2017-05-01-12-05-19/5_output_files/S60492.fastq.gz_CHH_100bp.wig"
+[234] "./S60337.fastq.gz_wgbspipeline_2017-05-01-12-05-54/5_output_files/S60337.fastq.gz_CHH_100bp.wig"
+[235] "./S60160.fastq.gz_wgbspipeline_2017-05-01-11-05-10/5_output_files/S60160.fastq.gz_CHH_100bp.wig"
+[236] "./S60283.fastq.gz_wgbspipeline_2017-05-01-11-05-26/5_output_files/S60283.fastq.gz_CHH_100bp.wig"
+[237] "./S60402.fastq.gz_wgbspipeline_2017-05-01-12-05-52/5_output_files/S60402.fastq.gz_CHH_100bp.wig"
+[238] "./S60489.fastq.gz_wgbspipeline_2017-05-01-12-05-04/5_output_files/S60489.fastq.gz_CHH_100bp.wig"
+[239] "./S60158.fastq.gz_wgbspipeline_2017-05-01-11-05-08/5_output_files/S60158.fastq.gz_CHH_100bp.wig"
+[240] "./S60224.fastq.gz_wgbspipeline_2017-05-01-11-05-09/5_output_files/S60224.fastq.gz_CHH_100bp.wig"
+[241] "./S60185.fastq.gz_wgbspipeline_2017-05-01-11-05-34/5_output_files/S60185.fastq.gz_CHH_100bp.wig"
+[242] "./S60175.fastq.gz_wgbspipeline_2017-05-01-11-05-25/5_output_files/S60175.fastq.gz_CHH_100bp.wig"
+[243] "./S60289.fastq.gz_wgbspipeline_2017-05-01-11-05-07/5_output_files/S60289.fastq.gz_CHH_100bp.wig"
+[244] "./S60525.fastq.gz_wgbspipeline_2017-05-01-12-05-43/5_output_files/S60525.fastq.gz_CHH_100bp.wig"
+[245] "./S60578.fastq.gz_wgbspipeline_2017-05-01-12-05-40/5_output_files/S60578.fastq.gz_CHH_100bp.wig"
+[246] "./S60069.fastq.gz_wgbspipeline_2017-05-01-11-05-07/5_output_files/S60069.fastq.gz_CHH_100bp.wig"
+[247] "./S60424.fastq.gz_wgbspipeline_2017-05-01-12-05-47/5_output_files/S60424.fastq.gz_CHH_100bp.wig"
+[248] "./S60007.fastq.gz_wgbspipeline_2017-05-01-10-05-19/5_output_files/S60007.fastq.gz_CHH_100bp.wig"
+[249] "./S60047.fastq.gz_wgbspipeline_2017-05-01-11-05-45/5_output_files/S60047.fastq.gz_CHH_100bp.wig"
+[250] "./S60466.fastq.gz_wgbspipeline_2017-05-01-12-05-33/5_output_files/S60466.fastq.gz_CHH_100bp.wig"
+[251] "./S60523.fastq.gz_wgbspipeline_2017-05-01-10-05-00/5_output_files/S60523.fastq.gz_CHH_100bp.wig"
+[252] "./S60058.fastq.gz_wgbspipeline_2017-05-01-11-05-58/5_output_files/S60058.fastq.gz_CHH_100bp.wig"
+[253] "./S60251.fastq.gz_wgbspipeline_2017-05-01-11-05-32/5_output_files/S60251.fastq.gz_CHH_100bp.wig"
+[254] "./S60521.fastq.gz_wgbspipeline_2017-05-01-12-05-49/5_output_files/S60521.fastq.gz_CHH_100bp.wig"
+[255] "./S60498.fastq.gz_wgbspipeline_2017-05-01-12-05-57/5_output_files/S60498.fastq.gz_CHH_100bp.wig"
+[256] "./S60356.fastq.gz_wgbspipeline_2017-05-01-11-05-01/5_output_files/S60356.fastq.gz_CHH_100bp.wig"
+[257] "./S60270.fastq.gz_wgbspipeline_2017-05-01-11-05-12/5_output_files/S60270.fastq.gz_CHH_100bp.wig"
+[258] "./S60250.fastq.gz_wgbspipeline_2017-05-01-11-05-31/5_output_files/S60250.fastq.gz_CHH_100bp.wig"
+[259] "./S60181.fastq.gz_wgbspipeline_2017-05-01-11-05-30/5_output_files/S60181.fastq.gz_CHH_100bp.wig"
+[260] "./S60260.fastq.gz_wgbspipeline_2017-05-01-11-05-01/5_output_files/S60260.fastq.gz_CHH_100bp.wig"
+[261] "./S60264.fastq.gz_wgbspipeline_2017-05-01-11-05-05/5_output_files/S60264.fastq.gz_CHH_100bp.wig"
+[262] "./S60580.fastq.gz_wgbspipeline_2017-05-01-12-05-47/5_output_files/S60580.fastq.gz_CHH_100bp.wig"
+[263] "./S60301.fastq.gz_wgbspipeline_2017-05-01-11-05-15/5_output_files/S60301.fastq.gz_CHH_100bp.wig"
+[264] "./S60537.fastq.gz_wgbspipeline_2017-05-01-12-05-12/5_output_files/S60537.fastq.gz_CHH_100bp.wig"
+[265] "./S60398.fastq.gz_wgbspipeline_2017-05-01-12-05-04/5_output_files/S60398.fastq.gz_CHH_100bp.wig"
+[266] "./S60335.fastq.gz_wgbspipeline_2017-05-01-11-05-32/5_output_files/S60335.fastq.gz_CHH_100bp.wig"
+[267] "./S60314.fastq.gz_wgbspipeline_2017-05-01-11-05-29/5_output_files/S60314.fastq.gz_CHH_100bp.wig"
+[268] "./S60178.fastq.gz_wgbspipeline_2017-05-01-11-05-27/5_output_files/S60178.fastq.gz_CHH_100bp.wig"
+[269] "./S60285.fastq.gz_wgbspipeline_2017-05-01-11-05-27/5_output_files/S60285.fastq.gz_CHH_100bp.wig"
+[270] "./S60581.fastq.gz_wgbspipeline_2017-05-01-12-05-48/5_output_files/S60581.fastq.gz_CHH_100bp.wig"
+[271] "./S60300.fastq.gz_wgbspipeline_2017-05-01-11-05-15/5_output_files/S60300.fastq.gz_CHH_100bp.wig"
+[272] "./S60568.fastq.gz_wgbspipeline_2017-05-01-12-05-33/5_output_files/S60568.fastq.gz_CHH_100bp.wig"
+[273] "./S60060.fastq.gz_wgbspipeline_2017-05-01-11-05-59/5_output_files/S60060.fastq.gz_CHH_100bp.wig"
+[274] "./S60579.fastq.gz_wgbspipeline_2017-05-01-12-05-45/5_output_files/S60579.fastq.gz_CHH_100bp.wig"
+[275] "./S60597.fastq.gz_wgbspipeline_2017-05-01-12-05-14/5_output_files/S60597.fastq.gz_CHH_100bp.wig"
+[276] "./S60562.fastq.gz_wgbspipeline_2017-05-01-12-05-36/5_output_files/S60562.fastq.gz_CHH_100bp.wig"
+[277] "./S60012.fastq.gz_wgbspipeline_2017-05-01-10-05-41/5_output_files/S60012.fastq.gz_CHH_100bp.wig"
+[278] "./S60292.fastq.gz_wgbspipeline_2017-05-01-11-05-09/5_output_files/S60292.fastq.gz_CHH_100bp.wig"
+[279] "./S60493.fastq.gz_wgbspipeline_2017-05-01-12-05-20/5_output_files/S60493.fastq.gz_CHH_100bp.wig"
+[280] "./S60464.fastq.gz_wgbspipeline_2017-05-01-12-05-31/5_output_files/S60464.fastq.gz_CHH_100bp.wig"
+[281] "./S60147.fastq.gz_wgbspipeline_2017-05-01-10-05-34/5_output_files/S60147.fastq.gz_CHH_100bp.wig"
+[282] "./S60303.fastq.gz_wgbspipeline_2017-05-01-11-05-17/5_output_files/S60303.fastq.gz_CHH_100bp.wig"
+[283] "./S60384.fastq.gz_wgbspipeline_2017-05-01-11-05-23/5_output_files/S60384.fastq.gz_CHH_100bp.wig"
+[284] "./S60040.fastq.gz_wgbspipeline_2017-05-01-11-05-54/5_output_files/S60040.fastq.gz_CHH_100bp.wig"
+[285] "./S60062.fastq.gz_wgbspipeline_2017-05-01-11-05-01/5_output_files/S60062.fastq.gz_CHH_100bp.wig"
+[286] "./S60577.fastq.gz_wgbspipeline_2017-05-01-12-05-33/5_output_files/S60577.fastq.gz_CHH_100bp.wig"
+[287] "./S60473.fastq.gz_wgbspipeline_2017-05-01-12-05-42/5_output_files/S60473.fastq.gz_CHH_100bp.wig"
+[288] "./S60032.fastq.gz_wgbspipeline_2017-05-01-11-05-45/5_output_files/S60032.fastq.gz_CHH_100bp.wig"
+[289] "./S60377.fastq.gz_wgbspipeline_2017-05-01-11-05-36/5_output_files/S60377.fastq.gz_CHH_100bp.wig"
+[290] "./S60317.fastq.gz_wgbspipeline_2017-05-01-11-05-29/5_output_files/S60317.fastq.gz_CHH_100bp.wig"
+[291] "./S60480.fastq.gz_wgbspipeline_2017-05-01-12-05-05/5_output_files/S60480.fastq.gz_CHH_100bp.wig"
+[292] "./S60203.fastq.gz_wgbspipeline_2017-05-01-11-05-49/5_output_files/S60203.fastq.gz_CHH_100bp.wig"
+[293] "./S60236.fastq.gz_wgbspipeline_2017-05-01-11-05-16/5_output_files/S60236.fastq.gz_CHH_100bp.wig"
+[294] "./S60338.fastq.gz_wgbspipeline_2017-05-01-11-05-34/5_output_files/S60338.fastq.gz_CHH_100bp.wig"
+[295] "./S60432.fastq.gz_wgbspipeline_2017-05-01-11-05-03/5_output_files/S60432.fastq.gz_CHH_100bp.wig"
+[296] "./S60463.fastq.gz_wgbspipeline_2017-05-01-12-05-31/5_output_files/S60463.fastq.gz_CHH_100bp.wig"
+[297] "./S60031.fastq.gz_wgbspipeline_2017-05-01-11-05-42/5_output_files/S60031.fastq.gz_CHH_100bp.wig"
+[298] "./S60005.fastq.gz_wgbspipeline_2017-05-01-10-05-17/5_output_files/S60005.fastq.gz_CHH_100bp.wig"
+[299] "./S60352.fastq.gz_wgbspipeline_2017-05-01-11-05-40/5_output_files/S60352.fastq.gz_CHH_100bp.wig"
+[300] "./S60510.fastq.gz_wgbspipeline_2017-05-01-11-05-26/5_output_files/S60510.fastq.gz_CHH_100bp.wig"
+[301] "./S60048.fastq.gz_wgbspipeline_2017-05-01-11-05-46/5_output_files/S60048.fastq.gz_CHH_100bp.wig"
+[302] "./S60586.fastq.gz_wgbspipeline_2017-05-01-12-05-54/5_output_files/S60586.fastq.gz_CHH_100bp.wig"
+[303] "./S60328.fastq.gz_wgbspipeline_2017-05-01-11-05-22/5_output_files/S60328.fastq.gz_CHH_100bp.wig"
+[304] "./S60277.fastq.gz_wgbspipeline_2017-05-01-11-05-20/5_output_files/S60277.fastq.gz_CHH_100bp.wig"
+[305] "./S60552.fastq.gz_wgbspipeline_2017-05-04-11-05-33/5_output_files/S60552.fastq.gz_CHH_100bp.wig"
+[306] "./S60122.fastq.gz_wgbspipeline_2017-05-01-10-05-15/5_output_files/S60122.fastq.gz_CHH_100bp.wig"
+[307] "./S60206.fastq.gz_wgbspipeline_2017-05-01-11-05-51/5_output_files/S60206.fastq.gz_CHH_100bp.wig"
+[308] "./S60142.fastq.gz_wgbspipeline_2017-05-01-10-05-31/5_output_files/S60142.fastq.gz_CHH_100bp.wig"
+[309] "./S60228.fastq.gz_wgbspipeline_2017-05-01-11-05-09/5_output_files/S60228.fastq.gz_CHH_100bp.wig"
+[310] "./S60095.fastq.gz_wgbspipeline_2017-05-01-11-05-28/5_output_files/S60095.fastq.gz_CHH_100bp.wig"
+[311] "./S60114.fastq.gz_wgbspipeline_2017-05-01-10-05-08/5_output_files/S60114.fastq.gz_CHH_100bp.wig"
+[312] "./S60588.fastq.gz_wgbspipeline_2017-05-01-12-05-56/5_output_files/S60588.fastq.gz_CHH_100bp.wig"
+[313] "./S60200.fastq.gz_wgbspipeline_2017-05-01-11-05-46/5_output_files/S60200.fastq.gz_CHH_100bp.wig"
+[314] "./S60183.fastq.gz_wgbspipeline_2017-05-01-11-05-31/5_output_files/S60183.fastq.gz_CHH_100bp.wig"
+[315] "./S60018.fastq.gz_wgbspipeline_2017-05-01-10-05-51/5_output_files/S60018.fastq.gz_CHH_100bp.wig"
+[316] "./S60524.fastq.gz_wgbspipeline_2017-05-01-12-05-50/5_output_files/S60524.fastq.gz_CHH_100bp.wig"
+[317] "./S60282.fastq.gz_wgbspipeline_2017-05-01-11-05-24/5_output_files/S60282.fastq.gz_CHH_100bp.wig"
+[318] "./S60500.fastq.gz_wgbspipeline_2017-05-01-12-05-58/5_output_files/S60500.fastq.gz_CHH_100bp.wig"
+[319] "./S60149.fastq.gz_wgbspipeline_2017-05-01-10-05-36/5_output_files/S60149.fastq.gz_CHH_100bp.wig"
+[320] "./S60009.fastq.gz_wgbspipeline_2017-05-01-10-05-22/5_output_files/S60009.fastq.gz_CHH_100bp.wig"
+[321] "./S60397.fastq.gz_wgbspipeline_2017-05-01-12-05-02/5_output_files/S60397.fastq.gz_CHH_100bp.wig"
+[322] "./S60168.fastq.gz_wgbspipeline_2017-05-01-11-05-18/5_output_files/S60168.fastq.gz_CHH_100bp.wig"
+[323] "./S60089.fastq.gz_wgbspipeline_2017-05-01-11-05-22/5_output_files/S60089.fastq.gz_CHH_100bp.wig"
+[324] "./S60176.fastq.gz_wgbspipeline_2017-05-01-11-05-25/5_output_files/S60176.fastq.gz_CHH_100bp.wig"
+[325] "./S60298.fastq.gz_wgbspipeline_2017-05-01-11-05-13/5_output_files/S60298.fastq.gz_CHH_100bp.wig"
+[326] "./S60211.fastq.gz_wgbspipeline_2017-05-01-11-05-57/5_output_files/S60211.fastq.gz_CHH_100bp.wig"
+[327] "./S60213.fastq.gz_wgbspipeline_2017-05-01-11-05-02/5_output_files/S60213.fastq.gz_CHH_100bp.wig"
+[328] "./S60145.fastq.gz_wgbspipeline_2017-05-01-10-05-33/5_output_files/S60145.fastq.gz_CHH_100bp.wig"
+[329] "./S60450.fastq.gz_wgbspipeline_2017-05-01-12-05-21/5_output_files/S60450.fastq.gz_CHH_100bp.wig"
+[330] "./S60201.fastq.gz_wgbspipeline_2017-05-01-11-05-48/5_output_files/S60201.fastq.gz_CHH_100bp.wig"
+[331] "./S60093.fastq.gz_wgbspipeline_2017-05-01-11-05-26/5_output_files/S60093.fastq.gz_CHH_100bp.wig"
+[332] "./S60223.fastq.gz_wgbspipeline_2017-05-01-11-05-09/5_output_files/S60223.fastq.gz_CHH_100bp.wig"
+[333] "./S60485.fastq.gz_wgbspipeline_2017-05-01-12-05-09/5_output_files/S60485.fastq.gz_CHH_100bp.wig"
+[334] "./S60221.fastq.gz_wgbspipeline_2017-05-01-11-05-05/5_output_files/S60221.fastq.gz_CHH_100bp.wig"
+[335] "./S60045.fastq.gz_wgbspipeline_2017-05-01-11-05-40/5_output_files/S60045.fastq.gz_CHH_100bp.wig"
+[336] "./S60364.fastq.gz_wgbspipeline_2017-05-01-11-05-43/5_output_files/S60364.fastq.gz_CHH_100bp.wig"
+[337] "./S60190.fastq.gz_wgbspipeline_2017-05-01-11-05-38/5_output_files/S60190.fastq.gz_CHH_100bp.wig"
+[338] "./S60148.fastq.gz_wgbspipeline_2017-05-01-10-05-35/5_output_files/S60148.fastq.gz_CHH_100bp.wig"
+[339] "./S60036.fastq.gz_wgbspipeline_2017-05-01-11-05-06/5_output_files/S60036.fastq.gz_CHH_100bp.wig"
+[340] "./S60246.fastq.gz_wgbspipeline_2017-05-01-11-05-26/5_output_files/S60246.fastq.gz_CHH_100bp.wig"
+[341] "./S60513.fastq.gz_wgbspipeline_2017-05-01-12-05-55/5_output_files/S60513.fastq.gz_CHH_100bp.wig"
+[342] "./S60368.fastq.gz_wgbspipeline_2017-05-01-11-05-32/5_output_files/S60368.fastq.gz_CHH_100bp.wig"
+[343] "./S60476.fastq.gz_wgbspipeline_2017-05-01-12-05-44/5_output_files/S60476.fastq.gz_CHH_100bp.wig"
+[344] "./S60049.fastq.gz_wgbspipeline_2017-05-01-11-05-47/5_output_files/S60049.fastq.gz_CHH_100bp.wig"
+[345] "./S60107.fastq.gz_wgbspipeline_2017-05-01-11-05-58/5_output_files/S60107.fastq.gz_CHH_100bp.wig"
+[346] "./S60544.fastq.gz_wgbspipeline_2017-05-01-11-05-36/5_output_files/S60544.fastq.gz_CHH_100bp.wig"
+[347] "./S60342.fastq.gz_wgbspipeline_2017-05-01-11-05-16/5_output_files/S60342.fastq.gz_CHH_100bp.wig"
+[348] "./S60030.fastq.gz_wgbspipeline_2017-05-01-11-05-50/5_output_files/S60030.fastq.gz_CHH_100bp.wig"
+[349] "./S60249.fastq.gz_wgbspipeline_2017-05-01-11-05-29/5_output_files/S60249.fastq.gz_CHH_100bp.wig"
+[350] "./S60033.fastq.gz_wgbspipeline_2017-05-01-11-05-02/5_output_files/S60033.fastq.gz_CHH_100bp.wig"
+[351] "./S60550.fastq.gz_wgbspipeline_2017-05-01-12-05-58/5_output_files/S60550.fastq.gz_CHH_100bp.wig"
+[352] "./S60387.fastq.gz_wgbspipeline_2017-05-01-11-05-13/5_output_files/S60387.fastq.gz_CHH_100bp.wig"
+[353] "./S60560.fastq.gz_wgbspipeline_2017-05-01-11-05-47/5_output_files/S60560.fastq.gz_CHH_100bp.wig"
+[354] "./S60044.fastq.gz_wgbspipeline_2017-05-01-11-05-39/5_output_files/S60044.fastq.gz_CHH_100bp.wig"
+[355] "./S60014.fastq.gz_wgbspipeline_2017-05-01-10-05-41/5_output_files/S60014.fastq.gz_CHH_100bp.wig"
+[356] "./S60458.fastq.gz_wgbspipeline_2017-05-01-12-05-49/5_output_files/S60458.fastq.gz_CHH_100bp.wig"
+[357] "./S60393.fastq.gz_wgbspipeline_2017-05-01-11-05-27/5_output_files/S60393.fastq.gz_CHH_100bp.wig"
+[358] "./S60003.fastq.gz_wgbspipeline_2017-05-01-10-05-17/5_output_files/S60003.fastq.gz_CHH_100bp.wig"
+[359] "./S60124.fastq.gz_wgbspipeline_2017-05-01-10-05-17/5_output_files/S60124.fastq.gz_CHH_100bp.wig"
+[360] "./S60325.fastq.gz_wgbspipeline_2017-05-01-11-05-21/5_output_files/S60325.fastq.gz_CHH_100bp.wig"
+[361] "./S60015.fastq.gz_wgbspipeline_2017-05-01-10-05-44/5_output_files/S60015.fastq.gz_CHH_100bp.wig"
+[362] "./S60077.fastq.gz_wgbspipeline_2017-05-01-11-05-13/5_output_files/S60077.fastq.gz_CHH_100bp.wig"
+[363] "./S60330.fastq.gz_wgbspipeline_2017-05-01-11-05-16/5_output_files/S60330.fastq.gz_CHH_100bp.wig"
+[364] "./S60381.fastq.gz_wgbspipeline_2017-05-01-11-05-38/5_output_files/S60381.fastq.gz_CHH_100bp.wig"
+[365] "./S60121.fastq.gz_wgbspipeline_2017-05-01-10-05-14/5_output_files/S60121.fastq.gz_CHH_100bp.wig"
+[366] "./S60209.fastq.gz_wgbspipeline_2017-05-01-11-05-59/5_output_files/S60209.fastq.gz_CHH_100bp.wig"
+[367] "./S60445.fastq.gz_wgbspipeline_2017-05-01-12-05-17/5_output_files/S60445.fastq.gz_CHH_100bp.wig"
+[368] "./S60262.fastq.gz_wgbspipeline_2017-05-01-11-05-04/5_output_files/S60262.fastq.gz_CHH_100bp.wig"
+[369] "./S60341.fastq.gz_wgbspipeline_2017-05-01-11-05-04/5_output_files/S60341.fastq.gz_CHH_100bp.wig"
+[370] "./S60461.fastq.gz_wgbspipeline_2017-05-01-12-05-52/5_output_files/S60461.fastq.gz_CHH_100bp.wig"
+[371] "./S60400.fastq.gz_wgbspipeline_2017-05-01-12-05-55/5_output_files/S60400.fastq.gz_CHH_100bp.wig"
+[372] "./S60243.fastq.gz_wgbspipeline_2017-05-01-11-05-23/5_output_files/S60243.fastq.gz_CHH_100bp.wig"
+[373] "./S60284.fastq.gz_wgbspipeline_2017-05-01-11-05-27/5_output_files/S60284.fastq.gz_CHH_100bp.wig"
+[374] "./S60240.fastq.gz_wgbspipeline_2017-05-01-11-05-19/5_output_files/S60240.fastq.gz_CHH_100bp.wig"
+[375] "./S60481.fastq.gz_wgbspipeline_2017-05-01-12-05-06/5_output_files/S60481.fastq.gz_CHH_100bp.wig"
+[376] "./S60491.fastq.gz_wgbspipeline_2017-05-01-12-05-19/5_output_files/S60491.fastq.gz_CHH_100bp.wig"
+[377] "./S60592.fastq.gz_wgbspipeline_2017-05-01-12-05-58/5_output_files/S60592.fastq.gz_CHH_100bp.wig"
+[378] "./S60065.fastq.gz_wgbspipeline_2017-05-01-11-05-03/5_output_files/S60065.fastq.gz_CHH_100bp.wig"
+[379] "./S60286.fastq.gz_wgbspipeline_2017-05-01-11-05-05/5_output_files/S60286.fastq.gz_CHH_100bp.wig"
+[380] "./S60563.fastq.gz_wgbspipeline_2017-05-01-12-05-36/5_output_files/S60563.fastq.gz_CHH_100bp.wig"
+[381] "./S60218.fastq.gz_wgbspipeline_2017-05-01-11-05-05/5_output_files/S60218.fastq.gz_CHH_100bp.wig"
+[382] "./S60392.fastq.gz_wgbspipeline_2017-05-01-11-05-25/5_output_files/S60392.fastq.gz_CHH_100bp.wig"
+[383] "./S60502.fastq.gz_wgbspipeline_2017-05-01-12-05-41/5_output_files/S60502.fastq.gz_CHH_100bp.wig"
+[384] "./S60389.fastq.gz_wgbspipeline_2017-05-01-11-05-24/5_output_files/S60389.fastq.gz_CHH_100bp.wig"
+[385] "./S60196.fastq.gz_wgbspipeline_2017-05-01-11-05-43/5_output_files/S60196.fastq.gz_CHH_100bp.wig"
+[386] "./S60526.fastq.gz_wgbspipeline_2017-05-01-12-05-44/5_output_files/S60526.fastq.gz_CHH_100bp.wig"
+[387] "./S60388.fastq.gz_wgbspipeline_2017-05-01-11-05-14/5_output_files/S60388.fastq.gz_CHH_100bp.wig"
+[388] "./S60010.fastq.gz_wgbspipeline_2017-05-01-10-05-28/5_output_files/S60010.fastq.gz_CHH_100bp.wig"
+[389] "./S60340.fastq.gz_wgbspipeline_2017-05-01-11-05-58/5_output_files/S60340.fastq.gz_CHH_100bp.wig"
+[390] "./S60506.fastq.gz_wgbspipeline_2017-05-01-12-05-39/5_output_files/S60506.fastq.gz_CHH_100bp.wig"
+[391] "./S60343.fastq.gz_wgbspipeline_2017-05-01-11-05-25/5_output_files/S60343.fastq.gz_CHH_100bp.wig"
+[392] "./S60078.fastq.gz_wgbspipeline_2017-05-01-11-05-13/5_output_files/S60078.fastq.gz_CHH_100bp.wig"
+[393] "./S60583.fastq.gz_wgbspipeline_2017-05-01-12-05-51/5_output_files/S60583.fastq.gz_CHH_100bp.wig"
+[394] "./S60091.fastq.gz_wgbspipeline_2017-05-01-11-05-24/5_output_files/S60091.fastq.gz_CHH_100bp.wig"
+[395] "./S60331.fastq.gz_wgbspipeline_2017-05-01-11-05-17/5_output_files/S60331.fastq.gz_CHH_100bp.wig"
+[396] "./S60372.fastq.gz_wgbspipeline_2017-05-01-11-05-46/5_output_files/S60372.fastq.gz_CHH_100bp.wig"
+[397] "./S60136.fastq.gz_wgbspipeline_2017-05-01-10-05-26/5_output_files/S60136.fastq.gz_CHH_100bp.wig"
+[398] "./S60373.fastq.gz_wgbspipeline_2017-05-01-11-05-35/5_output_files/S60373.fastq.gz_CHH_100bp.wig"
+[399] "./S60416.fastq.gz_wgbspipeline_2017-05-01-11-05-23/5_output_files/S60416.fastq.gz_CHH_100bp.wig"
+[400] "./S60073.fastq.gz_wgbspipeline_2017-05-01-11-05-10/5_output_files/S60073.fastq.gz_CHH_100bp.wig"
+[401] "./S60259.fastq.gz_wgbspipeline_2017-05-01-11-05-00/5_output_files/S60259.fastq.gz_CHH_100bp.wig"
+[402] "./S60346.fastq.gz_wgbspipeline_2017-05-01-12-05-14/5_output_files/S60346.fastq.gz_CHH_100bp.wig"
+[403] "./S60001.fastq.gz_wgbspipeline_2017-05-01-10-05-15/5_output_files/S60001.fastq.gz_CHH_100bp.wig"
+[404] "./S60152.fastq.gz_wgbspipeline_2017-05-01-11-05-02/5_output_files/S60152.fastq.gz_CHH_100bp.wig"
+[405] "./S60067.fastq.gz_wgbspipeline_2017-05-01-11-05-05/5_output_files/S60067.fastq.gz_CHH_100bp.wig"
+[406] "./S60079.fastq.gz_wgbspipeline_2017-05-01-11-05-14/5_output_files/S60079.fastq.gz_CHH_100bp.wig"
+[407] "./S60081.fastq.gz_wgbspipeline_2017-05-01-11-05-15/5_output_files/S60081.fastq.gz_CHH_100bp.wig"
+[408] "./S60454.fastq.gz_wgbspipeline_2017-05-01-12-05-45/5_output_files/S60454.fastq.gz_CHH_100bp.wig"
+[409] "./S60549.fastq.gz_wgbspipeline_2017-05-01-12-05-06/5_output_files/S60549.fastq.gz_CHH_100bp.wig"
+[410] "./S60401.fastq.gz_wgbspipeline_2017-05-01-12-05-51/5_output_files/S60401.fastq.gz_CHH_100bp.wig"
+[411] "./S60220.fastq.gz_wgbspipeline_2017-05-01-11-05-05/5_output_files/S60220.fastq.gz_CHH_100bp.wig"
+[412] "./S60558.fastq.gz_wgbspipeline_2017-05-01-12-05-34/5_output_files/S60558.fastq.gz_CHH_100bp.wig"
+[413] "./S60118.fastq.gz_wgbspipeline_2017-05-01-10-05-11/5_output_files/S60118.fastq.gz_CHH_100bp.wig"
+[414] "./S60436.fastq.gz_wgbspipeline_2017-05-01-11-05-11/5_output_files/S60436.fastq.gz_CHH_100bp.wig"
+[415] "./S60281.fastq.gz_wgbspipeline_2017-05-01-11-05-23/5_output_files/S60281.fastq.gz_CHH_100bp.wig"
+[416] "./S60027.fastq.gz_wgbspipeline_2017-05-01-11-05-39/5_output_files/S60027.fastq.gz_CHH_100bp.wig"
+[417] "./S60571.fastq.gz_wgbspipeline_2017-05-01-12-05-43/5_output_files/S60571.fastq.gz_CHH_100bp.wig"
+[418] "./S60179.fastq.gz_wgbspipeline_2017-05-01-11-05-28/5_output_files/S60179.fastq.gz_CHH_100bp.wig"
+[419] "./S60312.fastq.gz_wgbspipeline_2017-05-01-11-05-10/5_output_files/S60312.fastq.gz_CHH_100bp.wig"
+[420] "./S60359.fastq.gz_wgbspipeline_2017-05-01-11-05-52/5_output_files/S60359.fastq.gz_CHH_100bp.wig"
+[421] "./S60596.fastq.gz_wgbspipeline_2017-05-01-12-05-02/5_output_files/S60596.fastq.gz_CHH_100bp.wig"
+[422] "./S60102.fastq.gz_wgbspipeline_2017-05-01-11-05-34/5_output_files/S60102.fastq.gz_CHH_100bp.wig"
+[423] "./S60159.fastq.gz_wgbspipeline_2017-05-01-11-05-10/5_output_files/S60159.fastq.gz_CHH_100bp.wig"
+[424] "./S60371.fastq.gz_wgbspipeline_2017-05-01-11-05-34/5_output_files/S60371.fastq.gz_CHH_100bp.wig"
+[425] "./S60109.fastq.gz_wgbspipeline_2017-05-01-11-05-00/5_output_files/S60109.fastq.gz_CHH_100bp.wig"
+[426] "./S60231.fastq.gz_wgbspipeline_2017-05-01-11-05-13/5_output_files/S60231.fastq.gz_CHH_100bp.wig"
+[427] "./S60321.fastq.gz_wgbspipeline_2017-05-01-11-05-57/5_output_files/S60321.fastq.gz_CHH_100bp.wig"
+[428] "./S60349.fastq.gz_wgbspipeline_2017-05-01-12-05-04/5_output_files/S60349.fastq.gz_CHH_100bp.wig"
+[429] "./S60437.fastq.gz_wgbspipeline_2017-05-01-11-05-12/5_output_files/S60437.fastq.gz_CHH_100bp.wig"
+[430] "./S60593.fastq.gz_wgbspipeline_2017-05-01-12-05-59/5_output_files/S60593.fastq.gz_CHH_100bp.wig"
+[431] "./S60229.fastq.gz_wgbspipeline_2017-05-01-11-05-11/5_output_files/S60229.fastq.gz_CHH_100bp.wig"
+[432] "./S60119.fastq.gz_wgbspipeline_2017-05-01-10-05-12/5_output_files/S60119.fastq.gz_CHH_100bp.wig"
+[433] "./S60054.fastq.gz_wgbspipeline_2017-05-01-11-05-53/5_output_files/S60054.fastq.gz_CHH_100bp.wig"
+[434] "./S60542.fastq.gz_wgbspipeline_2017-05-01-11-05-35/5_output_files/S60542.fastq.gz_CHH_100bp.wig"
+[435] "./S60215.fastq.gz_wgbspipeline_2017-05-01-11-05-03/5_output_files/S60215.fastq.gz_CHH_100bp.wig"
+[436] "./S60505.fastq.gz_wgbspipeline_2017-05-01-12-05-42/5_output_files/S60505.fastq.gz_CHH_100bp.wig"
+[437] "./S60442.fastq.gz_wgbspipeline_2017-05-01-12-05-06/5_output_files/S60442.fastq.gz_CHH_100bp.wig"
+[438] "./S60104.fastq.gz_wgbspipeline_2017-05-01-11-05-35/5_output_files/S60104.fastq.gz_CHH_100bp.wig"
+[439] "./S60116.fastq.gz_wgbspipeline_2017-05-01-10-05-09/5_output_files/S60116.fastq.gz_CHH_100bp.wig"
+[440] "./S60287.fastq.gz_wgbspipeline_2017-05-01-11-05-07/5_output_files/S60287.fastq.gz_CHH_100bp.wig"
+[441] "./S60202.fastq.gz_wgbspipeline_2017-05-01-11-05-48/5_output_files/S60202.fastq.gz_CHH_100bp.wig"
+[442] "./S60497.fastq.gz_wgbspipeline_2017-05-01-12-05-10/5_output_files/S60497.fastq.gz_CHH_100bp.wig"
+[443] "./S60391.fastq.gz_wgbspipeline_2017-05-01-12-05-58/5_output_files/S60391.fastq.gz_CHH_100bp.wig"
+[444] "./S60248.fastq.gz_wgbspipeline_2017-05-01-11-05-29/5_output_files/S60248.fastq.gz_CHH_100bp.wig"
+[445] "./S60008.fastq.gz_wgbspipeline_2017-05-01-10-05-20/5_output_files/S60008.fastq.gz_CHH_100bp.wig"
+[446] "./S60422.fastq.gz_wgbspipeline_2017-05-01-12-05-58/5_output_files/S60422.fastq.gz_CHH_100bp.wig"
+[447] "./S60164.fastq.gz_wgbspipeline_2017-05-01-11-05-14/5_output_files/S60164.fastq.gz_CHH_100bp.wig"
+[448] "./S60469.fastq.gz_wgbspipeline_2017-05-01-12-05-39/5_output_files/S60469.fastq.gz_CHH_100bp.wig"
+[449] "./S60509.fastq.gz_wgbspipeline_2017-05-01-12-05-41/5_output_files/S60509.fastq.gz_CHH_100bp.wig"
+[450] "./S60099.fastq.gz_wgbspipeline_2017-05-01-11-05-31/5_output_files/S60099.fastq.gz_CHH_100bp.wig"
+[451] "./S60011.fastq.gz_wgbspipeline_2017-05-01-10-05-37/5_output_files/S60011.fastq.gz_CHH_100bp.wig"
+[452] "./S60332.fastq.gz_wgbspipeline_2017-05-01-11-05-18/5_output_files/S60332.fastq.gz_CHH_100bp.wig"
+[453] "./S60519.fastq.gz_wgbspipeline_2017-05-01-12-05-47/5_output_files/S60519.fastq.gz_CHH_100bp.wig"
+[454] "./S60273.fastq.gz_wgbspipeline_2017-05-01-11-05-15/5_output_files/S60273.fastq.gz_CHH_100bp.wig"
+[455] "./S60207.fastq.gz_wgbspipeline_2017-05-01-11-05-57/5_output_files/S60207.fastq.gz_CHH_100bp.wig"
+[456] "./S60274.fastq.gz_wgbspipeline_2017-05-01-11-05-15/5_output_files/S60274.fastq.gz_CHH_100bp.wig"
+[457] "./S60327.fastq.gz_wgbspipeline_2017-05-01-11-05-31/5_output_files/S60327.fastq.gz_CHH_100bp.wig"
+[458] "./S60131.fastq.gz_wgbspipeline_2017-05-01-10-05-22/5_output_files/S60131.fastq.gz_CHH_100bp.wig"
+[459] "./S60208.fastq.gz_wgbspipeline_2017-05-01-11-05-57/5_output_files/S60208.fastq.gz_CHH_100bp.wig"
+[460] "./S60055.fastq.gz_wgbspipeline_2017-05-01-11-05-53/5_output_files/S60055.fastq.gz_CHH_100bp.wig"
+[461] "./S60066.fastq.gz_wgbspipeline_2017-05-01-11-05-04/5_output_files/S60066.fastq.gz_CHH_100bp.wig"
+[462] "./S60204.fastq.gz_wgbspipeline_2017-05-01-11-05-49/5_output_files/S60204.fastq.gz_CHH_100bp.wig"
+[463] "./S60155.fastq.gz_wgbspipeline_2017-05-01-11-05-05/5_output_files/S60155.fastq.gz_CHH_100bp.wig"
+[464] "./S60548.fastq.gz_wgbspipeline_2017-05-01-11-05-39/5_output_files/S60548.fastq.gz_CHH_100bp.wig"
+[465] "./S60013.fastq.gz_wgbspipeline_2017-05-01-10-05-48/5_output_files/S60013.fastq.gz_CHH_100bp.wig"
+[466] "./S60245.fastq.gz_wgbspipeline_2017-05-01-11-05-25/5_output_files/S60245.fastq.gz_CHH_100bp.wig"
+[467] "./S60602.fastq.gz_wgbspipeline_2017-05-01-12-05-17/5_output_files/S60602.fastq.gz_CHH_100bp.wig"
+[468] "./S60456.fastq.gz_wgbspipeline_2017-05-01-12-05-47/5_output_files/S60456.fastq.gz_CHH_100bp.wig"
+[469] "./S60039.fastq.gz_wgbspipeline_2017-05-01-11-05-52/5_output_files/S60039.fastq.gz_CHH_100bp.wig"
+[470] "./S60170.fastq.gz_wgbspipeline_2017-05-01-11-05-19/5_output_files/S60170.fastq.gz_CHH_100bp.wig"
+[471] "./S60345.fastq.gz_wgbspipeline_2017-05-01-11-05-25/5_output_files/S60345.fastq.gz_CHH_100bp.wig"
+[472] "./S60291.fastq.gz_wgbspipeline_2017-05-01-11-05-09/5_output_files/S60291.fastq.gz_CHH_100bp.wig"
+[473] "./S60443.fastq.gz_wgbspipeline_2017-05-01-12-05-06/5_output_files/S60443.fastq.gz_CHH_100bp.wig"
+[474] "./S60409.fastq.gz_wgbspipeline_2017-05-01-12-05-36/5_output_files/S60409.fastq.gz_CHH_100bp.wig"
+[475] "./S60514.fastq.gz_wgbspipeline_2017-05-01-12-05-56/5_output_files/S60514.fastq.gz_CHH_100bp.wig"
+[476] "./S60230.fastq.gz_wgbspipeline_2017-05-01-11-05-11/5_output_files/S60230.fastq.gz_CHH_100bp.wig"
+[477] "./S60566.fastq.gz_wgbspipeline_2017-05-01-12-05-31/5_output_files/S60566.fastq.gz_CHH_100bp.wig"
+[478] "./S60255.fastq.gz_wgbspipeline_2017-05-01-11-05-56/5_output_files/S60255.fastq.gz_CHH_100bp.wig"
+[479] "./S60403.fastq.gz_wgbspipeline_2017-05-01-12-05-53/5_output_files/S60403.fastq.gz_CHH_100bp.wig"
+[480] "./S60495.fastq.gz_wgbspipeline_2017-05-01-11-05-14/5_output_files/S60495.fastq.gz_CHH_100bp.wig"
+[481] "./S60363.fastq.gz_wgbspipeline_2017-05-01-11-05-55/5_output_files/S60363.fastq.gz_CHH_100bp.wig"
+[482] "./S60591.fastq.gz_wgbspipeline_2017-05-01-12-05-58/5_output_files/S60591.fastq.gz_CHH_100bp.wig"
+[483] "./S60374.fastq.gz_wgbspipeline_2017-05-01-11-05-35/5_output_files/S60374.fastq.gz_CHH_100bp.wig"
+[484] "./S60426.fastq.gz_wgbspipeline_2017-05-01-12-05-29/5_output_files/S60426.fastq.gz_CHH_100bp.wig"
+[485] "./S60589.fastq.gz_wgbspipeline_2017-05-01-12-05-56/5_output_files/S60589.fastq.gz_CHH_100bp.wig"
+[486] "./S60515.fastq.gz_wgbspipeline_2017-05-01-11-05-14/5_output_files/S60515.fastq.gz_CHH_100bp.wig"
+[487] "./S60528.fastq.gz_wgbspipeline_2017-05-01-12-05-45/5_output_files/S60528.fastq.gz_CHH_100bp.wig"
+[488] "./S60174.fastq.gz_wgbspipeline_2017-05-01-11-05-24/5_output_files/S60174.fastq.gz_CHH_100bp.wig"
+[489] "./S60035.fastq.gz_wgbspipeline_2017-05-01-11-05-05/5_output_files/S60035.fastq.gz_CHH_100bp.wig"
+[490] "./S60053.fastq.gz_wgbspipeline_2017-05-01-11-05-51/5_output_files/S60053.fastq.gz_CHH_100bp.wig"
+[491] "./S60554.fastq.gz_wgbspipeline_2017-05-03-15-05-00/5_output_files/S60554.fastq.gz_CHH_100bp.wig"
+[492] "./S60232.fastq.gz_wgbspipeline_2017-05-01-11-05-13/5_output_files/S60232.fastq.gz_CHH_100bp.wig"
+[493] "./S60086.fastq.gz_wgbspipeline_2017-05-01-11-05-20/5_output_files/S60086.fastq.gz_CHH_100bp.wig"
+[494] "./S60257.fastq.gz_wgbspipeline_2017-05-01-11-05-58/5_output_files/S60257.fastq.gz_CHH_100bp.wig"
+[495] "./S60302.fastq.gz_wgbspipeline_2017-05-01-11-05-17/5_output_files/S60302.fastq.gz_CHH_100bp.wig"
+[496] "./S60135.fastq.gz_wgbspipeline_2017-05-01-10-05-25/5_output_files/S60135.fastq.gz_CHH_100bp.wig"
+[497] "./S60595.fastq.gz_wgbspipeline_2017-05-01-12-05-00/5_output_files/S60595.fastq.gz_CHH_100bp.wig"
+[498] "./S60448.fastq.gz_wgbspipeline_2017-05-01-12-05-19/5_output_files/S60448.fastq.gz_CHH_100bp.wig"
+[499] "./S60188.fastq.gz_wgbspipeline_2017-05-01-11-05-36/5_output_files/S60188.fastq.gz_CHH_100bp.wig"
+[500] "./S60123.fastq.gz_wgbspipeline_2017-05-01-10-05-16/5_output_files/S60123.fastq.gz_CHH_100bp.wig"
+[501] "./S60529.fastq.gz_wgbspipeline_2017-05-01-12-05-46/5_output_files/S60529.fastq.gz_CHH_100bp.wig"
+[502] "./S60219.fastq.gz_wgbspipeline_2017-05-01-11-05-05/5_output_files/S60219.fastq.gz_CHH_100bp.wig"
+[503] "./S60396.fastq.gz_wgbspipeline_2017-05-01-12-05-01/5_output_files/S60396.fastq.gz_CHH_100bp.wig"
+[504] "./S60412.fastq.gz_wgbspipeline_2017-05-01-12-05-02/5_output_files/S60412.fastq.gz_CHH_100bp.wig"
+[505] "./S60530.fastq.gz_wgbspipeline_2017-05-01-12-05-46/5_output_files/S60530.fastq.gz_CHH_100bp.wig"
+[506] "./S60438.fastq.gz_wgbspipeline_2017-05-01-11-05-12/5_output_files/S60438.fastq.gz_CHH_100bp.wig"
+[507] "./S60256.fastq.gz_wgbspipeline_2017-05-01-11-05-57/5_output_files/S60256.fastq.gz_CHH_100bp.wig"
+[508] "./S60024.fastq.gz_wgbspipeline_2017-05-01-11-05-24/5_output_files/S60024.fastq.gz_CHH_100bp.wig"
+[509] "./S60543.fastq.gz_wgbspipeline_2017-05-01-11-05-36/5_output_files/S60543.fastq.gz_CHH_100bp.wig"
+[510] "./S60449.fastq.gz_wgbspipeline_2017-05-01-12-05-20/5_output_files/S60449.fastq.gz_CHH_100bp.wig"
+[511] "./S60527.fastq.gz_wgbspipeline_2017-05-01-12-05-44/5_output_files/S60527.fastq.gz_CHH_100bp.wig"
+[512] "./S60238.fastq.gz_wgbspipeline_2017-05-01-11-05-18/5_output_files/S60238.fastq.gz_CHH_100bp.wig"
+[513] "./S60304.fastq.gz_wgbspipeline_2017-05-01-11-05-18/5_output_files/S60304.fastq.gz_CHH_100bp.wig"
+[514] "./S60000.fastq.gz_wgbspipeline_2017-05-01-10-05-14/5_output_files/S60000.fastq.gz_CHH_100bp.wig"
+[515] "./S60296.fastq.gz_wgbspipeline_2017-05-01-11-05-12/5_output_files/S60296.fastq.gz_CHH_100bp.wig"
+[516] "./S60267.fastq.gz_wgbspipeline_2017-05-01-11-05-09/5_output_files/S60267.fastq.gz_CHH_100bp.wig"
+[517] "./S60440.fastq.gz_wgbspipeline_2017-05-01-11-05-13/5_output_files/S60440.fastq.gz_CHH_100bp.wig"
+[518] "./S60265.fastq.gz_wgbspipeline_2017-05-01-11-05-06/5_output_files/S60265.fastq.gz_CHH_100bp.wig"
+[519] "./S60205.fastq.gz_wgbspipeline_2017-05-01-11-05-51/5_output_files/S60205.fastq.gz_CHH_100bp.wig"
+[520] "./S60272.fastq.gz_wgbspipeline_2017-05-01-11-05-14/5_output_files/S60272.fastq.gz_CHH_100bp.wig"
+[521] "./S60271.fastq.gz_wgbspipeline_2017-05-01-11-05-13/5_output_files/S60271.fastq.gz_CHH_100bp.wig"
+[522] "./S60101.fastq.gz_wgbspipeline_2017-05-01-11-05-33/5_output_files/S60101.fastq.gz_CHH_100bp.wig"
+[523] "./S60006.fastq.gz_wgbspipeline_2017-05-01-10-05-18/5_output_files/S60006.fastq.gz_CHH_100bp.wig"
+[524] "./S60600.fastq.gz_wgbspipeline_2017-05-01-12-05-15/5_output_files/S60600.fastq.gz_CHH_100bp.wig"
+[525] "./S60354.fastq.gz_wgbspipeline_2017-05-01-11-05-52/5_output_files/S60354.fastq.gz_CHH_100bp.wig"
+[526] "./S60042.fastq.gz_wgbspipeline_2017-05-01-11-05-35/5_output_files/S60042.fastq.gz_CHH_100bp.wig"
+[527] "./S60279.fastq.gz_wgbspipeline_2017-05-01-11-05-21/5_output_files/S60279.fastq.gz_CHH_100bp.wig"
+[528] "./S60276.fastq.gz_wgbspipeline_2017-05-01-11-05-19/5_output_files/S60276.fastq.gz_CHH_100bp.wig"
+[529] "./S60226.fastq.gz_wgbspipeline_2017-05-01-11-05-09/5_output_files/S60226.fastq.gz_CHH_100bp.wig"
+[530] "./S60020.fastq.gz_wgbspipeline_2017-05-01-11-05-56/5_output_files/S60020.fastq.gz_CHH_100bp.wig"
+[531] "./S60516.fastq.gz_wgbspipeline_2017-05-01-11-05-16/5_output_files/S60516.fastq.gz_CHH_100bp.wig"
+[532] "./S60029.fastq.gz_wgbspipeline_2017-05-01-11-05-48/5_output_files/S60029.fastq.gz_CHH_100bp.wig"
+[533] "./S60167.fastq.gz_wgbspipeline_2017-05-01-11-05-17/5_output_files/S60167.fastq.gz_CHH_100bp.wig"
+[534] "./S60214.fastq.gz_wgbspipeline_2017-05-01-11-05-02/5_output_files/S60214.fastq.gz_CHH_100bp.wig"
+[535] "./S60103.fastq.gz_wgbspipeline_2017-05-01-11-05-34/5_output_files/S60103.fastq.gz_CHH_100bp.wig"
+[536] "./S60446.fastq.gz_wgbspipeline_2017-05-01-12-05-18/5_output_files/S60446.fastq.gz_CHH_100bp.wig"
+[537] "./S60369.fastq.gz_wgbspipeline_2017-05-01-11-05-45/5_output_files/S60369.fastq.gz_CHH_100bp.wig"
+[538] "./S60547.fastq.gz_wgbspipeline_2017-05-01-11-05-39/5_output_files/S60547.fastq.gz_CHH_100bp.wig"
+[539] "./S60173.fastq.gz_wgbspipeline_2017-05-01-11-05-24/5_output_files/S60173.fastq.gz_CHH_100bp.wig"
+[540] "./S60311.fastq.gz_wgbspipeline_2017-05-01-11-05-56/5_output_files/S60311.fastq.gz_CHH_100bp.wig"
+[541] "./S60435.fastq.gz_wgbspipeline_2017-05-01-11-05-09/5_output_files/S60435.fastq.gz_CHH_100bp.wig"
+[542] "./S60520.fastq.gz_wgbspipeline_2017-05-01-12-05-48/5_output_files/S60520.fastq.gz_CHH_100bp.wig"
+[543] "./S60141.fastq.gz_wgbspipeline_2017-05-01-10-05-30/5_output_files/S60141.fastq.gz_CHH_100bp.wig"
+[544] "./S60418.fastq.gz_wgbspipeline_2017-05-01-11-05-20/5_output_files/S60418.fastq.gz_CHH_100bp.wig"
+[545] "./S60128.fastq.gz_wgbspipeline_2017-05-01-10-05-20/5_output_files/S60128.fastq.gz_CHH_100bp.wig"
+[546] "./S60115.fastq.gz_wgbspipeline_2017-05-01-10-05-09/5_output_files/S60115.fastq.gz_CHH_100bp.wig"
+[547] "./S60120.fastq.gz_wgbspipeline_2017-05-01-10-05-13/5_output_files/S60120.fastq.gz_CHH_100bp.wig"
+[548] "./S60100.fastq.gz_wgbspipeline_2017-05-01-11-05-32/5_output_files/S60100.fastq.gz_CHH_100bp.wig"
+[549] "./S60361.fastq.gz_wgbspipeline_2017-05-01-11-05-43/5_output_files/S60361.fastq.gz_CHH_100bp.wig"
+[550] "./S60425.fastq.gz_wgbspipeline_2017-05-01-12-05-00/5_output_files/S60425.fastq.gz_CHH_100bp.wig"
+[551] "./S60227.fastq.gz_wgbspipeline_2017-05-01-11-05-09/5_output_files/S60227.fastq.gz_CHH_100bp.wig"
+[552] "./S60406.fastq.gz_wgbspipeline_2017-05-01-12-05-35/5_output_files/S60406.fastq.gz_CHH_100bp.wig"
+[553] "./S60189.fastq.gz_wgbspipeline_2017-05-01-11-05-37/5_output_files/S60189.fastq.gz_CHH_100bp.wig"
+[554] "./S60420.fastq.gz_wgbspipeline_2017-05-01-12-05-22/5_output_files/S60420.fastq.gz_CHH_100bp.wig"
+[555] "./S60108.fastq.gz_wgbspipeline_2017-05-01-11-05-59/5_output_files/S60108.fastq.gz_CHH_100bp.wig"
+[556] "./S60017.fastq.gz_wgbspipeline_2017-05-01-10-05-48/5_output_files/S60017.fastq.gz_CHH_100bp.wig"
+[557] "./S60084.fastq.gz_wgbspipeline_2017-05-01-11-05-18/5_output_files/S60084.fastq.gz_CHH_100bp.wig"
+[558] "./S60434.fastq.gz_wgbspipeline_2017-05-01-11-05-07/5_output_files/S60434.fastq.gz_CHH_100bp.wig"
+[559] "./S60127.fastq.gz_wgbspipeline_2017-05-01-10-05-19/5_output_files/S60127.fastq.gz_CHH_100bp.wig"
+[560] "./S60075.fastq.gz_wgbspipeline_2017-05-01-11-05-11/5_output_files/S60075.fastq.gz_CHH_100bp.wig"
+[561] "./S60512.fastq.gz_wgbspipeline_2017-05-01-12-05-54/5_output_files/S60512.fastq.gz_CHH_100bp.wig"
+[562] "./S60071.fastq.gz_wgbspipeline_2017-05-01-11-05-08/5_output_files/S60071.fastq.gz_CHH_100bp.wig"
+[563] "./S60357.fastq.gz_wgbspipeline_2017-05-01-11-05-27/5_output_files/S60357.fastq.gz_CHH_100bp.wig"
+[564] "./S60016.fastq.gz_wgbspipeline_2017-05-01-10-05-46/5_output_files/S60016.fastq.gz_CHH_100bp.wig"
+[565] "./S60046.fastq.gz_wgbspipeline_2017-05-01-11-05-44/5_output_files/S60046.fastq.gz_CHH_100bp.wig"
+[566] "./S60417.fastq.gz_wgbspipeline_2017-05-01-11-05-23/5_output_files/S60417.fastq.gz_CHH_100bp.wig"
+[567] "./S60326.fastq.gz_wgbspipeline_2017-05-01-11-05-21/5_output_files/S60326.fastq.gz_CHH_100bp.wig"
+[568] "./S60395.fastq.gz_wgbspipeline_2017-05-01-12-05-00/5_output_files/S60395.fastq.gz_CHH_100bp.wig"
+[569] "./S60585.fastq.gz_wgbspipeline_2017-05-01-12-05-54/5_output_files/S60585.fastq.gz_CHH_100bp.wig"
+[570] "./S60216.fastq.gz_wgbspipeline_2017-05-01-11-05-03/5_output_files/S60216.fastq.gz_CHH_100bp.wig"
+[571] "./S60307.fastq.gz_wgbspipeline_2017-05-01-11-05-20/5_output_files/S60307.fastq.gz_CHH_100bp.wig"
+[572] "./S60117.fastq.gz_wgbspipeline_2017-05-01-10-05-10/5_output_files/S60117.fastq.gz_CHH_100bp.wig"
+[573] "./S60380.fastq.gz_wgbspipeline_2017-05-01-11-05-48/5_output_files/S60380.fastq.gz_CHH_100bp.wig"
+[574] "./S60573.fastq.gz_wgbspipeline_2017-05-01-12-05-45/5_output_files/S60573.fastq.gz_CHH_100bp.wig"
+[575] "./S60253.fastq.gz_wgbspipeline_2017-05-01-11-05-34/5_output_files/S60253.fastq.gz_CHH_100bp.wig"
+[576] "./S60507.fastq.gz_wgbspipeline_2017-05-01-12-05-40/5_output_files/S60507.fastq.gz_CHH_100bp.wig"
+[577] "./S60452.fastq.gz_wgbspipeline_2017-05-01-12-05-22/5_output_files/S60452.fastq.gz_CHH_100bp.wig"
+[578] "./S60019.fastq.gz_wgbspipeline_2017-05-01-11-05-59/5_output_files/S60019.fastq.gz_CHH_100bp.wig"
+[579] "./S60074.fastq.gz_wgbspipeline_2017-05-01-11-05-11/5_output_files/S60074.fastq.gz_CHH_100bp.wig"
+[580] "./S60133.fastq.gz_wgbspipeline_2017-05-01-10-05-24/5_output_files/S60133.fastq.gz_CHH_100bp.wig"
+[581] "./S60366.fastq.gz_wgbspipeline_2017-05-01-11-05-31/5_output_files/S60366.fastq.gz_CHH_100bp.wig"
+[582] "./S60419.fastq.gz_wgbspipeline_2017-05-01-11-05-21/5_output_files/S60419.fastq.gz_CHH_100bp.wig"
+[583] "./S60037.fastq.gz_wgbspipeline_2017-05-01-11-05-07/5_output_files/S60037.fastq.gz_CHH_100bp.wig"
+[584] "./S60025.fastq.gz_wgbspipeline_2017-05-01-11-05-28/5_output_files/S60025.fastq.gz_CHH_100bp.wig"
+[585] "./S60584.fastq.gz_wgbspipeline_2017-05-01-12-05-52/5_output_files/S60584.fastq.gz_CHH_100bp.wig"
+[586] "./S60540.fastq.gz_wgbspipeline_2017-05-01-12-05-21/5_output_files/S60540.fastq.gz_CHH_100bp.wig"
+[587] "./S60038.fastq.gz_wgbspipeline_2017-05-01-11-05-08/5_output_files/S60038.fastq.gz_CHH_100bp.wig"
+[588] "./S60329.fastq.gz_wgbspipeline_2017-05-01-11-05-15/5_output_files/S60329.fastq.gz_CHH_100bp.wig"
+[589] "./S60533.fastq.gz_wgbspipeline_2017-05-01-12-05-47/5_output_files/S60533.fastq.gz_CHH_100bp.wig"
+[590] "./S60313.fastq.gz_wgbspipeline_2017-05-01-11-05-18/5_output_files/S60313.fastq.gz_CHH_100bp.wig"
+[591] "./S60225.fastq.gz_wgbspipeline_2017-05-01-11-05-09/5_output_files/S60225.fastq.gz_CHH_100bp.wig"
+[592] "./S60028.fastq.gz_wgbspipeline_2017-05-01-11-05-46/5_output_files/S60028.fastq.gz_CHH_100bp.wig"
+[593] "./S60487.fastq.gz_wgbspipeline_2017-05-01-12-05-56/5_output_files/S60487.fastq.gz_CHH_100bp.wig"
+[594] "./S60235.fastq.gz_wgbspipeline_2017-05-01-11-05-16/5_output_files/S60235.fastq.gz_CHH_100bp.wig"
+[595] "./S60360.fastq.gz_wgbspipeline_2017-05-01-11-05-54/5_output_files/S60360.fastq.gz_CHH_100bp.wig"
+[596] "./S60041.fastq.gz_wgbspipeline_2017-05-01-11-05-33/5_output_files/S60041.fastq.gz_CHH_100bp.wig"
+[597] "./S60098.fastq.gz_wgbspipeline_2017-05-01-11-05-30/5_output_files/S60098.fastq.gz_CHH_100bp.wig"
+[598] "./S60278.fastq.gz_wgbspipeline_2017-05-01-11-05-20/5_output_files/S60278.fastq.gz_CHH_100bp.wig"
+[599] "./S60269.fastq.gz_wgbspipeline_2017-05-01-11-05-11/5_output_files/S60269.fastq.gz_CHH_100bp.wig"
+[600] "./S60594.fastq.gz_wgbspipeline_2017-05-01-12-05-59/5_output_files/S60594.fastq.gz_CHH_100bp.wig"
+[601] "./S60413.fastq.gz_wgbspipeline_2017-05-01-12-05-03/5_output_files/S60413.fastq.gz_CHH_100bp.wig"
+[602] "./S60157.fastq.gz_wgbspipeline_2017-05-01-11-05-07/5_output_files/S60157.fastq.gz_CHH_100bp.wig"
+[603] "./S60559.fastq.gz_wgbspipeline_2017-05-01-11-05-47/5_output_files/S60559.fastq.gz_CHH_100bp.wig"
+[604] "./S60522.fastq.gz_wgbspipeline_2017-05-03-15-05-11/5_output_files/S60522.fastq.gz_CHH_100bp.wig"
+> print(metapath)
+[1] "../metadata.txt"
+> print(context)
+[1] "CHH"
+> current=Sys.time()
+> 
+> 
+> #install.packages('dendextend',dependencies=T)
+> library(dplyr)
+> library(dendextend)
+> 
+> ##############
+> #functions
+> ##############
+> merge_wigs <- function(filelist){
++   all=list()
++   for (i in 1:length(filelist)){
++     tmp = read.delim(filelist[i],head=F,skip=1)
++     tmp=tmp[,1:4]
++     namechomp=gsub('.fastq.gz.*','',filelist[i]) #getting down to just the S60XXX sampleID
++     namechomp=gsub('\\./','',namechomp) #get rid of leading './'
++     colnames(tmp)[4]=namechomp
++     #filename=files[i]
++     all[[namechomp]]=tmp
++   }
++   goob = all %>% Reduce(function(dtf1,dtf2) full_join(dtf1,dtf2,by=c('V1','V2','V3')), .)
++   return(goob)
++ }
+> #############
+> calculate_dist <- function(data,column){
++   colnames(data)[4:ncol(data)]=as.character(meta_used[,column])
++   hc=hclust(as.dist(1-cor(as.matrix(data[,4:ncol(data)]),use='pairwise.complete.obs')))
++   return(hc)
++ }
+> ############
+> plot_dendro <- function(hc,column,title){
++   pdf(paste(title,'methylation_dendrogram.',current,'.pdf',sep='_'),height=9,width=70)
++   dendro_labels=gsub('_.*','',gsub('\\.[0-9]*','',as.character(meta_used[,column])))
++   dendro_colors=as.numeric(as.factor(gsub('_.*','',gsub('\\.[0-9]*','',as.character(meta_used[,8])))))
++   hc=as.dendrogram(hc)
++   #labels(hc)=dendro_labels[order.dendrogram(hc)]
++   labels_colors(hc) = dendro_colors[order.dendrogram(hc)]
++   print(plot(hc,main=paste(title,sep=' ')))
++   dev.off()
++ }
+> ###########
+> calculate_cor <- function(data,column){
++   colnames(data)[4:ncol(data)]=as.character(meta_used[,column])
++   cor_matrix=as.matrix(cor(data[,4:ncol(data)],use='pairwise.complete.obs'))
++   return(cor_matrix)
++ }
+> ###########
+> plot_heatmap <- function(cor_matrix,title){
++   pdf(paste(title,'methylation_heatmap.',current,'.pdf',sep='_'),height=30,width=30)
++   print(heatmap(cor_matrix,main=paste(title,sep=' ')))
++   dev.off()
++   return(NULL)
++ }
+> ##############
+> 
+> 
+> 
+> all=merge_wigs(files)
+> 
+> write.table(all,paste(context,'_alltiles_merged.',current,'.txt',sep=''),sep='\t',row.names=F,quote=F)
+> 
+> #gather metadata info for samples used for all sample comparisons
+> meta=read.delim(metapath,head=T)
+> current=names(all[,4:ncol(all)])
+> meta_used=meta[meta[,1] %in% current,]
+> meta_used=meta_used[match(current,meta_used[,1]),]
+> 
+> 
+> tile.dist=calculate_dist(all,6)
+> saveRDS(tile.dist,paste(context,'_tile.dist.rds',sep=''))
+> plot_dendro(tile.dist,6,paste(context,'_sample',sep=''))
+NULL
+null device 
+          1 
+> tile.cor=calculate_cor(all,6)
+> saveRDS(tile.cor,paste(context,'_tile.cor.rds',sep=''))
+> plot_heatmap(tile.cor,paste(context,'_sample',sep=''))
+$rowInd
+  [1] 384 250 232  39 514 468 283 218  14 403 498 443 171 287  10 387 370   3
+ [19] 265 101 104 414 109 429 445 526 263  26 515 179 465 353 125 227 348 339
+ [37] 519  86 497 559  27 186 380 305 313 221  82 325  44 329 118 474 180 182
+ [55] 136 280 352   1 181  24 223 574 539 521 258 124 228 379   9  81 452  57
+ [73] 294 317 327 229 583 397 307 330 496  25 288 394 257 349 447 506 137 561
+ [91] 478 576 383  75 585 357 486  33  29 175 142 312 204 139 299 251 177 604
+[109] 511 369 252 344 457 341 328 152 407 371 185 422 306 161 597 112  19 513
+[127] 400 129 500 579 323   7 462  66 295 510 566 601 296 192 473  52 367 170
+[145] 106 546  73 363 282  64 541 554 448 417  98 243  95  46 356 226 321 503
+[163] 217 536 358 544 517 564  16 484 399 169  65 582 550 504 437 481 153 479
+[181] 431 435 311 333  23 150  37 495  62 426 100 439 549 446 558 472 231 120
+[199] 147 343 278 200 450 466 355  83 324 404 271 279 538  21 336  61 424  48
+[217] 135  94  60 103 115  47 196 172 548 230 588 322 253 535 416 592 122 215
+[235] 490   8 531 347 405 433 273  55  74  28  78  97 461 203 591 584 444 518
+[253]  77 141 460  88  35 205  68 382   6 442 220 508  15 187 560 502 522  45
+[271] 351 249 293 326 366 507 441 494 603  96 107 183 143  59 412  58 428 302
+[289] 569 255 238 233 449 244 350 488 392 562 345 557 259 527 547  93 261  38
+[307] 111 509 117 173 362 493 565 425 113 241 214 176 234  12 491 489 587 378
+[325] 406  43 555 225 359 162 530 354 459 440  42 309 512 236 499 121 402 247
+[343] 480 586 430 212 197   2 131 482 505 216 237 151 540 275 377 573  34 427
+[361] 398 190 132 501 393 396 385 455  40 415 332 372 570 213 373 368 520 401
+[379] 456 454  99  67 166  87 361 208 108 277 224 553 164 381 580  91 476 432
+[397] 134 346  72 105 206  13  20 471 194 483 201 254 154  71 184 222 256 436
+[415] 596 315 529 114 534  70 156 195 292   5 577 600 467 410 334 281 556 310
+[433] 269  76 160 127  69 155  17 419 469 411 116 451 298 126  89 140 528 594
+[451] 575  11 388 209 210 128 270 375 266   4 477 286 168 300 274  50 191 485
+[469] 523 335 578 337  92 551 418 365 308 174 463 320  49 602 242 304 297 102
+[487]  84 110 239 423 248 516 268 374 543  36 533 319 149 199 245 318 524 453
+[505] 589 420 264 470 545 138 159  18 434  63 395 409 342 593 262 360 421 390
+[523]  51 290 316 389 163 386 364 267 144 276 525  30 376  54 568  90 542 572
+[541] 119  79 532 492 202 599  85 167 291 595 207 219 198 157 284 158 123 338
+[559] 438 301 211 193 340 133 391 188 581 487 475 567 552 272 289 537 464 413
+[577] 260 598  41 130 240 331  22 314  56 458 178  32 563 571 590  80 189 303
+[595] 408 146  53  31 148 165 235 285 145 246
+
+$colInd
+  [1] 384 250 232  39 514 468 283 218  14 403 498 443 171 287  10 387 370   3
+ [19] 265 101 104 414 109 429 445 526 263  26 515 179 465 353 125 227 348 339
+ [37] 519  86 497 559  27 186 380 305 313 221  82 325  44 329 118 474 180 182
+ [55] 136 280 352   1 181  24 223 574 539 521 258 124 228 379   9  81 452  57
+ [73] 294 317 327 229 583 397 307 330 496  25 288 394 257 349 447 506 137 561
+ [91] 478 576 383  75 585 357 486  33  29 175 142 312 204 139 299 251 177 604
+[109] 511 369 252 344 457 341 328 152 407 371 185 422 306 161 597 112  19 513
+[127] 400 129 500 579 323   7 462  66 295 510 566 601 296 192 473  52 367 170
+[145] 106 546  73 363 282  64 541 554 448 417  98 243  95  46 356 226 321 503
+[163] 217 536 358 544 517 564  16 484 399 169  65 582 550 504 437 481 153 479
+[181] 431 435 311 333  23 150  37 495  62 426 100 439 549 446 558 472 231 120
+[199] 147 343 278 200 450 466 355  83 324 404 271 279 538  21 336  61 424  48
+[217] 135  94  60 103 115  47 196 172 548 230 588 322 253 535 416 592 122 215
+[235] 490   8 531 347 405 433 273  55  74  28  78  97 461 203 591 584 444 518
+[253]  77 141 460  88  35 205  68 382   6 442 220 508  15 187 560 502 522  45
+[271] 351 249 293 326 366 507 441 494 603  96 107 183 143  59 412  58 428 302
+[289] 569 255 238 233 449 244 350 488 392 562 345 557 259 527 547  93 261  38
+[307] 111 509 117 173 362 493 565 425 113 241 214 176 234  12 491 489 587 378
+[325] 406  43 555 225 359 162 530 354 459 440  42 309 512 236 499 121 402 247
+[343] 480 586 430 212 197   2 131 482 505 216 237 151 540 275 377 573  34 427
+[361] 398 190 132 501 393 396 385 455  40 415 332 372 570 213 373 368 520 401
+[379] 456 454  99  67 166  87 361 208 108 277 224 553 164 381 580  91 476 432
+[397] 134 346  72 105 206  13  20 471 194 483 201 254 154  71 184 222 256 436
+[415] 596 315 529 114 534  70 156 195 292   5 577 600 467 410 334 281 556 310
+[433] 269  76 160 127  69 155  17 419 469 411 116 451 298 126  89 140 528 594
+[451] 575  11 388 209 210 128 270 375 266   4 477 286 168 300 274  50 191 485
+[469] 523 335 578 337  92 551 418 365 308 174 463 320  49 602 242 304 297 102
+[487]  84 110 239 423 248 516 268 374 543  36 533 319 149 199 245 318 524 453
+[505] 589 420 264 470 545 138 159  18 434  63 395 409 342 593 262 360 421 390
+[523]  51 290 316 389 163 386 364 267 144 276 525  30 376  54 568  90 542 572
+[541] 119  79 532 492 202 599  85 167 291 595 207 219 198 157 284 158 123 338
+[559] 438 301 211 193 340 133 391 188 581 487 475 567 552 272 289 537 464 413
+[577] 260 598  41 130 240 331  22 314  56 458 178  32 563 571 590  80 189 303
+[595] 408 146  53  31 148 165 235 285 145 246
+
+$Rowv
+NULL
+
+$Colv
+NULL
+
+NULL
+> 
+> tile.dist=calculate_dist(all,8)
+> saveRDS(tile.dist,paste(context,'_tile.dist.sample.rds',sep=''))
+> plot_dendro(tile.dist,6,paste(context,'_clonal',sep=''))
+NULL
+null device 
+          1 
+> tile.cor=calculate_cor(all,8)
+> saveRDS(tile.cor,paste(context,'_tile.cor.sample.rds',sep=''))
+> plot_heatmap(tile.cor,paste(context,'_sample',sep=''))
+$rowInd
+  [1] 384 250 232  39 514 468 283 218  14 403 498 443 171 287  10 387 370   3
+ [19] 265 101 104 414 109 429 445 526 263  26 515 179 465 353 125 227 348 339
+ [37] 519  86 497 559  27 186 380 305 313 221  82 325  44 329 118 474 180 182
+ [55] 136 280 352   1 181  24 223 574 539 521 258 124 228 379   9  81 452  57
+ [73] 294 317 327 229 583 397 307 330 496  25 288 394 257 349 447 506 137 561
+ [91] 478 576 383  75 585 357 486  33  29 175 142 312 204 139 299 251 177 604
+[109] 511 369 252 344 457 341 328 152 407 371 185 422 306 161 597 112  19 513
+[127] 400 129 500 579 323   7 462  66 295 510 566 601 296 192 473  52 367 170
+[145] 106 546  73 363 282  64 541 554 448 417  98 243  95  46 356 226 321 503
+[163] 217 536 358 544 517 564  16 484 399 169  65 582 550 504 437 481 153 479
+[181] 431 435 311 333  23 150  37 495  62 426 100 439 549 446 558 472 231 120
+[199] 147 343 278 200 450 466 355  83 324 404 271 279 538  21 336  61 424  48
+[217] 135  94  60 103 115  47 196 172 548 230 588 322 253 535 416 592 122 215
+[235] 490   8 531 347 405 433 273  55  74  28  78  97 461 203 591 584 444 518
+[253]  77 141 460  88  35 205  68 382   6 442 220 508  15 187 560 502 522  45
+[271] 351 249 293 326 366 507 441 494 603  96 107 183 143  59 412  58 428 302
+[289] 569 255 238 233 449 244 350 488 392 562 345 557 259 527 547  93 261  38
+[307] 111 509 117 173 362 493 565 425 113 241 214 176 234  12 491 489 587 378
+[325] 406  43 555 225 359 162 530 354 459 440  42 309 512 236 499 121 402 247
+[343] 480 586 430 212 197   2 131 482 505 216 237 151 540 275 377 573  34 427
+[361] 398 190 132 501 393 396 385 455  40 415 332 372 570 213 373 368 520 401
+[379] 456 454  99  67 166  87 361 208 108 277 224 553 164 381 580  91 476 432
+[397] 134 346  72 105 206  13  20 471 194 483 201 254 154  71 184 222 256 436
+[415] 596 315 529 114 534  70 156 195 292   5 577 600 467 410 334 281 556 310
+[433] 269  76 160 127  69 155  17 419 469 411 116 451 298 126  89 140 528 594
+[451] 575  11 388 209 210 128 270 375 266   4 477 286 168 300 274  50 191 485
+[469] 523 335 578 337  92 551 418 365 308 174 463 320  49 602 242 304 297 102
+[487]  84 110 239 423 248 516 268 374 543  36 533 319 149 199 245 318 524 453
+[505] 589 420 264 470 545 138 159  18 434  63 395 409 342 593 262 360 421 390
+[523]  51 290 316 389 163 386 364 267 144 276 525  30 376  54 568  90 542 572
+[541] 119  79 532 492 202 599  85 167 291 595 207 219 198 157 284 158 123 338
+[559] 438 301 211 193 340 133 391 188 581 487 475 567 552 272 289 537 464 413
+[577] 260 598  41 130 240 331  22 314  56 458 178  32 563 571 590  80 189 303
+[595] 408 146  53  31 148 165 235 285 145 246
+
+$colInd
+  [1] 384 250 232  39 514 468 283 218  14 403 498 443 171 287  10 387 370   3
+ [19] 265 101 104 414 109 429 445 526 263  26 515 179 465 353 125 227 348 339
+ [37] 519  86 497 559  27 186 380 305 313 221  82 325  44 329 118 474 180 182
+ [55] 136 280 352   1 181  24 223 574 539 521 258 124 228 379   9  81 452  57
+ [73] 294 317 327 229 583 397 307 330 496  25 288 394 257 349 447 506 137 561
+ [91] 478 576 383  75 585 357 486  33  29 175 142 312 204 139 299 251 177 604
+[109] 511 369 252 344 457 341 328 152 407 371 185 422 306 161 597 112  19 513
+[127] 400 129 500 579 323   7 462  66 295 510 566 601 296 192 473  52 367 170
+[145] 106 546  73 363 282  64 541 554 448 417  98 243  95  46 356 226 321 503
+[163] 217 536 358 544 517 564  16 484 399 169  65 582 550 504 437 481 153 479
+[181] 431 435 311 333  23 150  37 495  62 426 100 439 549 446 558 472 231 120
+[199] 147 343 278 200 450 466 355  83 324 404 271 279 538  21 336  61 424  48
+[217] 135  94  60 103 115  47 196 172 548 230 588 322 253 535 416 592 122 215
+[235] 490   8 531 347 405 433 273  55  74  28  78  97 461 203 591 584 444 518
+[253]  77 141 460  88  35 205  68 382   6 442 220 508  15 187 560 502 522  45
+[271] 351 249 293 326 366 507 441 494 603  96 107 183 143  59 412  58 428 302
+[289] 569 255 238 233 449 244 350 488 392 562 345 557 259 527 547  93 261  38
+[307] 111 509 117 173 362 493 565 425 113 241 214 176 234  12 491 489 587 378
+[325] 406  43 555 225 359 162 530 354 459 440  42 309 512 236 499 121 402 247
+[343] 480 586 430 212 197   2 131 482 505 216 237 151 540 275 377 573  34 427
+[361] 398 190 132 501 393 396 385 455  40 415 332 372 570 213 373 368 520 401
+[379] 456 454  99  67 166  87 361 208 108 277 224 553 164 381 580  91 476 432
+[397] 134 346  72 105 206  13  20 471 194 483 201 254 154  71 184 222 256 436
+[415] 596 315 529 114 534  70 156 195 292   5 577 600 467 410 334 281 556 310
+[433] 269  76 160 127  69 155  17 419 469 411 116 451 298 126  89 140 528 594
+[451] 575  11 388 209 210 128 270 375 266   4 477 286 168 300 274  50 191 485
+[469] 523 335 578 337  92 551 418 365 308 174 463 320  49 602 242 304 297 102
+[487]  84 110 239 423 248 516 268 374 543  36 533 319 149 199 245 318 524 453
+[505] 589 420 264 470 545 138 159  18 434  63 395 409 342 593 262 360 421 390
+[523]  51 290 316 389 163 386 364 267 144 276 525  30 376  54 568  90 542 572
+[541] 119  79 532 492 202 599  85 167 291 595 207 219 198 157 284 158 123 338
+[559] 438 301 211 193 340 133 391 188 581 487 475 567 552 272 289 537 464 413
+[577] 260 598  41 130 240 331  22 314  56 458 178  32 563 571 590  80 189 303
+[595] 408 146  53  31 148 165 235 285 145 246
+
+$Rowv
+NULL
+
+$Colv
+NULL
+
+NULL
+> 
+> #done
+> 
+
+======================================================================================
+                  Resource Usage on 2017-05-09 10:53:44:
+   Job Id:             4578441.r-man2
+   Project:            xe2
+   Exit Status:        0
+   Service Units:      76.33
+   NCPUs Requested:    8                      NCPUs Used: 8               
+                                           CPU Time Used: 09:29:39                                   
+   Memory Requested:   63.0GB                Memory Used: 57.57GB         
+   Walltime requested: 24:00:00            Walltime Used: 09:32:30        
+   JobFS requested:    150.0GB                JobFS used: 0B              
+======================================================================================
