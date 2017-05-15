@@ -1,7 +1,7 @@
 # Extended Genotype analysis of 'clonal' _Brachypodium distachyon_ populations
 
 ---
-<img src='https://borevitzlab.anu.edu.au/wp-content/uploads/2017/03/chamber1.jpg'>
+<img src='https://borevitzlab.anu.edu.au/wp-content/uploads/2017/05/chamber1.jpg'>
 ---
 
 Analysis steps for clonal Brachypodium methylation project (BVZ0049)

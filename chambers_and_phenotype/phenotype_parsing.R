@@ -260,3 +260,7 @@ test = test %>% tbl_df() %>%
          value = as.numeric(as.character(value)))
 
 write.table(test,'BVZ0049_CH05_FALL_phenotypes_formatted.csv',sep=',',row.names=F,quote=F)
+
+library(gganimate)
+plott=test %>% filter(variable=='Height') %>% ggplot(aes(Accession,value,color=ClonalGroup,frame=as.factor(measurement_date))) + geom_boxplot(position = position_dodge(width=0),width=8) + ylab('Plant Height (cm)') + xlab('Accession')  + theme_sre
+gg_animate(plott,ani.width=1280,ani.height=720, interval=0.5,'height.test.gif')
