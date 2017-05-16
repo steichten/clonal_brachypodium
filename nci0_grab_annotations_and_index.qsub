@@ -18,9 +18,9 @@ export PATH=$PATH:$HOME/bin:$HOME/.local/bin/
 #########################
 #initial reference file downloads
 
-mkdir genomes
-printf "genomes\n" >> .gitignore
-cd genomes
+mkdir genome_files
+printf "genome_files\n" >> .gitignore
+cd genome_files
 
 #download Brachypodium distachyon reference v1.2
 curl 'https://signon.jgi.doe.gov/signon/create' --data-urlencode 'login=steven.eichten@anu.edu.au' --data-urlencode 'password=qwerty12' -c cookies > /dev/null
