@@ -34,7 +34,7 @@ cd ../
 
 #the SNP-corrected genomes are from the Bdistachyon v1.2 genome release (Phytozome 9??)
 mkdir annotations
-printf "rannotations\n" >> .gitignore
+printf "annotations\n" >> .gitignore
 cd annotations
 
 #gene annotations pulled from phytozome using download API
