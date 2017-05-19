@@ -56,3 +56,29 @@ do
     printf "$(echo $expectedfiles | cut -d ' ' -f1).fastq.gz\t$(echo $expectedfiles | cut -d ' ' -f2).fastq.gz\t${SAMPLE}.fastq.gz\n" >> renaming_sra_files.log
     fi
 done
+
+#wgs data rename and merge
+cd ../rawdata_wgs
+
+#rename all SRA files to their sampleID
+SAMPLEID=$(tail -n +2 ../sequencing_record.txt | grep "nextera" | cut -f 1 | sort | uniq)
+
+#create log file of renaming for records
+printf "input1\tinput2\toutput_file\n" > renaming_sra_files.log
+for SAMPLE in $SAMPLEID
+do
+    expectedfiles=$(tail -n +2 ../sequencing_record.txt | grep "nextera" | grep $SAMPLE | cut -f 14 )
+    if [ "$(echo ${expectedfiles} | wc -w)" -eq 1 ]; then
+      mv ${expectedfiles}_1.fastq.gz ${SAMPLE}_1.fastq.gz
+      mv ${expectedfiles}_2.fastq.gz ${SAMPLE}_2.fastq.gz
+      printf "${expectedfiles}_1.fastq.gz\t\t${SAMPLE}_1.fastq.gz\n" >> renaming_sra_files.log
+      printf "${expectedfiles}_2.fastq.gz\t\t${SAMPLE}_2.fastq.gz\n" >> renaming_sra_files.log
+    else
+      for FILE in $expectedfiles;
+      do
+        cat ${FILE}.fastq.gz >> ${SAMPLE}.fastq.gz
+        rm ${FILE}.fastq.gz
+      done
+    printf "$(echo $expectedfiles | cut -d ' ' -f1).fastq.gz\t$(echo $expectedfiles | cut -d ' ' -f2).fastq.gz\t${SAMPLE}.fastq.gz\n" >> renaming_sra_files.log
+    fi
+done

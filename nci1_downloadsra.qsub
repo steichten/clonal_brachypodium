@@ -49,3 +49,25 @@ md5sum -c ../srrfiles_high.md5 > md5_check.out
 #should create 190 high coverage sra files
 
 #done
+
+#########################
+#download WGS nextera data
+cd ../
+mkdir rawdata_wgs
+printf "rawdata_wgs\n" >> .gitignore
+cd rawdata_wgs
+
+#start pulling SRA files for skim data
+SRALIST=$(tail -n +2 ../sequencing_record.txt | grep "nextera"  | cut -f 14)
+
+for SRAFILE in $SRALIST
+do
+    #download SRA files from NCBI,
+    wget -nc http://sra-download.ncbi.nlm.nih.gov/srapub/${SRAFILE}
+    mv ${SRAFILE} ${SRAFILE}.sra
+done
+
+md5sum -c ../srrfiles_wgs.md5 > md5_check.out
+#should create XX wgs sra files
+
+#done
