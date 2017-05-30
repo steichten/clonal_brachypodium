@@ -1,0 +1,21 @@
+#PBS -P xe2
+#PBS -q normal
+#PBS -l walltime=24:00:00
+#PBS -l mem=127GB
+#PBS -l jobfs=150GB
+#PBS -l ncpus=8
+#PBS -l software=R
+#PBS -l wd
+
+module load R
+
+#this script will take the aligned low coverage data single base-pair .cov files and create a massive matrix of all data
+
+#go into lowcoverage folder
+cd rawdata_highcoverage
+
+#grab all 100bp wig files from the aligned data outputs as variable for R
+cgfiles=$(find -name "S6008[1-4]*CpG.bed.bismark.cov")
+
+#make dendrogrames for each context. First argument is file prefix (CG/CHG/CHH), second is metadata path, third is vector of all wigfiles for said context
+Rscript ../methylation_cytosine_tree.R CG ../metadata.txt $cgfiles
