@@ -816,3 +816,45 @@ S60289	28290	652	BdTR1f_R2S	BdTR1f	Clone1	2	SN877_0423	Sp1_2500	SP-1bs-E	505	705
 S60290	28291	652	BdTR1f_R3S	BdTR1f	Clone1	3	SN877_0423	Sp1_2500	SP-1bs-F	506	702	F2	SRR5046534
 S60291	28292	670	BdTR2k_R3S	BdTR2k	Clone1	3	SN877_0423	Sp1_2500	SP-1bs-D	504	707	D7	SRR5046522
 S60295	28296	656	BdTR1j_R1S	BdTR1j	Clone1	1	SN877_0423	Sp1_2500	SP-1bs-H	508	711	H11	SRR5046518
+BdTR10c				BdTR10c	Clone5			nextera					SRR5626697
+BdTR10d				BdTR10d	Clone5			nextera					SRR5626696
+BdTR10e				BdTR10e	Clone5			nextera					SRR5626699
+BdTR10f				BdTR10f	Clone5			nextera					SRR5626698
+BdTR10g				BdTR10g	Clone5			nextera					SRR5626701
+BdTR10i				BdTR10i	Clone5			nextera					SRR5626700
+BdTR11a				BdTR11a	Clone6			nextera					SRR5626703
+BdTR11b				BdTR11b	Clone6			nextera					SRR5626702
+BdTR11f				BdTR11f	Clone6			nextera					SRR5626597
+BdTR11g				BdTR11g	Clone6			nextera					SRR5626598
+BdTR13b				BdTR13b	Clone7			nextera					SRR5626601
+BdTR13c				BdTR13c	Clone7			nextera					SRR5626602
+BdTR13d				BdTR13d	Clone7			nextera					SRR5626599
+BdTR13k				BdTR13k	Clone7			nextera					SRR5626600
+BdTR13m				BdTR13m	Clone7			nextera					SRR5626603
+BdTR1c				BdTR1c	Clone1			nextera					SRR5626604
+BdTR1d				BdTR1d	Clone1			nextera					SRR5626679
+BdTR1f				BdTR1f	Clone1			nextera					SRR5626678
+BdTR1g				BdTR1g	Clone1			nextera					SRR5626677
+BdTR1j				BdTR1j	Clone1			nextera					SRR5626676
+BdTR1k				BdTR1k	Clone1			nextera					SRR5626683
+BdTR2a				BdTR2a	Clone1			nextera					SRR5626682
+BdTR2d				BdTR2d	Clone1			nextera					SRR5626681
+BdTR2f				BdTR2f	Clone1			nextera					SRR5626680
+BdTR2h				BdTR2h	Clone1			nextera					SRR5626675
+BdTR2j				BdTR2j	Clone1			nextera					SRR5626674
+BdTR2n				BdTR2n	Clone1			nextera					SRR5626688
+BdTR2o				BdTR2o	Clone1			nextera					SRR5626689
+BdTR2p				BdTR2p	Clone1			nextera					SRR5626690
+BdTR3a				BdTR3a	Clone2			nextera					SRR5626691
+BdTR3b				BdTR3b	Clone2			nextera					SRR5626684
+BdTR3h				BdTR3h	Clone2			nextera					SRR5626685
+BdTR3j				BdTR3j	Clone2			nextera					SRR5626686
+BdTR3m				BdTR3m	Clone2			nextera					SRR5626687
+BdTR3s				BdTR3s	Clone2			nextera					SRR5626692
+BdTR3t				BdTR3t	Clone2			nextera					SRR5626693
+BdTR5g				BdTR5g	Clone3			nextera					SRR5626629
+BdTR5k				BdTR5k	Clone3			nextera					SRR5626628
+BdTR5m				BdTR5m	Clone3			nextera					SRR5626631
+BdTR5n				BdTR5n	Clone3			nextera					SRR5626630
+BdTR9a				BdTR9a	Clone4			nextera					SRR5626625
+BdTR9f				BdTR9f	Clone4			nextera					SRR5626624
