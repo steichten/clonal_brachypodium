@@ -67,7 +67,7 @@ plot_heatmap <- function(cor_matrix,title){
 
 type=data.frame(class=c('prop','met','unmet'),column=c(4,5,6))
 for(i in 1:nrow(type)){
-  all=merge_cov(files,type[i,column])
+  all=merge_cov(files,type[i,type$column])
   write.table(all,paste(context,'_allsites_',type[i,class],'.',current,'.txt',sep=''),sep='\t',row.names=F,quote=F)
 
   #gather metadata info for samples used for all sample comparisons
