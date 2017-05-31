@@ -4,14 +4,14 @@
 
 cd rawdata_wgs
 
-READ1FILE=($(ls *R1_001.fastq.gz))
+READ1FILE=($(ls *_1.fastq.gz))
 GENOMEPATH="../genome_files/Bdistachyon_192"
 YAHAGENOMEPATH="../genome_files/Bdistachyon_192.X15_01_65525S"
 for FILE in "${READ1FILE[@]}"
 
 do
 
-ID=(${FILE//-WGS/ })
+ID=(${FILE//_1.fastq.gz/ })
 echo ${ID[0]}
 DATE=$(date)
 
@@ -32,7 +32,7 @@ printf "module load samtools/1.2\n" >> ${ID[0]}_alignment.qsub.script
 printf "module load python/2.7.11\n" >> ${ID[0]}_alignment.qsub.script
 printf "module load bowtie2/2.2.5\n" >> ${ID[0]}_alignment.qsub.script
 printf "\n" >> ${ID[0]}_alignment.qsub.script
-printf "tepid-map -x ${GENOMEPATH} -y ${YAHAGENOMEPATH} -p 12 -s 200 -n ${ID[0]} -1 $FILE -2 ${FILE//_R1_/_R2_}\n" >> ${ID[0]}_alignment.qsub.script
+printf "tepid-map -x ${GENOMEPATH} -y ${YAHAGENOMEPATH} -p 12 -s 200 -n ${ID[0]} -1 $FILE -2 ${FILE//_1.fastq.gz/_2.fastq.gz}\n" >> ${ID[0]}_alignment.qsub.script
 printf "tepid-discover -p 12 -n ${ID[0]} -c ${ID[0]}.bam -s ${ID[0]}.split.bam -t \$HOME/bin/TEPID/Annotation/Brachypodium/Brachy_TE_v2.2.bed.gz\n" >> ${ID[0]}_alignment.qsub.script
 
 done

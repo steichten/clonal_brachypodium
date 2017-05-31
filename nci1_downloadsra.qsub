@@ -68,6 +68,6 @@ do
 done
 
 md5sum -c ../srrfiles_wgs.md5 > md5_check.out
-#should create XX wgs sra files
+#should create 109 wgs sra files
 
 #done
