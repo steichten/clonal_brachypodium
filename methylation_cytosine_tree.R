@@ -66,9 +66,10 @@ plot_heatmap <- function(cor_matrix,title){
 
 
 type=data.frame(class=c('prop','met','unmet'),column=c(4,5,6))
+
 for(i in 1:nrow(type)){
-  all=merge_cov(files,type[i,type$column])
-  write.table(all,paste(context,'_allsites_',type[i,class],'.',current,'.txt',sep=''),sep='\t',row.names=F,quote=F)
+  all=merge_cov(files,type[i,'column'])
+  write.table(all,paste(context,'_allsites_',type[i,'class'],'.',current,'.txt',sep=''),sep='\t',row.names=F,quote=F)
 
   #gather metadata info for samples used for all sample comparisons
   meta=read.delim(metapath,head=T)
@@ -77,17 +78,17 @@ for(i in 1:nrow(type)){
   meta_used=meta_used[match(current,meta_used[,1]),]
 
   tile.dist=calculate_dist(all,6)
-  saveRDS(tile.dist,paste(context,'.',type[i,class],'_tile.dist.',current,'.rds',sep=''))
-  plot_dendro(tile.dist,6,paste(context,'.',type[i,class],'_sample.',current,sep=''))
+  saveRDS(tile.dist,paste(context,'.',type[i,'class'],'_tile.dist.',current,'.rds',sep=''))
+  plot_dendro(tile.dist,6,paste(context,'.',type[i,'class'],'_sample.',current,sep=''))
   tile.cor=calculate_cor(all,6)
-  saveRDS(tile.cor,paste(context,'.',type[i,class],'_tile.cor.',current,'.rds',sep=''))
-  plot_heatmap(tile.cor,paste(context,'.',type[i,class],'_sample.',current,sep=''))
+  saveRDS(tile.cor,paste(context,'.',type[i,'class'],'_tile.cor.',current,'.rds',sep=''))
+  plot_heatmap(tile.cor,paste(context,'.',type[i,'class'],'_sample.',current,sep=''))
 
   tile.dist=calculate_dist(all,8)
-  saveRDS(tile.dist,paste(context,'.',type[i,class],'_tile.dist.sample.',current,'.rds',sep=''))
-  plot_dendro(tile.dist,6,paste(context,'.',type[i,class],'_clonal.',current,sep=''))
+  saveRDS(tile.dist,paste(context,'.',type[i,'class'],'_tile.dist.sample.',current,'.rds',sep=''))
+  plot_dendro(tile.dist,6,paste(context,'.',type[i,'class'],'_clonal.',current,sep=''))
   tile.cor=calculate_cor(all,8)
-  saveRDS(tile.cor,paste(context,'.',type[i,class],'_tile.cor.sample.',current,'.rds',sep=''))
-  plot_heatmap(tile.cor,paste(context,'.',type[i,class],'_sample.',current,sep=''))
+  saveRDS(tile.cor,paste(context,'.',type[i,'class'],'_tile.cor.sample.',current,'.rds',sep=''))
+  plot_heatmap(tile.cor,paste(context,'.',type[i,'class'],'_sample.',current,sep=''))
 }
 #done
