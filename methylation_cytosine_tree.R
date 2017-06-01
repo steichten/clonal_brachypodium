@@ -89,6 +89,6 @@ for(i in 1:nrow(type)){
   plot_dendro(tile.dist,6,paste(context,'.',type[i,'class'],'_clonal.',current,'.',sep=''))
   tile.cor=calculate_cor(all,8)
   saveRDS(tile.cor,paste(context,'.',type[i,'class'],'_tile.cor.sample.',current,'.rds',sep=''))
-  plot_heatmap(tile.cor,paste(context,'.',type[i,'class'],'_sample.',current,'.',sep=''))
+  plot_heatmap(tile.cor,paste(context,'.',type[i,'class'],'_clonal.',current,'.',sep=''))
 }
 #done
