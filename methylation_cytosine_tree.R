@@ -8,7 +8,7 @@ files=argo[3:length(argo)]
 print(files)
 print(metapath)
 print(context)
-current=format(Sys.time(), "%H:%M_%d-%m-%y")
+current=format(Sys.time(), "%H-%M_%d-%m-%y")
 
 
 #install.packages('dendextend',dependencies=T)
@@ -73,22 +73,22 @@ for(i in 1:nrow(type)){
 
   #gather metadata info for samples used for all sample comparisons
   meta=read.delim(metapath,head=T)
-  current=names(all[,4:ncol(all)])
-  meta_used=meta[meta[,1] %in% current,]
-  meta_used=meta_used[match(current,meta_used[,1]),]
+  currentnames=names(all[,4:ncol(all)])
+  meta_used=meta[meta[,1] %in% currentnames,]
+  meta_used=meta_used[match(currentnames,meta_used[,1]),]
 
   tile.dist=calculate_dist(all,6)
   saveRDS(tile.dist,paste(context,'.',type[i,'class'],'_tile.dist.',current,'.rds',sep=''))
-  plot_dendro(tile.dist,6,paste(context,'.',type[i,'class'],'_sample.',current,sep=''))
+  plot_dendro(tile.dist,6,paste(context,'.',type[i,'class'],'_sample.',current,'.',sep=''))
   tile.cor=calculate_cor(all,6)
   saveRDS(tile.cor,paste(context,'.',type[i,'class'],'_tile.cor.',current,'.rds',sep=''))
-  plot_heatmap(tile.cor,paste(context,'.',type[i,'class'],'_sample.',current,sep=''))
+  plot_heatmap(tile.cor,paste(context,'.',type[i,'class'],'_sample.',current,'.',sep=''))
 
   tile.dist=calculate_dist(all,8)
   saveRDS(tile.dist,paste(context,'.',type[i,'class'],'_tile.dist.sample.',current,'.rds',sep=''))
-  plot_dendro(tile.dist,6,paste(context,'.',type[i,'class'],'_clonal.',current,sep=''))
+  plot_dendro(tile.dist,6,paste(context,'.',type[i,'class'],'_clonal.',current,'.',sep=''))
   tile.cor=calculate_cor(all,8)
   saveRDS(tile.cor,paste(context,'.',type[i,'class'],'_tile.cor.sample.',current,'.rds',sep=''))
-  plot_heatmap(tile.cor,paste(context,'.',type[i,'class'],'_sample.',current,sep=''))
+  plot_heatmap(tile.cor,paste(context,'.',type[i,'class'],'_sample.',current,'.',sep=''))
 }
 #done
