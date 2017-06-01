@@ -8,7 +8,7 @@ files=argo[3:length(argo)]
 print(files)
 print(metapath)
 print(context)
-current=Sys.time()
+current=format(Sys.time(), "%H-%M_%d-%m-%y")
 
 
 #install.packages('dendextend',dependencies=T)
@@ -18,11 +18,11 @@ library(dendextend)
 ##############
 #functions
 ##############
-merge_wigs <- function(filelist){
+merge_cov <- function(filelist,col){
   all=list()
   for (i in 1:length(filelist)){
     tmp = read.delim(filelist[i],head=F,skip=1)
-    tmp=tmp[,1:4]
+    tmp=tmp[,c(1:3,col)]
     namechomp=gsub('.fastq.gz.*','',filelist[i]) #getting down to just the S60XXX sampleID
     namechomp=gsub('\\./','',namechomp) #get rid of leading './'
     colnames(tmp)[4]=namechomp
@@ -40,7 +40,7 @@ calculate_dist <- function(data,column){
 }
 ############
 plot_dendro <- function(hc,column,title){
-  pdf(paste(title,'methylation_dendrogram.',current,'.pdf',sep='_'),height=9,width=70)
+  pdf(paste(title,'methylation_dendrogram.',current,'.pdf',sep=''),height=9,width=70)
   dendro_labels=gsub('_.*','',gsub('\\.[0-9]*','',as.character(meta_used[,column])))
   dendro_colors=as.numeric(as.factor(gsub('_.*','',gsub('\\.[0-9]*','',as.character(meta_used[,8])))))
   hc=as.dendrogram(hc)
@@ -57,7 +57,7 @@ calculate_cor <- function(data,column){
 }
 ###########
 plot_heatmap <- function(cor_matrix,title){
-  pdf(paste(title,'methylation_heatmap.',current,'.pdf',sep='_'),height=30,width=30)
+  pdf(paste(title,'methylation_heatmap.',current,'.pdf',sep=''),height=30,width=30)
   print(heatmap(cor_matrix,main=paste(title,sep=' ')))
   dev.off()
   return(NULL)
@@ -65,30 +65,30 @@ plot_heatmap <- function(cor_matrix,title){
 ##############
 
 
+type=data.frame(class=c('prop'),column=c(4))
 
-all=merge_wigs(files)
+for(i in 1:nrow(type)){
+  all=merge_cov(files,type[i,'column'])
+  write.table(all,paste(context,'_allsites_',type[i,'class'],'.',current,'.txt',sep=''),sep='\t',row.names=F,quote=F)
 
-write.table(all,paste(context,'_alltiles_merged.',current,'.txt',sep=''),sep='\t',row.names=F,quote=F)
+  #gather metadata info for samples used for all sample comparisons
+  meta=read.delim(metapath,head=T)
+  currentnames=names(all[,4:ncol(all)])
+  meta_used=meta[meta[,1] %in% currentnames,]
+  meta_used=meta_used[match(currentnames,meta_used[,1]),]
 
-#gather metadata info for samples used for all sample comparisons
-meta=read.delim(metapath,head=T)
-current=names(all[,4:ncol(all)])
-meta_used=meta[meta[,1] %in% current,]
-meta_used=meta_used[match(current,meta_used[,1]),]
+  tile.dist=calculate_dist(all,6)
+  saveRDS(tile.dist,paste(context,'.',type[i,'class'],'_tile.dist.',current,'.rds',sep=''))
+  plot_dendro(tile.dist,6,paste(context,'.',type[i,'class'],'_sample.',current,'.',sep=''))
+  tile.cor=calculate_cor(all,6)
+  saveRDS(tile.cor,paste(context,'.',type[i,'class'],'_tile.cor.',current,'.rds',sep=''))
+  plot_heatmap(tile.cor,paste(context,'.',type[i,'class'],'_sample.',current,'.',sep=''))
 
-
-tile.dist=calculate_dist(all,6)
-saveRDS(tile.dist,paste(context,'_tile.dist.rds',sep=''))
-plot_dendro(tile.dist,6,paste(context,'_sample',sep=''))
-tile.cor=calculate_cor(all,6)
-saveRDS(tile.cor,paste(context,'_tile.cor.rds',sep=''))
-plot_heatmap(tile.cor,paste(context,'_sample',sep=''))
-
-tile.dist=calculate_dist(all,8)
-saveRDS(tile.dist,paste(context,'_tile.dist.sample.rds',sep=''))
-plot_dendro(tile.dist,6,paste(context,'_clonal',sep=''))
-tile.cor=calculate_cor(all,8)
-saveRDS(tile.cor,paste(context,'_tile.cor.sample.rds',sep=''))
-plot_heatmap(tile.cor,paste(context,'_sample',sep=''))
-
+  tile.dist=calculate_dist(all,8)
+  saveRDS(tile.dist,paste(context,'.',type[i,'class'],'_tile.dist.sample.',current,'.rds',sep=''))
+  plot_dendro(tile.dist,6,paste(context,'.',type[i,'class'],'_clonal.',current,'.',sep=''))
+  tile.cor=calculate_cor(all,8)
+  saveRDS(tile.cor,paste(context,'.',type[i,'class'],'_tile.cor.sample.',current,'.rds',sep=''))
+  plot_heatmap(tile.cor,paste(context,'.',type[i,'class'],'_clonal.',current,'.',sep=''))
+}
 #done
