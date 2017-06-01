@@ -77,7 +77,6 @@ mkdir v3.1
 cd v3.1
 curl 'https://signon.jgi.doe.gov/signon/create' --data-urlencode 'login=steven.eichten@anu.edu.au' --data-urlencode 'password=qwerty12' -c cookies > /dev/null
 curl 'http://genome.jgi.doe.gov/ext-api/downloads/get-directory?organism=PhytozomeV12' -b cookies > files.xml
-
 curl 'http://genome.jgi.doe.gov/ext-api/downloads/get_tape_file?blocking=true&url=/PhytozomeV12/download/_JAMO/55fb8fe90d8785306f968879/Bdistachyon_314_v3.1.gene.gff3.gz' -b cookies > Bdistachyon_314_gene.gff3.gz
 curl 'http://genome.jgi.doe.gov/ext-api/downloads/get_tape_file?blocking=true&url=/PhytozomeV12/download/_JAMO/55fb8fe90d8785306f968876/Bdistachyon_314_v3.1.gene_exons.gff3.gz' -b cookies > Bdistachyon_314_gene_exons.gff3.gz
 rm cookies

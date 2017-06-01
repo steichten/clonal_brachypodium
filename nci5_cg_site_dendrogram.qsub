@@ -15,7 +15,7 @@ module load R
 cd rawdata_lowcoverage
 
 #grab all 100bp wig files from the aligned data outputs as variable for R
-cgfiles=$(find -name "S6008*CpG.bed.bismark.cov")
+cgfiles=$(find -name "S6*CpG.bed.bismark.cov")
 
 #make dendrogrames for each context. First argument is file prefix (CG/CHG/CHH), second is metadata path, third is vector of all wigfiles for said context
 Rscript ../methylation_cytosine_tree.R CG ../metadata.txt $cgfiles

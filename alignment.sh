@@ -109,6 +109,7 @@ mv 4_bismark_alignment/CHG*.wig 5_output_files/${fileID}_CHG_100bp.wig
 perl $HOME/scripts/C_context_window_SREedits.pl 4_bismark_alignment/CHH* 100 0 ${fileID}_CHH 2>&1 | tee -a ${fileID}_logs_${dow}.log
 mv 4_bismark_alignment/CHH*.wig 5_output_files/${fileID}_CHH_100bp.wig
 
+cd 5_output_files
 sort -k1,1 -k2,2n ${fileID}_CpG.bed.bismark.cov > temp
 mv temp ${fileID}_CpG.bed.bismark.cov
 
@@ -126,6 +127,7 @@ mv temp ${fileID}_CHG_100bp.wig
 
 cat ${fileID}_CHH_100bp.wig | (read -r; printf "%s\n" "$REPLY"; sort -k1,1 -k2,2n) > temp
 mv temp ${fileID}_CHH_100bp.wig
+cd ../
 
 echo "#####################"
 echo "providing pipeline metrics to wgbs pipeline logfile..."

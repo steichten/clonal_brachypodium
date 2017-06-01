@@ -20,7 +20,7 @@ DATE=$(date)
 printf "#!/bin/bash\n" >> ${ID[0]}_alignment.qsub.script
 printf "#PBS -P xe2\n" >> ${ID[0]}_alignment.qsub.script
 printf "#PBS -q normal\n" >> ${ID[0]}_alignment.qsub.script
-printf "#PBS -l walltime=15:00:00\n" >> ${ID[0]}_alignment.qsub.script
+printf "#PBS -l walltime=24:00:00\n" >> ${ID[0]}_alignment.qsub.script
 printf "#PBS -l mem=16GB\n" >> ${ID[0]}_alignment.qsub.script
 printf "#PBS -l jobfs=15GB\n" >> ${ID[0]}_alignment.qsub.script
 printf "#PBS -l ncpus=12\n" >> ${ID[0]}_alignment.qsub.script
