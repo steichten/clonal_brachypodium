@@ -1,7 +1,7 @@
 #!/bin/bash
 #PBS -P xe2
 #PBS -q copyq
-#PBS -l walltime=03:00:00
+#PBS -l walltime=05:00:00
 #PBS -l mem=8GB
 #PBS -l jobfs=200GB
 #PBS -l ncpus=1
@@ -22,38 +22,67 @@ export PATH=$PATH:$HOME/bin:$HOME/.local/bin/
 mkdir genome_files
 printf "genome_files\n" >> .gitignore
 cd genome_files
-
-#download Brachypodium distachyon reference v1.2
 curl 'https://signon.jgi.doe.gov/signon/create' --data-urlencode 'login=steven.eichten@anu.edu.au' --data-urlencode 'password=qwerty12' -c cookies > /dev/null
-curl 'http://genome.jgi.doe.gov/ext-api/downloads/get_tape_file?blocking=true&url=/PhytozomeV9/download/_JAMO/52b9c946166e730e43a350c3/Bdistachyon_192.fa.gz' -b cookies > Bdistachyon_192.fa.gz
-rm cookies
 
+#download Brachypodium distachyon reference v1.2 from Phytozome V9
+mkdir v1.2
+cd v1.2
+curl 'http://genome.jgi.doe.gov/ext-api/downloads/get_tape_file?blocking=true&url=/PhytozomeV9/download/_JAMO/52b9c946166e730e43a350c3/Bdistachyon_192.fa.gz' -b ../cookies > Bdistachyon_192.fa.gz
 gzip -d Bdistachyon_192.fa.gz
-bowtie-build Bdistachyon_192.fa Bdistachyon_192
-bismark_genome_preparation .
+bowtie-build Bdistachyon_192.fa Bdistachyon_192 #bowtie 1 indexing
+bowtie2-build Bdistachyon_192.fa Bdistachyon_192 #bowtie 2 indexing
+bismark_genome_preparation . #index for bismark bisulfite genomes
 yaha -g Bdistachyon_192.fa #index the genome for TEPID analysis
 cd ../
 
-#the SNP-corrected genomes are from the Bdistachyon v1.2 genome release (Phytozome 9??)
+#download Brachypodium distachyon reference v3.1 from PhytozomeV12
+mkdir v3.1
+cd v3.1
+curl 'http://genome.jgi.doe.gov/ext-api/downloads/get_tape_file?blocking=true&url=/PhytozomeV12/download/_JAMO/55fb8fe90d8785306f968882/Bdistachyon_314_v3.0.fa.gz"'  -b ../cookies > Bdistachyon_314.fa.gz
+gzip -d Bdistachyon_314.fa.gz
+bowtie-build Bdistachyon_314.fa Bdistachyon_314 #bowtie 1 indexing
+bowtie2-build Bdistachyon_314.fa Bdistachyon_314 #bowtie 2 indexing
+bismark_genome_preparation . #index for bismark bisulfite genomes
+yaha -g Bdistachyon_314.fa #index the genome for TEPID analysis
+cd ../
+
+rm cookies
+cd ../
+
+
+
 mkdir annotations
 printf "annotations\n" >> .gitignore
 cd annotations
-
 #gene annotations pulled from phytozome using download API
+mkdir v1.2
+cd v1.2
 curl 'https://signon.jgi.doe.gov/signon/create' --data-urlencode 'login=steven.eichten@anu.edu.au' --data-urlencode 'password=qwerty12' -c cookies > /dev/null
 curl 'http://genome.jgi.doe.gov/ext-api/downloads/get-directory?organism=PhytozomeV9' -b cookies > files.xml
 curl 'http://genome.jgi.doe.gov/ext-api/downloads/get_tape_file?blocking=true&url=/PhytozomeV9/download/_JAMO/52b9c942166e730e43a350bc/Bdistachyon_192_gene.gff3.gz' -b cookies > Bdistachyon_192_gene.gff3.gz
 curl 'http://genome.jgi.doe.gov/ext-api/downloads/get_tape_file?blocking=true&url=/PhytozomeV9/download/_JAMO/52b9c942166e730e43a350bd/Bdistachyon_192_gene_exons.gff3.gz' -b cookies > Bdistachyon_192_gene_exons.gff3.gz
 rm cookies
-
-#TRANSPOSON DATA
+#TRANSPOSON DATA for v1.2 assembly
 # http://pgsb.helmholtz-muenchen.de/plant/brachypodium/download/index.jsp
 #accessed May 16th, 2017
 #built on v1.2 of B distacyhon genome
-
 wget ftp://ftpmips.helmholtz-muenchen.de/plants/brachypodium/repeats/MIPS_Bd_Transposons_v2.2_16-07-2009.gff3.gz
 wget ftp://ftpmips.helmholtz-muenchen.de/plants/brachypodium/repeats/MIPS_Bd_tandemRepeats_01-04-2009.gff3.gz
 
+gzip -d *.gz
 cd ../
+
+#v3.1 annotations
+mkdir v3.1
+cd v3.1
+curl 'https://signon.jgi.doe.gov/signon/create' --data-urlencode 'login=steven.eichten@anu.edu.au' --data-urlencode 'password=qwerty12' -c cookies > /dev/null
+curl 'http://genome.jgi.doe.gov/ext-api/downloads/get-directory?organism=PhytozomeV12' -b cookies > files.xml
+
+curl 'http://genome.jgi.doe.gov/ext-api/downloads/get_tape_file?blocking=true&url=/PhytozomeV12/download/_JAMO/55fb8fe90d8785306f968879/Bdistachyon_314_v3.1.gene.gff3.gz' -b cookies > Bdistachyon_314_gene.gff3.gz
+curl 'http://genome.jgi.doe.gov/ext-api/downloads/get_tape_file?blocking=true&url=/PhytozomeV12/download/_JAMO/55fb8fe90d8785306f968876/Bdistachyon_314_v3.1.gene_exons.gff3.gz' -b cookies > Bdistachyon_314_gene_exons.gff3.gz
+rm cookies
+#TRANSPOSON DATA for v3.1 assembly is TBD by those de people via personal comms
+#TO BE FILLED IN
+gzip -d *.gz
 
 #done
