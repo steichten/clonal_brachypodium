@@ -47,5 +47,3 @@ cat $REFGENOMEPATH | vcf-consensus ${ID}.variants.vcf.gz > ${ID}.snpcorrected.fa
 
 #########################
 #freebayes ??
-
-bamaddrg -b BdTR
