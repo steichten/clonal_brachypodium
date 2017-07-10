@@ -23,6 +23,7 @@ merge_cov <- function(filelist,col){
   for (i in 1:length(filelist)){
     tmp = read.delim(filelist[i],head=F,skip=1)
     tmp=tmp[,c(1:3,col)]
+    tmp = tmp %>% filter(V1=='Bd1')
     namechomp=gsub('.fastq.gz.*','',filelist[i]) #getting down to just the S60XXX sampleID
     namechomp=gsub('\\./','',namechomp) #get rid of leading './'
     colnames(tmp)[4]=namechomp
