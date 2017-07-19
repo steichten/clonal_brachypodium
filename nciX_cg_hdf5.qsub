@@ -1,0 +1,23 @@
+#PBS -P xe2
+#PBS -q express
+#PBS -l walltime=00:20:00
+#PBS -l mem=31GB
+#PBS -l jobfs=150GB
+#PBS -l ncpus=8
+#PBS -l software=R
+#PBS -l wd
+
+module load R
+
+#this script will take the aligned low coverage data single base-pair .cov files and create a massive hdf5 of all data
+
+#go into lowcoverage folder
+cd rawdata_lowcoverage
+
+#get list of cov files within
+cgfiles=$(find -name "S6001*CpG.bed.bismark.cov")
+
+#create master merged cytosine position table
+cat $cgfiles | cut -f1,2 | sort -k1,1 -k2,2n | uniq | grep -v '^==' > cg.merged.positions
+
+Rscript nciX_hdf5_creation.R CG cg.merged.positions $cgfiles
