@@ -1,9 +1,9 @@
 #PBS -P xe2
 #PBS -q normal
-#PBS -l walltime=24:00:00
+#PBS -l walltime=06:00:00
 #PBS -l mem=63GB
 #PBS -l jobfs=150GB
-#PBS -l ncpus=8
+#PBS -l ncpus=7
 #PBS -l software=R
 #PBS -l wd
 

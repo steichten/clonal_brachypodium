@@ -20,4 +20,4 @@ chhfiles=$(find -name "S6001*CHH.bed.bismark.cov" | grep "wgbs" )
 #create master merged cytosine position table
 cat $chhfiles | cut -f1,2 | sort -k1,1 -k2,2n | uniq | grep -v '^==' > chh.merged.positions
 
-Rscript ../nciX_hdf5_creation.R CHG chh.merged.positions $chhfiles
+Rscript ../nciX_hdf5_creation.R CHH chh.merged.positions $chhfiles

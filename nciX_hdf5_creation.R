@@ -4,7 +4,6 @@ argo=unlist(strsplit(argo,' '))
 context=argo[1]
 positions=argo[2]
 files=argo[3:length(argo)]
-print(files)
 print(context)
 current=format(Sys.time(), "%H-%M_%d-%m-%y")
 
@@ -22,6 +21,7 @@ pos=read.delim(positions,head=F,stringsAsFactors = F,col.names=c('chrom','positi
 h5write(pos,file=h5filename,name='/positions/positions')
 
 files=sort(substring(files,3))
+print(files)
 
 #sid=matrix(unlist(strsplit(files,'\\.')),ncol=8,byrow=T)[,1]
 
@@ -38,5 +38,5 @@ for(i in 1:length(files)){
   h5write(matrix(merged[,4],nc=1),file=h5filename,name='unmet/unmet',start=c(1,i))
   }
 
-h5Close()
+H5close()
 #

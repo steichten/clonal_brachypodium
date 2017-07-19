@@ -16,7 +16,7 @@ module load R
 cd rawdata_highcoverage
 
 #grab all 100bp wig files from the aligned data outputs as variable for R
-chgfiles=$(find -name "S*CHH*.wig")
+chhfiles=$(find -name "S*CHH*.wig")
 
 #make dendrogrames for each context. First argument is file prefix (CG/CHG/CHH), second is vector of all wigfiles for said context
-Rscript ../methylation_tile_tree.R CHH ../metadata.txt $chgfiles
+Rscript ../methylation_tile_tree.R CHH ../metadata.txt $chhfiles
