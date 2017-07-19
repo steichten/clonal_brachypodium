@@ -15,9 +15,9 @@ module load R
 cd rawdata_lowcoverage
 
 #get list of cov files within
-cgfiles=$(find -name "S6001*CpG.bed.bismark.cov" | grep "wgbs" )
+chgfiles=$(find -name "S6001*CHG.bed.bismark.cov" | grep "wgbs" )
 
 #create master merged cytosine position table
-cat $cgfiles | cut -f1,2 | sort -k1,1 -k2,2n | uniq | grep -v '^==' > cg.merged.positions
+cat $chgfiles | cut -f1,2 | sort -k1,1 -k2,2n | uniq | grep -v '^==' > chg.merged.positions
 
-Rscript ../nciX_hdf5_creation.R CG cg.merged.positions $cgfiles
+Rscript ../nciX_hdf5_creation.R CHG chg.merged.positions $chgfiles
