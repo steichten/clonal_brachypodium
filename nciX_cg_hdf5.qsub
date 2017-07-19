@@ -20,4 +20,4 @@ cgfiles=$(find -name "S6001*CpG.bed.bismark.cov" | grep "wgbs" )
 #create master merged cytosine position table
 cat $cgfiles | cut -f1,2 | sort -k1,1 -k2,2n | uniq | grep -v '^==' > cg.merged.positions
 
-Rscript nciX_hdf5_creation.R CG cg.merged.positions $cgfiles
+Rscript ../nciX_hdf5_creation.R CG cg.merged.positions $cgfiles
