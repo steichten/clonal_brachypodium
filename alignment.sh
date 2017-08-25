@@ -80,25 +80,31 @@ mv $fq_file 0_rawfastq
 #bismark
 mkdir 4_bismark_alignment
 cd 4_bismark_alignment
-bismark -n 2 -l 20 ../../$genome_path ../2_trimgalore/${fq_file%%.fastq*}_trimmed.fq* 2>&1 | tee -a ../${fileID}_logs_${dow}.log
+bismark --bowtie1 --multicore 4 -n 1 -l 28 --gzip --nucleotide_coverage ../../$genome_path ../2_trimgalore/${fq_file%%.fastq*}_trimmed.fq* 2>&1 | tee -a ../${fileID}_logs_${dow}.log
+
+deduplicate_bismark --bam ${fq_file%%.fastq*}_trimmed_bismark.bam
 
 #sam to bam
-samtools view -b -S -h ${fq_file%%.fastq*}_trimmed*.sam > ${fq_file%%.fastq*}_trimmed.fq_bismark.bam
-samtools sort -T . ${fq_file%%.fastq*}_trimmed.fq_bismark.bam -o ${fq_file%%.fastq*}_trimmed.fq_bismark.sorted.bam
-samtools index ${fq_file%%.fastq*}_trimmed.fq_bismark.sorted.bam
+#samtools view -b -S -h ${fq_file%%.fastq*}_trimmed*.sam > ${fq_file%%.fastq*}_trimmed.fq_bismark.bam
+#samtools sort -T . ${fq_file%%.fastq*}_trimmed.fq_bismark.bam -o ${fq_file%%.fastq*}_trimmed.fq_bismark.sorted.bam
+#samtools index ${fq_file%%.fastq*}_trimmed.fq_bismark.sorted.bam
+
 #sam sort for MethylKit
 #grep -v '^[[:space:]]*@' ${fq_file%%.fastq*}_trimmed*.sam | sort -k3,3 -k4,4n > ${fq_file%%.fastq*}_trimmed.fq_bismark.sorted.sam
 #methylation extraction
-bismark_methylation_extractor --comprehensive --report --buffer_size 8G -s ${fq_file%%.fastq*}_trimmed*.sam 2>&1 | tee -a ../${fileID}_logs_${dow}.log
+bismark_methylation_extractor --multicore 4 --comprehensive --report --genome_folder ../../$genome_path --buffer_size 8G -s ${fq_file%%.fastq*}_trimmed_bismark.deduplicated.bam 2>&1 | tee -a ../${fileID}_logs_${dow}.log
 
 #bedgraph creation
-bismark2bedGraph --CX CpG* -o ${fileID}_CpG.bed 2>&1 | tee -a ../${fileID}_logs_${dow}.log
-bismark2bedGraph --CX CHG* -o ${fileID}_CHG.bed 2>&1 | tee -a ../${fileID}_logs_${dow}.log
-bismark2bedGraph --CX CHH* -o ${fileID}_CHH.bed 2>&1 | tee -a ../${fileID}_logs_${dow}.log
+bismark2bedGraph --CX CpG* -o ${fileID}_CpG 2>&1 | tee -a ../${fileID}_logs_${dow}.log
+bismark2bedGraph --CX CHG* -o ${fileID}_CHG 2>&1 | tee -a ../${fileID}_logs_${dow}.log
+bismark2bedGraph --CX CHH* -o ${fileID}_CHH 2>&1 | tee -a ../${fileID}_logs_${dow}.log
+
+bismark2report
 
 cd ../
 mkdir 5_output_files
-mv 4_bismark_alignment/*.bed* 5_output_files
+mv 4_bismark_alignment/${fileID}_C*.gz 5_output_files
+mv 4_bismark_alignment/${fileID}_C*.gz.bismark.cov.gz 5_output_files
 
 #100bp window creation
 
@@ -110,14 +116,17 @@ perl $HOME/scripts/C_context_window_SREedits.pl 4_bismark_alignment/CHH* 100 0 $
 mv 4_bismark_alignment/CHH*.wig 5_output_files/${fileID}_CHH_100bp.wig
 
 cd 5_output_files
-sort -k1,1 -k2,2n ${fileID}_CpG.bed.bismark.cov > temp
-mv temp ${fileID}_CpG.bed.bismark.cov
+#zcat -d ${fileID}_CpG.gz.bismark.cov.gz | sort -k1,1 -k2,2n > temp
+#mv temp ${fileID}_CpG.gz.bismark.cov
+#pigz ${fileID}_CpG.gz.bismark.cov
 
-sort -k1,1 -k2,2n ${fileID}_CHG.bed.bismark.cov > temp
-mv temp ${fileID}_CHG.bed.bismark.cov
+#zcat -d ${fileID}_CHG.gz.bismark.cov.gz | sort -k1,1 -k2,2n > temp
+#mv temp ${fileID}_CHG.gz.bismark.cov
+#pigz ${fileID}_CHG.gz.bismark.cov
 
-sort -k1,1 -k2,2n ${fileID}_CHH.bed.bismark.cov > temp
-mv temp ${fileID}_CHH.bed.bismark.cov
+#zcat -d ${fileID}_CHH.gz.bismark.cov.gz | sort -k1,1 -k2,2n > temp
+#mv temp ${fileID}_CHH.gz.bismark.cov
+#pigz ${fileID}_CHH.gz.bismark.cov
 
 cat ${fileID}_CpG_100bp.wig | (read -r; printf "%s\n" "$REPLY"; sort -k1,1 -k2,2n) > temp #sort keep header line
 mv temp ${fileID}_CpG_100bp.wig
