@@ -20,7 +20,7 @@ SRALIST=$(tail -n +2 ../sequencing_record.txt | grep -v "S[Pp]1"  | cut -f 14)
 
 for SRAFILE in $SRALIST
 do
-    #download SRA files from NCBI,
+    #download SRA files from NCBI, this link may change in the future as they reorg locations of sra files
     wget -nc http://sra-download.ncbi.nlm.nih.gov/srapub/${SRAFILE}
     mv ${SRAFILE} ${SRAFILE}.sra
 done
